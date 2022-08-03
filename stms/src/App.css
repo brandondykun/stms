@@ -140,6 +140,15 @@
   margin-bottom: .5rem;
 }
 
+.text-link {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.text-link:hover {
+  color: var(--gold);
+}
+
 @media only screen and (min-width: 800px) {
   .sections-row {
     display: flex;
