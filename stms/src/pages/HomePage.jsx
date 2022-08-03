@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import apiCalls from "../api/apiUtils";
+import SectionContainer from "../components/SectionContainer";
 
 const HomePage = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -22,14 +23,23 @@ const HomePage = () => {
   return (
     <div className="primary-content">
       <h1 className="page-title">Section Overview</h1>
-      <div>This is the main content</div>
-      {allUsers?.map((user) => {
-        return (
-          <div key={user.id}>
-            {user?.rank} {user?.last_name}
-          </div>
-        );
-      })}
+      <div className="image-wrapper">
+        <img
+          className="image-container small-image"
+          src="../src/assets/fist-logo.png"
+          alt="FIST logo"
+        />
+      </div>
+      <div className="sections-container">
+        <div className="sections-row">
+          <SectionContainer users={allUsers} section={"BN STAFF"} />
+          <SectionContainer users={allUsers} section={"ALPHA"} />
+        </div>
+        <div className="sections-row">
+          <SectionContainer users={allUsers} section={"BRAVO"} />
+          <SectionContainer users={allUsers} section={"CHARLIE"} />
+        </div>
+      </div>
     </div>
   );
 };
