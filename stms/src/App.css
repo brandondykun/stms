@@ -2,7 +2,7 @@
   --white: rgb(193, 193, 193);
   --gold: rgb(254, 195, 10);
   --black: rgb(0,0,0);
-
+  --dark-placeholder: rgb(59, 59, 59);
 }
 
 * {
@@ -41,11 +41,16 @@
   padding: 1rem;
 }
 
+.page-title {
+  color: var(--gold);
+  margin-top: 2rem;
+}
+
 .nav-link.active {
   color: var(--gold);
 }
 
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
 }
@@ -58,6 +63,11 @@
   max-height: 120px;
   width: auto;
   filter: grayscale(100%);
+}
+
+.small-image {
+  max-height: 80px;
+  display: none;
 }
 
 .image-wrapper {
@@ -85,7 +95,7 @@
 }
 
 .dark-input::placeholder {
-  color: rgb(59, 59, 59)
+  color: var(--dark-placeholder)
 }
 
 .form-button.login, .form-button.register {
@@ -113,4 +123,44 @@
   display: flex;
   justify-content: space-between;
   font-weight: bold;
+}
+
+.sections-container {
+  margin: 1rem 0rem 0rem 0rem;
+}
+
+.section-container {
+  margin: 4rem auto;
+  max-width: 350px;
+}
+
+.section-title {
+  border-bottom: 1px solid var(--white);
+  padding-bottom: .5rem;
+  margin-bottom: .5rem;
+}
+
+@media only screen and (min-width: 800px) {
+  .sections-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  .section-container {
+    width: 350px;
+    margin: 4rem;
+  }
+
+  .section-title {
+    color: var(--gold);
+  }
+
+  .page-title {
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .small-image {
+    display: block;
+  }
 }
