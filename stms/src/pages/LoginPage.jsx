@@ -44,7 +44,7 @@ const LoginPage = () => {
           Register
         </NavLink>
       </div>
-      <form className="login-form" onSubmit={handleLogIn}>
+      <form className="form login-form" onSubmit={handleLogIn}>
         <input
           aria-label="email"
           type="text"
