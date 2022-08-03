@@ -16,7 +16,7 @@ const HomePage = () => {
         // handle this error
       }
     };
-    // getUsers();
+    getUsers();
   }, []);
 
   return (
