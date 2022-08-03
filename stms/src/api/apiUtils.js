@@ -1,5 +1,12 @@
 import { db, auth } from "../firebase-config";
-import { collection, getDocs, where, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  where,
+  query,
+  addDoc,
+  Timestamp,
+} from "firebase/firestore";
 import {
   signInWithEmailAndPassword,
   getAuth,
@@ -61,6 +68,17 @@ apiCalls.logOut = async () => {
   signOut(auth).catch((error) => {
     console.error(error);
   });
+};
+
+apiCalls.addUserInfo = async (data) => {
+  try {
+    const newUser = await addDoc(usersCollection, data);
+    if (newUser.id) {
+      return { id: newUser.id };
+    }
+  } catch (error) {
+    return { error };
+  }
 };
 
 export default apiCalls;
