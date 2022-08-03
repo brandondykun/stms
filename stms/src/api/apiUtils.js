@@ -6,6 +6,8 @@ import {
   query,
   addDoc,
   Timestamp,
+  getDoc,
+  doc,
 } from "firebase/firestore";
 import {
   signInWithEmailAndPassword,
@@ -33,9 +35,13 @@ apiCalls.getAllUsers = async () => {
 
 apiCalls.getUser = async (id) => {
   try {
-    const q = query(usersCollection, where("id", "==", id));
-    const user = await getDocs(q);
-    return { ...user.data(), id: user.id };
+    const docRef = doc(db, "users", id);
+    const user = await getDoc(docRef);
+    if (user.exists()) {
+      return { ...user.data(), id: user.id };
+    } else {
+      return { error: "That user does not exist." };
+    }
   } catch (error) {
     return { error };
   }
