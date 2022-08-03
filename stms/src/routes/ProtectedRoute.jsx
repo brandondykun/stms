@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import { useUserContext } from "../context/UserContext";
+import { useUserContext } from "../context/AuthContext";
 
 const ProtectedRoute = ({ redirectPath = "/login", children, isLoading }) => {
   const { contextUser } = useUserContext();
