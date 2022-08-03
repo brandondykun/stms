@@ -18,7 +18,7 @@ const SignUpPage = () => {
     const user = await apiCalls.createUser(email, password);
     if (user) {
       setCurrentUser(user);
-      navigate("/home");
+      navigate(`/create-account/${user.uid}`);
     }
   };
 
@@ -39,7 +39,7 @@ const SignUpPage = () => {
           Register
         </NavLink>
       </div>
-      <form className="login-form" onSubmit={handleSignUp}>
+      <form className="form login-form" onSubmit={handleSignUp}>
         <input
           aria-label="email"
           type="text"
