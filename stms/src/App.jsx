@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import { useAuthContext } from "./context/AuthContext";
 import CreateAccountPage from "./pages/CreateAccountPage";
+import UserInfo from "./pages/UserInfo";
 
 function App() {
   const { currentUser } = useAuthContext();
@@ -18,6 +19,7 @@ function App() {
         <Route path="home" element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<SignUpPage />} />
+        <Route path="user-info/:id" element={<UserInfo />} />
         <Route path="create-account/:id" element={<CreateAccountPage />} />
       </Routes>
     </div>
