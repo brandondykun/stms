@@ -76,6 +76,13 @@
   justify-content: center;
 }
 
+.small-image-wrapper {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  display: none;
+}
+
 .login-form {
   max-width: 400px;
   margin: 3rem auto;
@@ -91,7 +98,7 @@
   margin: 1rem 0;
 }
 
-.dark-input:focus {
+.dark-input:focus, .text-area-input:focus {
   outline: none;
 }
 
@@ -192,6 +199,87 @@
   /* margin: 3rem auto auto auto; */
 }
 
+.comments-link {
+  color: var(--white);
+  text-decoration: none;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.comments-link:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.name-title {
+  margin-bottom: 2rem;
+}
+
+.all-comments-container {
+  padding: 3rem 0rem;
+}
+
+.comments-container {
+  padding: 0rem 0rem 6rem 0rem; 
+}
+
+.text-area-input {
+  padding: .5rem;
+  font-family: sans-serif;
+  /* background-color: var(--black); */
+  background-color: rgb(15, 15, 15);
+  color: var(--white);
+  border: 1px solid var(--white);
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
+}
+
+.add-comment-form {
+  max-width: 500px;
+  margin: auto;
+}
+
+.edit-link {
+  color: var(--gold);
+  font-style: italic;
+  text-decoration: none;
+  padding-left: 1rem;
+}
+
+.edit-link:hover {
+  color: var(--gold);
+  text-decoration: underline;
+}
+
+.comment-container {
+  padding: .4rem 0rem;
+  margin-left: 1rem;
+}
+
+.no-comment {
+  color: var(--dark-placeholder);
+}
+
+
+@media only screen and (min-width: 500px) {
+  .title-link-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .comments-link {
+    margin-right: 2rem;
+  }
+
+  .page-title {
+    margin-left: 2rem;
+  }
+}
+
 @media only screen and (min-width: 800px) {
   .sections-row {
     display: flex;
@@ -214,5 +302,21 @@
 
   .small-image {
     display: block;
+    margin: auto;
+  }
+
+  .small-image-wrapper {
+    display: block;
+  }
+
+  .comments-link {
+    margin-right: 4rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .all-comments-container {
+    max-width: 1000px;
+    margin: auto;
   }
 }
