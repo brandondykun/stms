@@ -23,7 +23,7 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="primary-content">
+    <div className="primary-content login-page">
       <div className="image-wrapper">
         <img
           className="image-container"
