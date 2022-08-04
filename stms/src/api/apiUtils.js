@@ -130,7 +130,6 @@ apiCalls.editComment = async (id, data) => {
   try {
     const commentRef = doc(db, "comments", id);
     const res = await updateDoc(commentRef, data);
-    // console.log("UPDATE RESPONSE: ", res);
     return { status: 200, data: res };
   } catch (error) {
     return { status: 400, error };
