@@ -55,9 +55,9 @@
   flex-direction: column;
 }
 
-.dark-input {
+/* .dark-input {
   margin: 1rem 0;
-}
+} */
 
 .image-container {
   max-height: 120px;
@@ -88,6 +88,7 @@
   border-bottom: 1px solid var(--white);
   color: var(--white);
   font-size: 1rem;
+  margin: 1rem 0;
 }
 
 .dark-input:focus {
@@ -112,9 +113,9 @@
   cursor: pointer;
   background-color: var(--gold);
   color: var(--black);
-  border-color: var(--black);
   transform: scale(1.1);
   transition-duration: .3s;
+  border: 1px solid var(--black);
 }
 
 .link-container {
@@ -147,6 +148,48 @@
 
 .text-link:hover {
   color: var(--gold);
+}
+
+.info-container > div {
+  padding: .5rem 0;
+}
+
+.info-title {
+  color: var(--gold);
+}
+
+.login-page {
+  padding: 10vh 1rem 1rem 1rem;
+}
+
+.dark-input.with-label {
+  margin-top: 0rem;
+}
+
+.form-label {
+  margin-top: 3rem;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(.9);
+}
+
+::-webkit-calendar-picker-indicator:hover {
+  cursor: pointer;
+} 
+
+.checkbox-input-container {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.checkbox-input-container > input {
+  margin-right: .5rem;
+}
+
+.form-checkboxes-container {
+  margin-top: 3rem;
+  /* margin: 3rem auto auto auto; */
 }
 
 @media only screen and (min-width: 800px) {
