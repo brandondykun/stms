@@ -10,7 +10,6 @@ import UserInfo from "./pages/UserInfo";
 
 function App() {
   const { currentUser } = useAuthContext();
-  console.log("CURRENT USER from APP: ", currentUser);
 
   return (
     <div className="App">
