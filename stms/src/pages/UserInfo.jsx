@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
+import { Link } from "react-router-dom";
 
 const UserInfo = () => {
   const [user, setUser] = useState();
@@ -27,9 +28,14 @@ const UserInfo = () => {
     <div className="primary-content">
       {user && (
         <div className="user-info-container">
-          <h1 className="page-title">
-            {user.rank} {user.last_name}
-          </h1>
+          <div className="title-link-container">
+            <h1 className="page-title name-title">
+              {user.rank} {user.last_name}
+            </h1>
+            <Link to={`/comments/${id}`} className="comments-link">
+              View Comments
+            </Link>
+          </div>
           <div className="sections-row">
             <div className="section-container info-container">
               <h2 className="section-title info-title">Name/Rank</h2>
