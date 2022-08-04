@@ -23,7 +23,7 @@ const HomePage = () => {
   return (
     <div className="primary-content">
       <h1 className="page-title">Section Overview</h1>
-      <div className="image-wrapper">
+      <div className="small-image-wrapper">
         <img
           className="image-container small-image"
           src="../src/assets/fist-logo.png"
