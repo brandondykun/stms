@@ -8,6 +8,7 @@ import {
   Timestamp,
   getDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import {
   signInWithEmailAndPassword,
@@ -19,6 +20,7 @@ import {
 const apiCalls = {};
 
 const usersCollection = collection(db, "users");
+const commentsCollection = collection(db, "comments");
 
 apiCalls.getAllUsers = async () => {
   try {
@@ -84,6 +86,54 @@ apiCalls.addUserInfo = async (data) => {
     }
   } catch (error) {
     return { error };
+  }
+};
+
+apiCalls.getComments = async (id) => {
+  try {
+    const q = query(commentsCollection, where("user_id", "==", id));
+    const comments = await getDocs(q);
+    const commentsList = comments.docs.map((comment) => ({
+      ...comment.data(),
+      id: comment.id,
+    }));
+    return commentsList;
+  } catch (error) {
+    return { error };
+  }
+};
+
+apiCalls.addComment = async (data) => {
+  try {
+    const newComment = await addDoc(commentsCollection, data);
+    if (newComment.id) {
+      return { status: 201 };
+    }
+  } catch (error) {
+    return { error };
+  }
+};
+
+apiCalls.getComment = async (id) => {
+  try {
+    const docRef = doc(db, "comments", id);
+    const comment = await getDoc(docRef);
+    if (comment.exists()) {
+      return { ...comment.data(), id: comment.id };
+    }
+  } catch (error) {
+    return { error };
+  }
+};
+
+apiCalls.editComment = async (id, data) => {
+  try {
+    const commentRef = doc(db, "comments", id);
+    const res = await updateDoc(commentRef, data);
+    // console.log("UPDATE RESPONSE: ", res);
+    return { status: 200, data: res };
+  } catch (error) {
+    return { status: 400, error };
   }
 };
 
