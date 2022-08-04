@@ -6,8 +6,12 @@ const SectionContainer = ({ users, section }) => {
       <h2 className="section-title">{section}</h2>
       {users?.map((user) => {
         return (
-          <Link to={`/user-info/${user.id}`} className="text-link">
-            <div className="user-container" key={user.id}>
+          <Link
+            key={user.id}
+            to={`/user-info/${user.id}`}
+            className="text-link"
+          >
+            <div className="user-container">
               {user.rank} {user.last_name}
             </div>
           </Link>
