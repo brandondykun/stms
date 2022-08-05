@@ -89,6 +89,16 @@ apiCalls.addUserInfo = async (data) => {
   }
 };
 
+apiCalls.editUserInfo = async (id, data) => {
+  try {
+    const userRef = doc(db, "users", id);
+    const res = await updateDoc(userRef, data);
+    return { status: 200 };
+  } catch (error) {
+    return { status: 400, error };
+  }
+};
+
 apiCalls.getComments = async (id) => {
   try {
     const q = query(commentsCollection, where("user_id", "==", id));
