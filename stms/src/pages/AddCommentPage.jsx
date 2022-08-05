@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
 import utils from "../utils/utils";
+import CommentForm from "../components/CommentForm";
 
 const formTemplate = {
   category: "",
@@ -47,47 +48,11 @@ const AddCommentPage = () => {
   return (
     <div className="primary-content">
       <h1 className="page-title name-title">Add Comment</h1>
-      <form onSubmit={handleSubmit} className="form add-comment-form">
-        <label htmlFor="category" className="form-label">
-          Category
-        </label>
-        <select
-          id="category"
-          aria-label="category"
-          type="text"
-          className="dark-input with-label"
-          value={formInputs.category}
-          onChange={(e) =>
-            setFormInputs({ ...formInputs, category: e.target.value })
-          }
-        >
-          <option value="" disabled selected>
-            Category
-          </option>
-          <option value="CHARACTER">CHARACTER</option>
-          <option value="PRESENCE">PRESENCE</option>
-          <option value="INTELLECT">INTELLECT</option>
-          <option value="LEADERSHIP">LEADERSHIP</option>
-          <option value="DEVELOPS">DEVELOPS</option>
-          <option value="ACHIEVES">ACHIEVES</option>
-          <option value="OVERALL">OVERALL</option>
-        </select>
-
-        <textarea
-          className="text-area-input"
-          maxLength={250}
-          placeholder={"Comment..."}
-          rows={6}
-          type="text"
-          value={formInputs.text}
-          onChange={(e) =>
-            setFormInputs({ ...formInputs, text: e.target.value })
-          }
-        />
-        <button className="form-button login" type="submit">
-          Add Comment
-        </button>
-      </form>
+      <CommentForm
+        formInputs={formInputs}
+        setFormInputs={setFormInputs}
+        handleSubmit={handleSubmit}
+      />
     </div>
   );
 };
