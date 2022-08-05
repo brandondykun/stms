@@ -107,13 +107,13 @@
 }
 
 .form-button.login, .form-button.register {
-  margin: 3rem auto 2rem auto;
   border: 1px solid var(--white);
   background-color: var(--black);
   color: var(--white);
   padding: .5rem;
-  max-width: 150px;
+  min-width: 105px;
   transition-duration: .3s;
+  margin: 0 1rem;
 }
 
 .form-button:hover {
@@ -261,6 +261,12 @@
 
 .no-comment {
   color: var(--dark-placeholder);
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 3rem;
 }
 
 
