@@ -26,10 +26,13 @@ const CommentsPage = () => {
     <div className="primary-content">
       <div className="title-link-container">
         <h1 className="page-title name-title">Comments</h1>
-        <Link to={`/add-comment/${id}`} className="comments-link">
+        <Link to={`/comments/${id}/create`} className="comments-link">
           Add Comment
         </Link>
       </div>
+      <Link to={`/user-info/${id}`} className="comments-link">
+        Back
+      </Link>
       <div className="all-comments-container">
         <CommentsContainer comments={comments} category={"CHARACTER"} />
         <CommentsContainer comments={comments} category={"PRESENCE"} />
