@@ -10,6 +10,7 @@ import UserInfo from "./pages/UserInfo";
 import CommentsPage from "./pages/CommentsPage";
 import AddCommentPage from "./pages/AddCommentPage";
 import EditComment from "./pages/EditCommentPage";
+import EditUserPage from "./pages/EditUserPage";
 
 function App() {
   const { currentUser } = useAuthContext();
@@ -21,11 +22,16 @@ function App() {
         <Route path="home" element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<SignUpPage />} />
-        <Route path="user-info/:id" element={<UserInfo />} />
-        <Route path="comments/:id" element={<CommentsPage />} />
-        <Route path="comments/:id/edit/:cid" element={<EditComment />} />
-        <Route path="add-comment/:id" element={<AddCommentPage />} />
         <Route path="create-account/:id" element={<CreateAccountPage />} />
+        <Route path="user-info">
+          <Route path=":id" element={<UserInfo />} />
+          <Route path=":id/edit" element={<EditUserPage />} />
+        </Route>
+        <Route path="comments">
+          <Route path=":id" element={<CommentsPage />} />
+          <Route path=":id/edit/:cid" element={<EditComment />} />
+          <Route path=":id/create" element={<AddCommentPage />} />
+        </Route>
       </Routes>
     </div>
   );
