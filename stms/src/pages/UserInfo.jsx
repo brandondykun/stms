@@ -13,7 +13,9 @@ const UserInfo = () => {
     apiCalls
       .getUser(id)
       .then((user) => {
-        setUser(user);
+        if (user.found) {
+          setUser(user.data);
+        }
       })
       .catch((error) => {
         console.error(error);
