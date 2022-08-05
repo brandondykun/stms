@@ -36,6 +36,9 @@ const UserInfo = () => {
               View Comments
             </Link>
           </div>
+          <Link to={`/user-info/${id}/edit`} className="comments-link">
+            Edit Info
+          </Link>
           <div className="sections-row">
             <div className="section-container info-container">
               <h2 className="section-title info-title">Name/Rank</h2>
