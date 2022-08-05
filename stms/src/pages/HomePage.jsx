@@ -9,9 +9,8 @@ const HomePage = () => {
   useEffect(() => {
     const getUsers = async () => {
       const res = await apiCalls.getAllUsers();
-      if (!res.error) {
-        setAllUsers(res);
-        console.log("RES: ", res);
+      if (res.status === 200) {
+        setAllUsers(res.data);
       } else {
         console.log("Error", res.error);
         // handle this error
