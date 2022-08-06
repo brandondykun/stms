@@ -61,9 +61,11 @@ const LoginPage = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="form-button login" type="submit">
-          Log In
-        </button>
+        <div className="form-button-container">
+          <button className="form-button login" type="submit">
+            Log In
+          </button>
+        </div>
       </form>
     </div>
   );
