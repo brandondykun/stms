@@ -57,7 +57,7 @@ const CreateAccountPage = () => {
 
     try {
       const res = await apiCalls.addUserInfo(data);
-      if (res.id) {
+      if (res.status === 201) {
         navigate("/home");
       }
     } catch (error) {
