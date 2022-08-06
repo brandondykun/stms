@@ -7,25 +7,35 @@ import { Link } from "react-router-dom";
 
 const CommentsPage = () => {
   const [comments, setComments] = useState([]);
+  const [user, setUser] = useState([]);
 
   const { id } = useParams();
 
   useEffect(() => {
-    apiCalls
-      .getComments(id)
-      .then((res) => {
-        if (!res.error) {
-          setComments(res);
+    const getUserAndComments = async (id) => {
+      try {
+        const user = await apiCalls.getUser(id);
+        const comments = await apiCalls.getComments(id);
+        if (user.found) {
+          setUser(user.data);
         }
-      })
-      .catch((error) => console.error("ERROR: ", error.error));
-    //handle this error
+        if (!comments.error) {
+          setComments(comments);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getUserAndComments(id);
   }, []);
 
   return (
     <div className="primary-content">
       <div className="title-link-container">
-        <h1 className="page-title name-title">Comments</h1>
+        <h1 className="page-title name-title">
+          Comments for {user.rank} {user.last_name}
+        </h1>
         <Link to={`/comments/${id}/create`} className="comments-link">
           Add Comment
         </Link>
