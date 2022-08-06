@@ -34,6 +34,8 @@ const formTemplate = {
 
 const EditUserPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
+  const [title, setTitle] = useState();
+
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -42,17 +44,19 @@ const EditUserPage = () => {
     apiCalls
       .getUser(id)
       .then((user) => {
-        // console.log("USER FROM EDIT USER PAGE: ", user);
-        const pebdDate = new Date(user.pebd.seconds * 1000);
-        const dorDate = new Date(user.dor.seconds * 1000);
-        const etsDate = new Date(user.ets.seconds * 1000);
+        if (user.found) {
+          const pebdDate = new Date(user.data.pebd.seconds * 1000);
+          const dorDate = new Date(user.data.dor.seconds * 1000);
+          const etsDate = new Date(user.data.ets.seconds * 1000);
 
-        setFormInputs({
-          ...user,
-          pebd: pebdDate,
-          dor: dorDate,
-          ets: etsDate,
-        });
+          setFormInputs({
+            ...user.data,
+            pebd: pebdDate,
+            dor: dorDate,
+            ets: etsDate,
+          });
+          setTitle(`${user.data.rank} ${user.data.last_name}`);
+        }
       })
       .catch((error) => {
         console.error(error);
@@ -86,10 +90,12 @@ const EditUserPage = () => {
     }
   };
 
+  const titleText = title ? "Edit info for " + title : "Edit Info";
+
   return (
     <div className="primary-content">
       <div className="title-link-container">
-        <h1 className="page-title name-title">Edit Info</h1>
+        <h1 className="page-title name-title">{titleText}</h1>
         <Link to={`/user-info/${id}`} className="comments-link">
           Back
         </Link>
