@@ -2,8 +2,7 @@ import dayjs from "dayjs";
 
 const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
   return (
-    <form className="form login-form" onSubmit={handleSubmit}>
-      {console.log("FORM INPUTS: ", formInputs)}
+    <form className="form user-form" onSubmit={handleSubmit}>
       <label htmlFor="first-name" className="form-label">
         First Name
       </label>
