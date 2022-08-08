@@ -35,6 +35,11 @@ const NavBar = () => {
         </NavLink>
       )}
       {currentUser && (
+        <NavLink to="admin" className="nav-link">
+          Admin
+        </NavLink>
+      )}
+      {currentUser && (
         <div className="nav-link" onClick={logOut}>
           Sign Out
         </div>
