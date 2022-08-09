@@ -3,7 +3,8 @@ import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
-  const { currentUser, setCurrentUser } = useAuthContext();
+  const { currentUser, setCurrentUser, accountInfo, setAccountInfo } =
+    useAuthContext();
 
   const navigate = useNavigate();
 
@@ -11,6 +12,7 @@ const NavBar = () => {
     try {
       await apiCalls.logOut();
       setCurrentUser(null);
+      setAccountInfo(null);
       navigate("/login");
     } catch (error) {
       console.error(error);
