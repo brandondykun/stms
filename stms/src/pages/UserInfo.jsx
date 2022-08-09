@@ -1,11 +1,10 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
-import { Link } from "react-router-dom";
 
 const UserInfo = () => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -15,6 +14,7 @@ const UserInfo = () => {
       .then((user) => {
         if (user.found) {
           setUser(user.data);
+          setLoading(false);
         }
       })
       .catch((error) => {
@@ -28,7 +28,7 @@ const UserInfo = () => {
 
   return (
     <div className="primary-content">
-      {user && (
+      {!loading && (
         <div className="user-info-container">
           <div className="title-link-container">
             <h1 className="page-title name-title">
