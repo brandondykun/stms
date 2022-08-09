@@ -29,9 +29,9 @@ apiCalls.getAllUsers = async () => {
       ...user.data(),
       id: user.id,
     }));
-    return usersList;
+    return { status: 200, data: usersList };
   } catch (error) {
-    return { error };
+    return { status: 400, error };
   }
 };
 
@@ -40,9 +40,29 @@ apiCalls.getUser = async (id) => {
     const docRef = doc(db, "users", id);
     const user = await getDoc(docRef);
     if (user.exists()) {
-      return { ...user.data(), id: user.id };
+      return { found: true, data: { ...user.data(), id: user.id } };
     } else {
-      return { error: "That user does not exist." };
+      return { found: false, error: "That user does not exist." };
+    }
+  } catch (error) {
+    return { error };
+  }
+};
+
+apiCalls.getAccountByUserId = async (id) => {
+  try {
+    const q = query(usersCollection, where("user_id", "==", id));
+    const user = await getDocs(q);
+    const userList = user.docs.map((user) => ({
+      ...user.data(),
+      id: user.id,
+    }));
+
+    if (userList[0]) {
+      const foundUser = userList[0];
+      return { found: true, data: { ...foundUser } };
+    } else {
+      return { found: false, error: "That user does not exist." };
     }
   } catch (error) {
     return { error };
@@ -82,10 +102,15 @@ apiCalls.addUserInfo = async (data) => {
   try {
     const newUser = await addDoc(usersCollection, data);
     if (newUser.id) {
-      return { id: newUser.id };
+      return { status: 201, id: newUser.id };
+    } else {
+      return {
+        status: 400,
+        error: "There was a problem adding your info. Please try again.",
+      };
     }
   } catch (error) {
-    return { error };
+    return { status: 500, error };
   }
 };
 
