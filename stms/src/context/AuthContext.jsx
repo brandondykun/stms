@@ -1,22 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { createContext, useContext } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import { auth } from "../firebase-config";
+import apiCalls from "../api/apiUtils";
 
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState("");
+  const [accountInfo, setAccountInfo] = useState("");
   const [pending, setPending] = useState(true);
+
+  const handleAuthChange = async (u) => {
+    setCurrentUser(u);
+    if (u) {
+      const userInfo = await apiCalls.getAccountByUserId(u.uid);
+      if (userInfo.found) {
+        setAccountInfo(userInfo.data);
+      }
+    }
+    setPending(false);
+  };
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setPending(false);
+      handleAuthChange(user);
     });
   }, []);
 
   if (pending) {
-    return <>Loading...</>;
+    return <div className="loading-page">Loading...</div>;
   }
 
   return (
@@ -24,6 +35,8 @@ export const AuthContextProvider = ({ children }) => {
       value={{
         currentUser,
         setCurrentUser,
+        accountInfo,
+        setAccountInfo,
       }}
     >
       {children}
@@ -32,6 +45,7 @@ export const AuthContextProvider = ({ children }) => {
 };
 
 export const useAuthContext = () => {
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
-  return { currentUser, setCurrentUser };
+  const { currentUser, setCurrentUser, accountInfo, setAccountInfo } =
+    useContext(AuthContext);
+  return { currentUser, setCurrentUser, accountInfo, setAccountInfo };
 };
