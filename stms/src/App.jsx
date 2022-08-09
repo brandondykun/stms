@@ -11,6 +11,7 @@ import CommentsPage from "./pages/CommentsPage";
 import AddCommentPage from "./pages/AddCommentPage";
 import EditComment from "./pages/EditCommentPage";
 import EditUserPage from "./pages/EditUserPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   const { currentUser } = useAuthContext();
@@ -32,6 +33,7 @@ function App() {
           <Route path=":id/edit/:cid" element={<EditComment />} />
           <Route path=":id/create" element={<AddCommentPage />} />
         </Route>
+        <Route path="admin" element={<AdminPage />} />
       </Routes>
     </div>
   );
