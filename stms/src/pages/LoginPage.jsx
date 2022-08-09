@@ -7,26 +7,24 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setCurrentUser } = useAuthContext();
+  const { setCurrentUser, setAccountInfo } = useAuthContext();
 
   const navigate = useNavigate();
 
-  const handleLogIn = (e) => {
+  const handleLogIn = async (e) => {
     e.preventDefault();
-
-    apiCalls
-      .logIn(email, password)
-      .then((user) => {
-        if (user) {
-          setCurrentUser(user);
-          navigate("/home");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        // handle setting message
-      });
+    try {
+      const user = await apiCalls.logIn(email, password);
+      if (user) {
+        setCurrentUser(user);
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error(error);
+      // handle this error
+    }
   };
+
   return (
     <div className="primary-content login-page">
       <div className="image-wrapper">
