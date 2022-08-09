@@ -358,14 +358,22 @@ button:disabled:hover {
 .admin-section {
   margin: 2rem 1rem;
   min-width: 400px;
+  border: 1px solid rgb(30, 30, 30);
+  padding: 2rem;
+  border-radius: 10px;
 }
 
 .admin-section-title {
   color: var(--gold);
+  margin-bottom: 1rem;
 }
 
 .admin-team {
-  margin: 1rem 0rem;
+  margin: 1rem 0rem 2rem 0rem;
+}
+
+.admin-team-title {
+  margin-bottom: .5rem;
 }
 
 .admin-sections-container {
