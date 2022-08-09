@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
 
 const SectionContainer = ({ users, section }) => {
+  const filteredUsers = users
+    .filter((user) => {
+      return user.section === section;
+    })
+    .sort((a, b) => {
+      return a.unit_position - b.unit_position;
+    });
+
   return (
     <div className="section-container">
       <h2 className="section-title">{section}</h2>
-      {users?.map((user) => {
+      {filteredUsers?.map((user) => {
         return (
           <Link
             key={user.id}
