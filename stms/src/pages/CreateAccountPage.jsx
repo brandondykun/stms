@@ -3,6 +3,7 @@ import apiCalls from "../api/apiUtils";
 import { useNavigate, useParams } from "react-router-dom";
 import utils from "../utils/utils";
 import UserForm from "../components/UserForm";
+import { useAuthContext } from "../context/AuthContext";
 
 const formTemplate = {
   first_name: "",
@@ -34,6 +35,8 @@ const formTemplate = {
 const CreateAccountPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
 
+  const { setAccountInfo } = useAuthContext();
+
   const { id } = useParams();
 
   const navigate = useNavigate();
@@ -58,7 +61,11 @@ const CreateAccountPage = () => {
     try {
       const res = await apiCalls.addUserInfo(data);
       if (res.status === 201) {
-        navigate("/home");
+        const accountInfo = await apiCalls.getAccountByUserId(id);
+        if (accountInfo.found) {
+          setAccountInfo(accountInfo.data);
+          navigate("/home");
+        } // need an else to handle if accountInfo is not found
       }
     } catch (error) {
       console.error(error);
