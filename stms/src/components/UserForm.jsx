@@ -1,6 +1,9 @@
 import dayjs from "dayjs";
+import { Link, useParams } from "react-router-dom";
 
 const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
+  const { id } = useParams();
+
   return (
     <form className="form user-form" onSubmit={handleSubmit}>
       <label htmlFor="first-name" className="form-label">
@@ -299,6 +302,11 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         </div>
       </div>
       <div className="form-button-container">
+        <Link to={`/user-info/${id}`}>
+          <button className="form-button login" type="button">
+            Cancel
+          </button>
+        </Link>
         <button className="form-button login" type="submit">
           Submit
         </button>
