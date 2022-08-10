@@ -76,9 +76,9 @@ apiCalls.logIn = async (email, password) => {
       email,
       password
     );
-    return userCredential.user;
+    return { status: 200, data: userCredential.user };
   } catch (error) {
-    return { error };
+    return { status: 400, error: error.message };
   }
 };
 
