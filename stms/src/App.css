@@ -344,6 +344,10 @@
   flex-direction: column;
 }
 
+.assign-form-inputs-container > select {
+  min-width: 95px;
+}
+
 .assign-form-button-container {
   display: flex;
   justify-content: center;
