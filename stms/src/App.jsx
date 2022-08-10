@@ -12,28 +12,44 @@ import AddCommentPage from "./pages/AddCommentPage";
 import EditComment from "./pages/EditCommentPage";
 import EditUserPage from "./pages/EditUserPage";
 import AdminPage from "./pages/AdminPage";
+import AdminRoute from "./routes/AdminRoute";
+import RequireAuthRoute from "./routes/RequireAuthRoute";
+import AdminOrSelfRoute from "./routes/AdminOrSelfRoute";
+import AdminButNotSelfRoute from "./routes/AdminButNotSelfRoute";
 
 function App() {
-  const { currentUser } = useAuthContext();
+  const { currentUser, accountInfo } = useAuthContext();
 
   return (
     <div className="App">
-      {currentUser && <NavBar />}
+      {accountInfo && <NavBar />}
       <Routes>
-        <Route path="home" element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<SignUpPage />} />
-        <Route path="create-account/:id" element={<CreateAccountPage />} />
-        <Route path="user-info">
-          <Route path=":id" element={<UserInfo />} />
-          <Route path=":id/edit" element={<EditUserPage />} />
+        <Route element={<RequireAuthRoute />}>
+          <Route path="home" element={<HomePage />} />
+          <Route path="create-account/:id" element={<CreateAccountPage />} />
+          <Route path="user-info">
+            <Route path=":id" element={<UserInfo />} />
+            <Route element={<AdminOrSelfRoute />}>
+              <Route path=":id/edit" element={<EditUserPage />} />
+            </Route>
+          </Route>
+
+          <Route path="comments">
+            <Route element={<AdminOrSelfRoute />}>
+              <Route path=":id" element={<CommentsPage />} />
+            </Route>
+            <Route element={<AdminButNotSelfRoute />}>
+              <Route path=":id/edit/:cid" element={<EditComment />} />
+              <Route path=":id/create" element={<AddCommentPage />} />
+            </Route>
+          </Route>
+
+          <Route element={<AdminRoute />}>
+            <Route path="admin" element={<AdminPage />} />
+          </Route>
         </Route>
-        <Route path="comments">
-          <Route path=":id" element={<CommentsPage />} />
-          <Route path=":id/edit/:cid" element={<EditComment />} />
-          <Route path=":id/create" element={<AddCommentPage />} />
-        </Route>
-        <Route path="admin" element={<AdminPage />} />
       </Routes>
     </div>
   );
