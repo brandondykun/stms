@@ -7,6 +7,7 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState();
 
   const { setCurrentUser } = useAuthContext();
 
@@ -14,6 +15,16 @@ const SignUpPage = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setError("");
+
+    if (!email || !password || !confirmPassword) {
+      setError("Please complete all fields.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
 
     const user = await apiCalls.createUser(email, password);
     if (user) {
@@ -70,6 +81,7 @@ const SignUpPage = () => {
           </button>
         </div>
       </form>
+      {error && <div className="error-text">{error}</div>}
     </div>
   );
 };
