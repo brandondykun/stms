@@ -1,6 +1,7 @@
 import { useEffect, useState, createContext, useContext } from "react";
 import { auth } from "../firebase-config";
 import apiCalls from "../api/apiUtils";
+import Loading from "../components/Loading";
 
 export const AuthContext = createContext();
 
@@ -27,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   if (pending) {
-    return <div className="loading-page">Loading...</div>;
+    return <Loading pending={pending} />;
   }
 
   return (
