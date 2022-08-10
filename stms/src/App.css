@@ -3,6 +3,7 @@
   --gold: rgb(254, 195, 10);
   --black: rgb(0,0,0);
   --dark-placeholder: rgb(59, 59, 59);
+  --dark-background: rgb(18, 18, 18);
 }
 
 * {
@@ -279,7 +280,8 @@
   border: 1px solid black;
   padding: 10px;
   max-width: 500px;
-  background-color: rgb(21, 21, 21);
+  background-color: var(--dark-background);
+  border-radius: 7px;
 }
 
 .top-section {
@@ -305,7 +307,7 @@
 .assign-input {
   padding: .2rem;
   margin: .8rem .3rem;
-  background-color: rgb(21, 21, 21);
+  background-color: var(--dark-background);
   font-size: .8rem;
   border-radius: 0;
   -webkit-appearance: none;
@@ -313,11 +315,13 @@
 
 .assign-form-button {
   border: 1px solid var(--white);
-  background-color: var(--black);
+  background-color: var(--dark-background);
   color: var(--white);
   padding: .2rem;
   min-width: 60px;
   transition-duration: .3s;
+  margin-left: .5rem;
+  border-radius: 7px;
 }
 
 .assign-form-button:hover{ 
@@ -356,10 +360,10 @@ button:disabled:hover {
 }
 
 .admin-section {
-  margin: 2rem 1rem;
-  min-width: 400px;
+  margin: 2rem 0rem;
+  width: 100%;
   border: 1px solid rgb(30, 30, 30);
-  padding: 2rem;
+  padding: 1rem;
   border-radius: 10px;
 }
 
@@ -387,6 +391,32 @@ button:disabled:hover {
   padding: .3rem;
 }
 
+.edit-button-container {
+  margin-top: 2rem;
+}
+
+.fit-link {
+  width: fit-content;
+}
+
+.icon-margin-left {
+  margin-left: 1rem;
+}
+
+.icon-margin-right {
+  margin-right: 1rem;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.user-container {
+  background-color: rgb(17, 17, 17);
+  margin: .3rem 0rem;
+  padding: .5rem;
+}
+
 @media only screen and (min-width: 350px) {
   .link-container {
     width: 300px;
@@ -412,6 +442,11 @@ button:disabled:hover {
     margin-left: 2rem;
   }
 
+  .edit-button-container {
+    margin-left: 2rem;
+    margin-top: 0rem;
+  }
+
   .user-form {
     width: 450px;
     align-self: center;
@@ -419,6 +454,12 @@ button:disabled:hover {
 
   .assign-form-inputs-container {
     flex-direction: row;
+  }
+
+  .admin-section {
+    margin: 2rem 1rem;
+    width: 500px;
+    padding: 2rem;
   }
 }
 
@@ -449,6 +490,10 @@ button:disabled:hover {
     margin-bottom: 2rem;
   }
 
+  .edit-button-container {
+    margin-left: 3rem;
+  }
+
   .small-image {
     display: block;
     margin: auto;
@@ -460,6 +505,12 @@ button:disabled:hover {
 
   .comments-link {
     margin-right: 4rem;
+  }
+
+  .user-container {
+    background-color: var(--black);
+    margin: 0rem;
+    padding: .2rem;
   }
 }
 
