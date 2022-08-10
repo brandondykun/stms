@@ -1,8 +1,10 @@
 import dayjs from "dayjs";
 import { Link, useParams } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
 const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
   const { id } = useParams();
+  const { accountInfo } = useAuthContext();
 
   return (
     <form className="form user-form" onSubmit={handleSubmit}>
@@ -62,7 +64,7 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         value={formInputs.rank}
         onChange={(e) => setFormInputs({ ...formInputs, rank: e.target.value })}
       >
-        <option value="" disabled selected>
+        <option value="" disabled>
           rank
         </option>
         <option value="PVT">PVT</option>
@@ -91,7 +93,7 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
           setFormInputs({ ...formInputs, grade: e.target.value })
         }
       >
-        <option value="" disabled selected>
+        <option value="" disabled>
           grade
         </option>
         <option value="E1">E1</option>
@@ -302,11 +304,13 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         </div>
       </div>
       <div className="form-button-container">
-        <Link to={`/user-info/${id}`}>
-          <button className="form-button login" type="button">
-            Cancel
-          </button>
-        </Link>
+        {accountInfo && (
+          <Link to={`/user-info/${id}`}>
+            <button className="form-button login" type="button">
+              Cancel
+            </button>
+          </Link>
+        )}
         <button className="form-button login" type="submit">
           Submit
         </button>
