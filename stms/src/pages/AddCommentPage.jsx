@@ -15,6 +15,7 @@ const formTemplate = {
 
 const AddCommentPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
+  const [error, setError] = useState();
 
   const { currentUser, setCurrentUser } = useAuthContext();
 
@@ -24,6 +25,12 @@ const AddCommentPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError("");
+
+    if (!formInputs.text) {
+      setError("Please enter a comment.");
+      return;
+    }
 
     const now = new Date();
     const time = utils.getTimeStamp(now);
@@ -37,12 +44,12 @@ const AddCommentPage = () => {
     apiCalls
       .addComment(data)
       .then((res) => {
-        console.log("RESPONSE ADD COMMENT: ", res);
         if (!res.error) {
           navigate(`/comments/${id}`);
         }
       })
       .catch((error) => console.error(error));
+    // need to handle this error
   };
 
   return (
@@ -53,6 +60,7 @@ const AddCommentPage = () => {
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
       />
+      {error && <div className="error-text">{error}</div>}
     </div>
   );
 };
