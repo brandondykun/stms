@@ -10,9 +10,13 @@ const CommentsContainer = ({ comments, category }) => {
 
   useEffect(() => {
     setFilteredComments(
-      comments?.filter((comment) => {
-        return comment.category === category;
-      })
+      comments
+        ?.filter((comment) => {
+          return comment.category === category;
+        })
+        .sort((a, b) => {
+          return a.timestamp.seconds - b.timestamp.seconds;
+        })
     );
   }, [comments]);
 
