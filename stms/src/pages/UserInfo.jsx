@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
+import { useAuthContext } from "../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
 
 const UserInfo = () => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+
+  const { accountInfo } = useAuthContext();
 
   const { id } = useParams();
 
@@ -36,11 +41,24 @@ const UserInfo = () => {
             </h1>
             <Link to={`/comments/${id}`} className="comments-link">
               View Comments
+              <span className="icon-margin-left">
+                <FontAwesomeIcon icon={faAnglesRight} />
+              </span>
             </Link>
           </div>
-          <Link to={`/user-info/${id}/edit`} className="comments-link">
-            Edit Info
-          </Link>
+          {(accountInfo?.is_staff || accountInfo?.id === id) && (
+            <Link
+              to={`/user-info/${id}/edit`}
+              className="comments-link fit-link inline"
+            >
+              <div className="edit-button-container">
+                Edit Info
+                <span className="icon-margin-left">
+                  <FontAwesomeIcon icon={faPen} size="xs" />
+                </span>
+              </div>
+            </Link>
+          )}
           <div className="sections-row">
             <div className="section-container info-container">
               <h2 className="section-title info-title">Name/Rank</h2>
