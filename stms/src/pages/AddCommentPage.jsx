@@ -6,7 +6,7 @@ import utils from "../utils/utils";
 import CommentForm from "../components/CommentForm";
 
 const formTemplate = {
-  category: "",
+  category: "CHARACTER",
   commentor_id: "",
   text: "",
   timestamp: "",
