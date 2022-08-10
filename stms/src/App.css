@@ -438,6 +438,11 @@ select.dark-input.dark-input.with-label{
   align-items: center;
 }
 
+.error-text {
+  text-align: center;
+  color: rgb(190, 13, 13);
+}
+
 @media only screen and (min-width: 350px) {
   .link-container {
     width: 300px;
