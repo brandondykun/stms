@@ -7,17 +7,22 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setCurrentUser, setAccountInfo } = useAuthContext();
+  const { setCurrentUser } = useAuthContext();
 
   const navigate = useNavigate();
 
   const handleLogIn = async (e) => {
     e.preventDefault();
+
+    if (!email || !password) return;
+
     try {
       const user = await apiCalls.logIn(email, password);
-      if (user) {
-        setCurrentUser(user);
+      if (user.status === 200) {
+        setCurrentUser(user.data);
         navigate("/home");
+      } else {
+        // handle error
       }
     } catch (error) {
       console.error(error);
