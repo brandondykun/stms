@@ -220,7 +220,7 @@
 }
 
 .all-comments-container {
-  padding: 3rem 0rem;
+  padding: 3rem 0rem 0rem 0rem;
 }
 
 .comments-container {
@@ -542,7 +542,6 @@ select.dark-input.dark-input.with-label{
 
 @media only screen and (min-width: 1000px) {
   .all-comments-container {
-    /* max-width: 1000px; */
     margin: 0 10vw;
   }
 }
