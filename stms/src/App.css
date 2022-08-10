@@ -425,6 +425,13 @@ select.dark-input.dark-input.with-label{
   border-radius: 0;  
 }
 
+.loading-screen {
+  background-color: var(--black);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media only screen and (min-width: 350px) {
   .link-container {
