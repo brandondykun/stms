@@ -1,9 +1,10 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import UserForm from "../components/UserForm";
 import utils from "../utils/utils";
 import apiCalls from "../api/apiUtils";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const formTemplate = {
   first_name: "",
@@ -96,10 +97,15 @@ const EditUserPage = () => {
     <div className="primary-content">
       <div className="title-link-container">
         <h1 className="page-title name-title">{titleText}</h1>
-        <Link to={`/user-info/${id}`} className="comments-link">
-          Back
-        </Link>
       </div>
+      <Link to={`/user-info/${id}`} className="comments-link fit-link">
+        <div className="edit-button-container">
+          <span className="icon-margin-right">
+            <FontAwesomeIcon icon={faAnglesLeft} />
+          </span>
+          Back
+        </div>
+      </Link>
       <UserForm
         formInputs={formInputs}
         setFormInputs={setFormInputs}
