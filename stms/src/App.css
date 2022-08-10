@@ -39,7 +39,7 @@
 
 .primary-content {
   flex: 1;
-  padding: 1rem;
+  padding: 1rem 1rem 3rem 1rem;
   display: flex;
   flex-direction: column;
 }
@@ -269,6 +269,7 @@
   display: flex;
   justify-content: center;
   padding-top: 3rem;
+  margin-bottom: 2rem;
 }
 
 .flex-center-center {
