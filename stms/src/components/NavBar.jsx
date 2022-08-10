@@ -21,31 +21,19 @@ const NavBar = () => {
 
   return (
     <nav className="primary-nav">
-      {!currentUser && (
-        <NavLink to="login" className="nav-link">
-          Log In
-        </NavLink>
-      )}
-      {!currentUser && (
-        <NavLink to="register" className="nav-link">
-          Sign Up
-        </NavLink>
-      )}
-      {currentUser && (
-        <NavLink to="home" className="nav-link">
-          Home
-        </NavLink>
-      )}
-      {currentUser && (
+      <NavLink to="home" className="nav-link">
+        Home
+      </NavLink>
+
+      {accountInfo.is_staff && (
         <NavLink to="admin" className="nav-link">
           Admin
         </NavLink>
       )}
-      {currentUser && (
-        <div className="nav-link" onClick={logOut}>
-          Sign Out
-        </div>
-      )}
+
+      <div className="nav-link" onClick={logOut}>
+        Sign Out
+      </div>
     </nav>
   );
 };
