@@ -1,8 +1,6 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import apiCalls from "../api/apiUtils";
-import { useNavigate } from "react-router-dom";
 import CommentForm from "../components/CommentForm";
 
 const formTemplate = {
@@ -15,6 +13,8 @@ const formTemplate = {
 
 const EditComment = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
+  const [error, setError] = useState();
+
   const { id, cid } = useParams();
 
   const navigate = useNavigate();
@@ -29,6 +29,13 @@ const EditComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setError("");
+
+    if (!formInputs.text) {
+      setError("Please enter a comment.");
+      return;
+    }
 
     apiCalls
       .editComment(cid, formInputs)
@@ -49,6 +56,7 @@ const EditComment = () => {
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
       />
+      {error && <div className="error-text">{error}</div>}
     </div>
   );
 };
