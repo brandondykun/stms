@@ -39,12 +39,53 @@ const AdminName = ({ user }) => {
     }
   };
 
+  const handleSectionChange = (e) => {
+    const newSectionValue = e.target.value;
+    const autoUpdate = {};
+
+    if (newSectionValue === "BN STAFF") {
+      autoUpdate.team = "HQ";
+      autoUpdate.role = "BN FO";
+    } else if (newSectionValue !== "UNASSIGNED") {
+      autoUpdate.team = "HQ";
+      autoUpdate.role = "CO FSO";
+    } else {
+      autoUpdate.team = "UNASSIGNED";
+      autoUpdate.role = "UNASSIGNED";
+    }
+
+    setUserInfo((info) => ({
+      ...info,
+      section: newSectionValue,
+      ...autoUpdate,
+    }));
+  };
+
+  const handleTeamChange = (e) => {
+    const newTeamValue = e.target.value;
+    const autoUpdate = {};
+
+    if (newTeamValue == "HQ") {
+      autoUpdate.role = "CO FSO";
+    } else if (newTeamValue === "UNASSIGNED") {
+      autoUpdate.role = "UNASSIGNED";
+    } else {
+      autoUpdate.role = "FO";
+    }
+
+    setUserInfo((info) => ({
+      ...info,
+      team: newTeamValue,
+      ...autoUpdate,
+    }));
+  };
+
   // derived state to determine which options should display
   const section = userInfo.section;
   const team = userInfo.team;
 
   const showTeamOptions =
-    section === "UNASSIGNED" || section === "BN STAFF" ? false : true;
+    section !== "UNASSIGNED" && section !== "BN STAFF" ? true : false;
   const showTeamHqOption = section !== "UNASSIGNED";
   const showUnassigned = section === "UNASSIGNED" ? true : false;
   const showBnRole = section === "BN STAFF" ? true : false;
@@ -80,7 +121,8 @@ const AdminName = ({ user }) => {
                 className="dark-input with-label assign-input"
                 value={userInfo.section}
                 onChange={(e) =>
-                  setUserInfo((info) => ({ ...info, section: e.target.value }))
+                  // setUserInfo((info) => ({ ...info, section: e.target.value }))
+                  handleSectionChange(e)
                 }
               >
                 <option value="" disabled>
@@ -90,7 +132,6 @@ const AdminName = ({ user }) => {
                 <option value="ALPHA">ALPHA</option>
                 <option value="BRAVO">BRAVO</option>
                 <option value="CHARLIE">CHARLIE</option>
-                <option value="DELTA">DELTA</option>
                 <option value="UNASSIGNED">UNASSIGNED</option>
               </select>
 
@@ -100,9 +141,7 @@ const AdminName = ({ user }) => {
                 placeholder="team"
                 className="dark-input with-label assign-input"
                 value={userInfo.team}
-                onChange={(e) =>
-                  setUserInfo((info) => ({ ...info, team: e.target.value }))
-                }
+                onChange={(e) => handleTeamChange(e)}
               >
                 <option value="" disabled>
                   TEAM
