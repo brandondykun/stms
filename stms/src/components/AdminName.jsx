@@ -39,6 +39,20 @@ const AdminName = ({ user }) => {
     }
   };
 
+  // derived state to determine which options should display
+  const section = userInfo.section;
+  const team = userInfo.team;
+
+  const showTeamOptions =
+    section === "UNASSIGNED" || section === "BN STAFF" ? false : true;
+  const showTeamHqOption = section !== "UNASSIGNED";
+  const showUnassigned = section === "UNASSIGNED" ? true : false;
+  const showBnRole = section === "BN STAFF" ? true : false;
+  const showCoRole =
+    section !== "BN STAFF" && section !== "UNASSIGNED" ? true : false;
+  const showCoHqRole = showCoRole && team === "HQ" ? true : false;
+  const showCoTeamRole = showCoRole && team !== "HQ" ? true : false;
+
   return (
     <div className="expandable-container">
       <div className="top-section">
@@ -93,11 +107,13 @@ const AdminName = ({ user }) => {
                 <option value="" disabled>
                   TEAM
                 </option>
-                <option value="HQ">HQ</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="UNASSIGNED">UNASSIGNED</option>
+                {showTeamHqOption && <option value="HQ">HQ</option>}
+                {showTeamOptions && <option value="1">1</option>}
+                {showTeamOptions && <option value="2">2</option>}
+                {showTeamOptions && <option value="3">3</option>}
+                {showUnassigned && (
+                  <option value="UNASSIGNED">UNASSIGNED</option>
+                )}
               </select>
 
               <select
@@ -113,16 +129,18 @@ const AdminName = ({ user }) => {
                 <option value="" disabled>
                   ROLE
                 </option>
-                <option value="BN FSO">BN FSO</option>
-                <option value="BN FSNCO">BN FSNCO</option>
-                <option value="AFATDS">AFATDS</option>
-                <option value="BN FO">BN FO</option>
-                <option value="BN RTO">BN RTO</option>
-                <option value="CO FSO">CO FSO</option>
-                <option value="CO FSNCO">CO FSNCO</option>
-                <option value="FO">FO</option>
-                <option value="RTO">RTO</option>
-                <option value="UNASSIGNED">UNASSIGNED</option>
+                {showBnRole && <option value="BN FSO">BN FSO</option>}
+                {showBnRole && <option value="BN FSNCO">BN FSNCO</option>}
+                {showBnRole && <option value="AFATDS">AFATDS</option>}
+                {showBnRole && <option value="BN FO">BN FO</option>}
+                {showBnRole && <option value="BN RTO">BN RTO</option>}
+                {showCoHqRole && <option value="CO FSO">CO FSO</option>}
+                {showCoHqRole && <option value="CO FSNCO">CO FSNCO</option>}
+                {showCoTeamRole && <option value="FO">FO</option>}
+                {showCoTeamRole && <option value="RTO">RTO</option>}
+                {showUnassigned && (
+                  <option value="UNASSIGNED">UNASSIGNED</option>
+                )}
               </select>
             </div>
             <div className="assign-form-button-container">
