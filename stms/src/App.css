@@ -13,6 +13,10 @@
   font-family: sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .App {
   background-color: black;
   color: var(--white);
@@ -25,6 +29,12 @@
   padding: 1rem;
   display: flex;
   justify-content: flex-end;
+  top: 0px;
+  position: sticky;
+  background-color: rgba(0, 0, 0, 0.637);
+  border-bottom: 1px solid rgb(26, 26, 26);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
 }
 
 .nav-link {
@@ -443,6 +453,60 @@ select.dark-input.dark-input.with-label{
   color: rgb(190, 13, 13);
 }
 
+.admin-layout-wrapper {
+  display: flex;
+}
+
+.admin-header-content-wrapper {
+  flex: 1;
+  /* margin-left: 200px; */
+}
+
+.admin-nav {
+  width: 200px;
+  background-color: var(--dark-background);
+  top: 0px;
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+  border-right: 1px solid rgb(37, 37, 37);
+  /* padding-top: 2rem; */
+  display: none;
+}
+
+.admin-nav-button {
+  padding: 1rem .5rem;
+  text-align: center;
+  /* margin: .8rem 0rem; */
+  background-color: var(--black);
+  border-top: 1px solid rgb(43, 43, 43);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.admin-nav-mobile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.admin-mobile-link {
+  padding: 1rem 1rem 0rem 1rem;
+  color: var(--white);
+}
+
+.admin-nav-link.active > .admin-nav-button {
+  background-color: var(--gold);
+  color: var(--black);
+}
+
+.admin-nav-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--gold);
+  padding: 1rem;
+}
+
 @media only screen and (min-width: 350px) {
   .link-container {
     width: 300px;
@@ -537,6 +601,18 @@ select.dark-input.dark-input.with-label{
     background-color: var(--black);
     margin: 0rem;
     padding: .2rem;
+  }
+
+  .admin-nav {
+    display: block;
+  }
+
+  .admin-nav-mobile {
+    display: none;
+  }
+
+  .admin-header-content-wrapper {
+    margin-left: 200px;
   }
 }
 
