@@ -3,8 +3,7 @@ import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
 
 const NavBar = () => {
-  const { currentUser, setCurrentUser, accountInfo, setAccountInfo } =
-    useAuthContext();
+  const { setCurrentUser, accountInfo, setAccountInfo } = useAuthContext();
 
   const navigate = useNavigate();
 
@@ -21,12 +20,12 @@ const NavBar = () => {
 
   return (
     <nav className="primary-nav">
-      <NavLink to="home" className="nav-link">
+      <NavLink to="/home" className="nav-link">
         Home
       </NavLink>
 
       {accountInfo.is_staff && (
-        <NavLink to="admin" className="nav-link">
+        <NavLink to="/admin/reassign" className="nav-link">
           Admin
         </NavLink>
       )}
@@ -39,4 +38,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-<nav className="primary-nav"></nav>;
