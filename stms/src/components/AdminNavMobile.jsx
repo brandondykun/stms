@@ -11,19 +11,19 @@ import {
 const AdminNavMobile = () => {
   return (
     <div className="admin-nav-mobile">
-      <Link to="admin" className="admin-mobile-link">
+      <Link to="overview" className="admin-mobile-link">
         <FontAwesomeIcon icon={faChartBar} size="lg" />
       </Link>
-      <Link to="admin" className="admin-mobile-link">
+      <Link to="reassign" className="admin-mobile-link">
         <FontAwesomeIcon icon={faListDots} size="lg" />
       </Link>
-      <Link to="admin" className="admin-mobile-link">
+      <Link to="schools" className="admin-mobile-link">
         <FontAwesomeIcon icon={faGraduationCap} size="lg" />
       </Link>
-      <Link to="admin" className="admin-mobile-link">
+      <Link to="ets" className="admin-mobile-link">
         <FontAwesomeIcon icon={faClock} size="lg" />
       </Link>
-      <Link to="admin" className="admin-mobile-link">
+      <Link to="delete" className="admin-mobile-link">
         <FontAwesomeIcon icon={faTrashCan} size="lg" />
       </Link>
     </div>
