@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { createContext, useContext } from "react";
+import React, { useEffect, useState, createContext, useContext } from "react";
+import apiCalls from "../api/apiUtils";
 
 export const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const getUsers = async () => {
+      const res = await apiCalls.getAllUsers();
+      if (res.status === 200) {
+        setUsers(res.data);
+      } else {
+        console.error("Error", res.error);
+        // handle this error
+      }
+    };
+    getUsers();
+  }, []);
 
   return (
     <UsersContext.Provider
