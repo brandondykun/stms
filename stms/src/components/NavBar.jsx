@@ -24,8 +24,8 @@ const NavBar = () => {
         Home
       </NavLink>
 
-      {accountInfo.is_staff && (
-        <NavLink to="/admin/reassign" className="nav-link">
+      {accountInfo?.is_staff && (
+        <NavLink to="/admin/overview" className="nav-link">
           Admin
         </NavLink>
       )}
