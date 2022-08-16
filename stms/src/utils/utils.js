@@ -49,4 +49,21 @@ utils.assignUnitPosition = (user) => {
   return position;
 };
 
+utils.dlcIncomplete = (user) => {
+  if (user.grade === "E4" && !user.dlc_1_complete) return true;
+  if (user.grade === "E5" && !user.dlc_2_complete) return true;
+  if (user.grade === "E6" && !user.dlc_3_complete) return true;
+  return false;
+};
+
+utils.pmeIncomplete = (user) => {
+  if (user.grade === "E4" && user.dlc_1_complete && !user.blc_complete)
+    return true;
+  if (user.grade === "E5" && user.dlc_2_complete && !user.alc_complete)
+    return true;
+  if (user.grade === "E6" && user.dlc_3_complete && !user.slc_complete)
+    return true;
+  return false;
+};
+
 export default utils;
