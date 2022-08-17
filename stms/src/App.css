@@ -555,9 +555,17 @@ select.dark-input.dark-input.with-label{
   border-radius: 15px;
   padding: 1rem;
   margin: 1rem;
-  min-height: 250px;
+  height: 250px;
   min-width: 250px;
   background-color: var(--dark-background);
+  
+}
+
+.admin-list-items-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 180px;
 }
 
 .admin-chart-list-item {
