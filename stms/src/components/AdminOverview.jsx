@@ -3,6 +3,7 @@ import CustomDonutChart from "./CustomDonutChart";
 import DlcIncompleteList from "./DlcIncompleteList";
 import PmeIncomplete from "./PmeIncomplete";
 import RifleQualFail from "./RifleQualFail";
+import AcftFail from "./AcftFail";
 
 const AdminOverview = () => {
   const { users } = useUsersContext();
@@ -53,6 +54,7 @@ const AdminOverview = () => {
         <DlcIncompleteList />
         <PmeIncomplete />
         <RifleQualFail />
+        <AcftFail />
       </div>
     </div>
   );
