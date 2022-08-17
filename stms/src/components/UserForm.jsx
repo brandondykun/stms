@@ -144,7 +144,7 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         onChange={(e) => setFormInputs({ ...formInputs, ets: e.target.value })}
       />
 
-      <label htmlFor="m4_qual" className="form-label">
+      <label htmlFor="acft_score" className="form-label">
         ACFT Score:
       </label>
       <input
@@ -159,6 +159,27 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
           setFormInputs({ ...formInputs, acft_score: e.target.value })
         }
       />
+
+      <label htmlFor="acft-select" className="form-label">
+        ACFT Pass/Fail:
+      </label>
+      <select
+        id="acft-select"
+        aria-label="grade"
+        type="text"
+        placeholder="pass/fail"
+        className="dark-input with-label"
+        value={formInputs.acft_pass}
+        onChange={(e) =>
+          setFormInputs({ ...formInputs, acft_pass: e.target.value })
+        }
+      >
+        <option value="" disabled>
+          pass/fail
+        </option>
+        <option value="true">Pass</option>
+        <option value="false">Fail</option>
+      </select>
 
       <label htmlFor="m4_qual" className="form-label">
         M4 Qual:
