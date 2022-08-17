@@ -23,7 +23,7 @@ const AdminNavMobile = () => {
       <Link to="ets" className="admin-mobile-link">
         <FontAwesomeIcon icon={faClock} size="lg" />
       </Link>
-      <Link to="delete" className="admin-mobile-link">
+      <Link to="delete-account" className="admin-mobile-link">
         <FontAwesomeIcon icon={faTrashCan} size="lg" />
       </Link>
     </div>
