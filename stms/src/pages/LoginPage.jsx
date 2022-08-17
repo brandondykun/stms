@@ -6,6 +6,7 @@ import { useAuthContext } from "../context/AuthContext";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState();
 
   const { setCurrentUser } = useAuthContext();
 
@@ -13,8 +14,12 @@ const LoginPage = () => {
 
   const handleLogIn = async (e) => {
     e.preventDefault();
+    setError("");
 
-    if (!email || !password) return;
+    if (!email || !password) {
+      setError("Please complete all fields.");
+      return;
+    }
 
     try {
       const user = await apiCalls.logIn(email, password);
@@ -22,7 +27,7 @@ const LoginPage = () => {
         setCurrentUser(user.data);
         navigate("/home");
       } else {
-        // handle error
+        setError("Login failed. Invalid credentials.");
       }
     } catch (error) {
       console.error(error);
@@ -70,6 +75,7 @@ const LoginPage = () => {
           </button>
         </div>
       </form>
+      {error && <div className="error-text">{error}</div>}
     </div>
   );
 };
