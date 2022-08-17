@@ -82,4 +82,17 @@ utils.pmeIncomplete = (user) => {
   return false;
 };
 
+utils.getFormattedStringFromDays = (numberOfDays) => {
+  const years = Math.floor(numberOfDays / 365);
+  const months = Math.floor((numberOfDays % 365) / 30);
+  const days = Math.floor((numberOfDays % 365) % 30);
+  let message = "";
+
+  if (years) message += `${years}yr`;
+  if (months) message += ` ${months}mo`;
+  if (days) message += ` ${days}d`;
+
+  return message;
+};
+
 export default utils;
