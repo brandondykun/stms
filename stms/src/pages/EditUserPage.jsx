@@ -19,6 +19,7 @@ const formTemplate = {
   team: "UNASSIGNED",
   role: "UNASSIGNED",
   acft_score: 0,
+  acft_pass: true,
   m4_qual: 0,
   dlc_1_complete: false,
   blc_complete: false,
@@ -71,14 +72,15 @@ const EditUserPage = () => {
     const dorTimeStamp = utils.getTimeStamp(formInputs.dor);
     const etsTimeStamp = utils.getTimeStamp(formInputs.ets);
     const isStaff = utils.isStaff(formInputs.grade);
+    const acftPass = formInputs.acft_pass === "true" ? true : false;
 
     const data = {
       ...formInputs,
-      user_id: id,
       pebd: pebdTimeStamp,
       dor: dorTimeStamp,
       ets: etsTimeStamp,
       is_staff: isStaff,
+      acft_pass: acftPass,
     };
 
     try {
