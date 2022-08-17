@@ -5,6 +5,8 @@ import PmeIncomplete from "./PmeIncomplete";
 import RifleQualFail from "./RifleQualFail";
 import AcftFail from "./AcftFail";
 import NeedLicense from "./NeedLicense";
+import Promotable from "./Promotable";
+import JfoQualified from "./JfoQualified";
 
 const AdminOverview = () => {
   const { users } = useUsersContext();
@@ -57,6 +59,8 @@ const AdminOverview = () => {
         <RifleQualFail />
         <AcftFail />
         <NeedLicense />
+        <Promotable />
+        <JfoQualified />
       </div>
     </div>
   );
