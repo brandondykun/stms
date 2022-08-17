@@ -53,7 +53,7 @@ const AdminNav = () => {
           <span className="admin-nav-button-text">ETS Time</span>
         </div>
       </NavLink>
-      <NavLink to="delete" className="admin-nav-link">
+      <NavLink to="delete-account" className="admin-nav-link">
         <div className="admin-nav-button">
           <FontAwesomeIcon
             icon={faTrashCan}
