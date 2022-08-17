@@ -4,6 +4,7 @@ import DlcIncompleteList from "./DlcIncompleteList";
 import PmeIncomplete from "./PmeIncomplete";
 import RifleQualFail from "./RifleQualFail";
 import AcftFail from "./AcftFail";
+import NeedLicense from "./NeedLicense";
 
 const AdminOverview = () => {
   const { users } = useUsersContext();
@@ -55,6 +56,7 @@ const AdminOverview = () => {
         <PmeIncomplete />
         <RifleQualFail />
         <AcftFail />
+        <NeedLicense />
       </div>
     </div>
   );
