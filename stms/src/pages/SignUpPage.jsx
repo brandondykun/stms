@@ -7,6 +7,7 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [joinCode, setJoinCode] = useState("");
   const [error, setError] = useState();
 
   const { setCurrentUser } = useAuthContext();
@@ -23,6 +24,17 @@ const SignUpPage = () => {
     }
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
+      return;
+    }
+
+    const actualJoinCode = await apiCalls.getCurrentJoinCode();
+    if (actualJoinCode.data) {
+      if (joinCode !== actualJoinCode.data.code) {
+        setError("Invalid join code.");
+        return;
+      }
+    } else {
+      setError(actualJoinCode.error);
       return;
     }
 
@@ -74,6 +86,14 @@ const SignUpPage = () => {
           className="dark-input"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <input
+          aria-label="join code"
+          type="text"
+          placeholder="join code"
+          className="dark-input"
+          value={joinCode}
+          onChange={(e) => setJoinCode(e.target.value)}
         />
         <div className="form-button-container">
           <button className="form-button register" type="submit">
