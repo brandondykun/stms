@@ -12,9 +12,25 @@ utils.isStaff = (grade) => {
   );
 };
 
+// Twelve hours in milliseconds
+const TWELVE_HRS_MIL_SEC = 43200000;
+
 utils.getTimeStamp = (time) => {
-  const milliSeconds = Math.floor(new Date(time).getTime());
-  return Timestamp.fromMillis(milliSeconds);
+  let outputTime;
+  if (typeof time === "string") {
+    // This is a new date input represented as a string.
+    // It represents the time at midnight GMT on the input date.
+    // This must be converted to Noon GMT by adding 12 hours.
+    const milliSecs = new Date(time).getTime();
+    // Get Noon GMT time on given date.
+    outputTime = milliSecs + TWELVE_HRS_MIL_SEC;
+  } else {
+    // If input time is an object, it will already have been converted to a
+    // local date with the correct timezone attached. This will occur when a form
+    // is submitted without having changed the date field.
+    outputTime = new Date(time).getTime();
+  }
+  return Timestamp.fromMillis(outputTime);
 };
 
 utils.filter = (items, filterValue, value) => {
