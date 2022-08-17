@@ -21,6 +21,7 @@ const apiCalls = {};
 
 const usersCollection = collection(db, "users");
 const commentsCollection = collection(db, "comments");
+const joinCodeCollection = collection(db, "joinCode");
 
 apiCalls.getAllUsers = async () => {
   try {
@@ -96,6 +97,27 @@ apiCalls.logOut = async () => {
   signOut(auth).catch((error) => {
     console.error(error);
   });
+};
+
+apiCalls.getCurrentJoinCode = async () => {
+  try {
+    const codes = await getDocs(joinCodeCollection);
+    const codeList = codes.docs.map((item) => ({
+      ...item.data(),
+    }));
+    if (codeList.length > 0) {
+      const code = codeList[0];
+      return { status: 200, data: code };
+    } else {
+      return {
+        status: 400,
+        data: null,
+        error: "There was a problem with the join code.",
+      };
+    }
+  } catch (error) {
+    return { status: 400, data: null, error: error.message };
+  }
 };
 
 apiCalls.addUserInfo = async (data) => {
