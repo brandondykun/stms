@@ -1,4 +1,5 @@
 import { Timestamp } from "firebase/firestore";
+import dayjs from "dayjs";
 
 const utils = {};
 
@@ -93,6 +94,38 @@ utils.getFormattedStringFromDays = (numberOfDays) => {
   if (days) message += ` ${days}d`;
 
   return message;
+};
+
+utils.isPromotable = (user) => {
+  const payEntryBaseDate = dayjs(user.pebd.seconds * 1000);
+  const dateOfRank = dayjs(user.dor.seconds * 1000);
+  const now = dayjs();
+  const timeInService = now.diff(payEntryBaseDate, "month");
+  const timeInGrade = now.diff(dateOfRank, "month");
+  const blcComplete = user.blc_complete;
+  const dlcOneComplete = user.dlc_1_complete;
+  const dlcTwoComplete = user.dlc_2_complete;
+  const dlcThreeComplete = user.dlc_3_complete;
+
+  if (!user.acft_pass) return false;
+  if (user.grade === "E1") {
+    if (timeInService > 6) return true;
+  } else if (user.grade === "E2") {
+    if (timeInService >= 12 && timeInGrade >= 4) return true;
+  } else if (user.grade === "E3") {
+    if (timeInService >= 24 && timeInGrade >= 6) return true;
+  } else if (user.grade === "E4") {
+    if (
+      (dlcOneComplete && blcComplete) ||
+      (timeInService >= 36 && timeInGrade >= 12 && dlcOneComplete)
+    )
+      return true;
+  } else if (user.grade === "E5") {
+    if (timeInService >= 72 && timeInGrade >= 18 && dlcTwoComplete) return true;
+  } else if (user.grade === "E6") {
+    if (timeInService >= 72 && timeInGrade >= 36 && dlcThreeComplete)
+      return true;
+  }
 };
 
 export default utils;
