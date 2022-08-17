@@ -39,12 +39,14 @@ const UserInfo = () => {
             <h1 className="page-title name-title">
               {user.rank} {user.last_name}
             </h1>
-            <Link to={`/comments/${id}`} className="comments-link">
-              View Comments
-              <span className="icon-margin-left">
-                <FontAwesomeIcon icon={faAnglesRight} />
-              </span>
-            </Link>
+            {(accountInfo?.is_staff || accountInfo?.id === id) && (
+              <Link to={`/comments/${id}`} className="comments-link">
+                View Comments
+                <span className="icon-margin-left">
+                  <FontAwesomeIcon icon={faAnglesRight} />
+                </span>
+              </Link>
+            )}
           </div>
           {(accountInfo?.is_staff || accountInfo?.id === id) && (
             <Link
@@ -84,6 +86,7 @@ const UserInfo = () => {
               <div>DOR: {dor.toLocaleDateString()}</div>
               <div>ETS: {ets.toLocaleDateString()}</div>
               <div>ACFT Score: {user.acft_score}</div>
+              <div>ACFT Pass: {user.acft_pass ? "Yes" : "No"}</div>
               <div>M4 Qual Score: {user.m4_qual}</div>
             </div>
             <div className="section-container info-container">
