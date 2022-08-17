@@ -18,6 +18,9 @@ import WebsiteLayout from "./layouts/WebsiteLayout";
 import AdminLayout from "./layouts/AdminLayout";
 import AdminReassign from "./components/AdminReassign";
 import AdminOverview from "./components/AdminOverview";
+import EtsTime from "./components/EtsTime";
+import Schools from "./components/Schools";
+import DeleteAccount from "./components/DeleteAccount";
 
 function App() {
   return (
@@ -53,6 +56,9 @@ function App() {
             <Route element={<AdminLayout />}>
               <Route path="overview" element={<AdminOverview />} />
               <Route path="reassign" element={<AdminReassign />} />
+              <Route path="ets" element={<EtsTime />} />
+              <Route path="schools" element={<Schools />} />
+              <Route path="delete-account" element={<DeleteAccount />} />
             </Route>
           </Route>
         </Route>
