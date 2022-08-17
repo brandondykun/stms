@@ -11,13 +11,15 @@ const PmeIncomplete = () => {
   return (
     <div className="dlc-incomplete-list">
       <div className="chart-title gold-title">PME Incomplete</div>
-      {userList?.map((user) => {
-        return (
-          <div className="admin-chart-list-item" key={user.id}>
-            {user.rank} {user.last_name}
-          </div>
-        );
-      })}
+      <div className="admin-list-items-container">
+        {userList?.map((user) => {
+          return (
+            <div className="admin-chart-list-item" key={user.id}>
+              {user.rank} {user.last_name}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
