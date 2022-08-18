@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartBar,
@@ -11,21 +11,21 @@ import {
 const AdminNavMobile = () => {
   return (
     <div className="admin-nav-mobile">
-      <Link to="overview" className="admin-mobile-link">
+      <NavLink to="overview" className="admin-mobile-link">
         <FontAwesomeIcon icon={faChartBar} size="lg" />
-      </Link>
-      <Link to="reassign" className="admin-mobile-link">
+      </NavLink>
+      <NavLink to="reassign" className="admin-mobile-link">
         <FontAwesomeIcon icon={faListDots} size="lg" />
-      </Link>
-      <Link to="schools" className="admin-mobile-link">
+      </NavLink>
+      <NavLink to="schools" className="admin-mobile-link">
         <FontAwesomeIcon icon={faGraduationCap} size="lg" />
-      </Link>
-      <Link to="ets" className="admin-mobile-link">
+      </NavLink>
+      <NavLink to="ets" className="admin-mobile-link">
         <FontAwesomeIcon icon={faClock} size="lg" />
-      </Link>
-      <Link to="delete-account" className="admin-mobile-link">
+      </NavLink>
+      <NavLink to="delete-account" className="admin-mobile-link">
         <FontAwesomeIcon icon={faTrashCan} size="lg" />
-      </Link>
+      </NavLink>
     </div>
   );
 };
