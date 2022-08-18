@@ -2,6 +2,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import apiCalls from "../api/apiUtils";
 import CommentForm from "../components/CommentForm";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 const formTemplate = {
   category: "",
@@ -50,7 +53,20 @@ const EditComment = () => {
 
   return (
     <div className="primary-content">
-      <h1 className="page-title name-title">Edit Comment</h1>
+      <div className="title-link-container">
+        <h1 className="page-title name-title">Edit Comment</h1>
+
+        <Link
+          to={`/comments/${id}/edit/${cid}/delete`}
+          className="comments-link"
+        >
+          Delete Comment
+          <span className="icon-margin-left">
+            <FontAwesomeIcon icon={faTrashAlt} size="sm" />
+          </span>
+        </Link>
+      </div>
+
       <CommentForm
         formInputs={formInputs}
         setFormInputs={setFormInputs}
