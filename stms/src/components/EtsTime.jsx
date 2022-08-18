@@ -11,7 +11,6 @@ const EtsTime = () => {
 
   return (
     <div className="ets-table-container">
-      {console.log(users)}
       <table className="ets-table">
         <tbody className="ets-table-body">
           <tr className="ets-table-record">
