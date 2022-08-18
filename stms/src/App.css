@@ -586,6 +586,58 @@ select.dark-input.dark-input.with-label{
   text-align: center;
 }
 
+.ets-table-container {
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.ets-table {
+  margin: auto;
+  border-collapse:collapse;
+  text-align:center;
+  border-right: 1px solid rgb(62, 62, 62);
+  border-left: 1px solid rgb(62, 62, 62);
+  width: 100%;
+}
+
+.ets-table-record > th {
+  /* font-size: 1.5rem; */
+  color: var(--gold);
+  padding: 1rem 1rem;
+  /* background-color: var(--dark-background); */
+  background-color: rgb(37, 37, 37);
+}
+
+.ets-table-record > td {
+  padding: .4rem .5rem;
+}
+
+.ets-table-record > * {
+  border-bottom: 1px solid rgb(62, 62, 62);
+  border-top: 1px solid rgb(62, 62, 62);
+
+}
+
+td.ets-table-td-name {
+  text-align: left;
+  padding-left: .5rem;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--dark-background);
+}
+
+tr.red-bcg {
+  background-color: rgba(255, 0, 0, 0.232);
+}
+
+tr.yellow-bcg {
+  background-color: rgba(253, 253, 0, 0.277);
+} 
+
+.hide-500, .hide-800 {
+  display: none;
+}
+
 @media only screen and (min-width: 350px) {
   .link-container {
     width: 300px;
@@ -593,6 +645,14 @@ select.dark-input.dark-input.with-label{
 
   .login-form {
     width: 300px;
+  }
+
+  .ets-table-record > td {
+    padding: .4rem 1.2rem;
+  }
+
+  td.ets-table-td-name {
+    padding-left: .5rem;
   }
 }
 
@@ -629,6 +689,18 @@ select.dark-input.dark-input.with-label{
     margin: 2rem 1rem;
     width: 500px;
     padding: 2rem;
+  }
+
+  .hide-500 {
+    display: table-cell;
+  }
+
+  .ets-table-record > td {
+    padding: .4rem 1.5rem;
+  }
+
+  td.ets-table-td-name {
+    padding-left: .5rem;
   }
 }
 
@@ -697,10 +769,55 @@ select.dark-input.dark-input.with-label{
   .charts-wrapper {
     justify-content: left;
   }
+
+  .hide-800 {
+    display: table-cell;
+  }
+
+  td.ets-table-td-name {
+    padding-left: .5rem;
+  }
+
+  .ets-table-container {
+    padding-top: 3rem;
+  }
 }
+
+
+@media only screen and (min-width: 900px) {
+  .ets-table {
+    font-size: 1.1rem;
+  }
+
+  .ets-table-record > th {
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+  }
+
+  .ets-table-record > td {
+    padding: .4rem 1.5rem;
+  }
+
+  td.ets-table-td-name {
+    padding-left: .8rem;
+  }
+}
+
 
 @media only screen and (min-width: 1000px) {
   .all-comments-container {
     margin: 0 10vw;
+  }
+
+  .ets-table-record > td {
+    padding: .6rem 2rem;
+  }
+
+  td.ets-table-td-name {
+    padding-left: 1rem;
+  }
+
+  .ets-table {
+    width: 90%;
   }
 }
