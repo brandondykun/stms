@@ -21,6 +21,7 @@ import AdminOverview from "./components/AdminOverview";
 import EtsTime from "./components/EtsTime";
 import Schools from "./components/Schools";
 import DeleteAccount from "./components/DeleteAccount";
+import DeleteCommentPage from "./pages/DeleteCommentPage";
 
 function App() {
   return (
@@ -47,6 +48,10 @@ function App() {
               </Route>
               <Route element={<AdminButNotSelfRoute />}>
                 <Route path=":id/edit/:cid" element={<EditComment />} />
+                <Route
+                  path=":id/edit/:cid/delete"
+                  element={<DeleteCommentPage />}
+                />
                 <Route path=":id/create" element={<AddCommentPage />} />
               </Route>
             </Route>
