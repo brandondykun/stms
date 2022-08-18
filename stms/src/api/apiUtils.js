@@ -9,6 +9,7 @@ import {
   getDoc,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import {
   signInWithEmailAndPassword,
@@ -178,6 +179,16 @@ apiCalls.getComment = async (id) => {
     if (comment.exists()) {
       return { ...comment.data(), id: comment.id };
     }
+  } catch (error) {
+    return { error };
+  }
+};
+
+apiCalls.deleteComment = async (id) => {
+  try {
+    const docRef = doc(db, "comments", id);
+    const res = await deleteDoc(docRef);
+    return { status: 200, error: null };
   } catch (error) {
     return { error };
   }
