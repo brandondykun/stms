@@ -45,7 +45,7 @@ const CommentForm = ({ formInputs, setFormInputs, handleSubmit }) => {
           </button>
         </Link>
         <button className="form-button login" type="submit">
-          Add Comment
+          Submit
         </button>
       </div>
     </form>
