@@ -292,7 +292,7 @@ a {
 }
 
 .expandable-container {
-  border: 1px solid rgb(44, 44, 44);
+  /* border: 1px solid rgb(44, 44, 44); */
   padding: 10px;
   max-width: 500px;
   /* background-color: var(--dark-background); */
@@ -324,7 +324,7 @@ a {
 .assign-input {
   padding: .2rem;
   margin: .8rem .3rem;
-  background-color: var(--dark-background);
+  background-color: rgb(25, 25, 25);
   font-size: .8rem;
   border-radius: 0;
   -webkit-appearance: none;
@@ -488,11 +488,18 @@ select.dark-input.dark-input.with-label{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-top: .5rem;
 }
 
 .admin-mobile-link {
-  padding: 1rem 1rem 0rem 1rem;
+  padding: .2rem .9rem;
   color: var(--white);
+}
+
+.admin-mobile-link.active {
+  color: var(--black);
+  background-color: var(--gold);
+  border-radius: 7px;
 }
 
 .admin-nav-link.active > .admin-nav-button {
@@ -636,6 +643,10 @@ tr.yellow-bcg {
 
 .hide-500, .hide-800 {
   display: none;
+}
+
+.centered-text {
+  text-align: center;
 }
 
 @media only screen and (min-width: 350px) {
