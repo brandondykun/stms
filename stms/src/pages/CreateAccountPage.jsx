@@ -49,6 +49,7 @@ const CreateAccountPage = () => {
     const dorTimeStamp = utils.getTimeStamp(formInputs.dor);
     const etsTimeStamp = utils.getTimeStamp(formInputs.ets);
     const isStaff = utils.isStaff(formInputs.grade);
+    const acftPass = formInputs.acft_pass === "true" ? true : false;
 
     const data = {
       ...formInputs,
@@ -57,6 +58,7 @@ const CreateAccountPage = () => {
       dor: dorTimeStamp,
       ets: etsTimeStamp,
       is_staff: isStaff,
+      acft_pass: acftPass,
     };
 
     try {
