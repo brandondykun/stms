@@ -26,9 +26,7 @@ const EtsTime = () => {
             const formattedDiff = utils.getFormattedStringFromDays(diff);
             return (
               <tr
-                className={`ets-table-record ${
-                  diff <= 90 ? "red-bcg" : diff <= 365 ? "yellow-bcg" : ""
-                }`}
+                className={`ets-table-record ${diff <= 365 ? "red-bcg" : ""}`}
                 key={user.id}
               >
                 <td className="ets-table-td-name">
