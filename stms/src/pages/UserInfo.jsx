@@ -29,10 +29,6 @@ const UserInfo = () => {
       });
   }, [id]);
 
-  const pebd = new Date(user?.pebd.seconds * 1000);
-  const dor = new Date(user?.dor.seconds * 1000);
-  const ets = new Date(user?.ets.seconds * 1000);
-
   const etsDate = dayjs(user?.ets.seconds * 1000);
   const dateOfRank = dayjs(user?.dor.seconds * 1000);
   const payEntryBaseDate = dayjs(user?.pebd.seconds * 1000);
@@ -100,11 +96,11 @@ const UserInfo = () => {
           <div className="sections-row">
             <div className="section-container info-container">
               <h2 className="section-title info-title">Dates</h2>
-              <div>PEBD: {pebd.toLocaleDateString()}</div>
+              <div>PEBD: {payEntryBaseDate.format("MM/DD/YYYY")}</div>
               <div>TIS: {formattedTimeInService}</div>
-              <div>DOR: {dor.toLocaleDateString()}</div>
+              <div>DOR: {dateOfRank.format("MM/DD/YYYY")}</div>
               <div>TIG: {formattedTimeInGrade}</div>
-              <div>ETS: {ets.toLocaleDateString()}</div>
+              <div>ETS: {etsDate.format("MM/DD/YYYY")}</div>
               <div>ETS In: {formattedEtsDiff}</div>
             </div>
             <div className="section-container info-container">
