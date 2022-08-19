@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
   const { id } = useParams();
@@ -17,6 +19,7 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         type="text"
         placeholder="first name"
         className="dark-input with-label"
+        required
         value={formInputs.first_name}
         onChange={(e) =>
           setFormInputs({ ...formInputs, first_name: e.target.value })
@@ -32,6 +35,7 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         type="text"
         placeholder="middle name"
         className="dark-input with-label"
+        required
         value={formInputs.middle_name}
         onChange={(e) =>
           setFormInputs({ ...formInputs, middle_name: e.target.value })
@@ -46,67 +50,82 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         type="text"
         placeholder="last name"
         className="dark-input with-label"
+        required
         value={formInputs.last_name}
         onChange={(e) =>
           setFormInputs({ ...formInputs, last_name: e.target.value })
         }
       />
 
-      <label htmlFor="rank" className="form-label">
-        Rank
-      </label>
-      <select
-        id="rank"
-        aria-label="rank"
-        type="text"
-        placeholder="rank"
-        className="dark-input with-label"
-        value={formInputs.rank}
-        onChange={(e) => setFormInputs({ ...formInputs, rank: e.target.value })}
-      >
-        <option value="" disabled>
-          rank
-        </option>
-        <option value="PVT">PVT</option>
-        <option value="PV2">PV2</option>
-        <option value="PFC">PFC</option>
-        <option value="SPC">SPC</option>
-        <option value="SGT">SGT</option>
-        <option value="SSG">SSG</option>
-        <option value="SFC">SFC</option>
-        <option value="2LT">2LT</option>
-        <option value="1LT">1LT</option>
-        <option value="CPT">CPT</option>
-      </select>
+      <div className="select-wrapper">
+        <label htmlFor="rank" className="form-label">
+          Rank
+        </label>
+        <select
+          id="rank"
+          aria-label="rank"
+          type="text"
+          placeholder="rank"
+          className="dark-input with-label"
+          required
+          value={formInputs.rank}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, rank: e.target.value })
+          }
+        >
+          <option value="" disabled>
+            rank
+          </option>
+          <option value="PVT">PVT</option>
+          <option value="PV2">PV2</option>
+          <option value="PFC">PFC</option>
+          <option value="SPC">SPC</option>
+          <option value="SGT">SGT</option>
+          <option value="SSG">SSG</option>
+          <option value="SFC">SFC</option>
+          <option value="2LT">2LT</option>
+          <option value="1LT">1LT</option>
+          <option value="CPT">CPT</option>
+        </select>
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faAngleDown} size="lg" />
+        </div>
+      </div>
 
-      <label htmlFor="grade" className="form-label">
-        Grade
-      </label>
-      <select
-        id="grade"
-        aria-label="grade"
-        type="text"
-        placeholder="grade"
-        className="dark-input with-label"
-        value={formInputs.grade}
-        onChange={(e) =>
-          setFormInputs({ ...formInputs, grade: e.target.value })
-        }
-      >
-        <option value="" disabled>
-          grade
-        </option>
-        <option value="E1">E1</option>
-        <option value="E2">E2</option>
-        <option value="E3">E3</option>
-        <option value="E4">E4</option>
-        <option value="E5">E5</option>
-        <option value="E6">E6</option>
-        <option value="E7">E7</option>
-        <option value="O1">O1</option>
-        <option value="O2">O2</option>
-        <option value="O3">O3</option>
-      </select>
+      <div className="select-wrapper">
+        <label htmlFor="grade" className="form-label">
+          Grade
+        </label>
+        <select
+          id="grade"
+          aria-label="grade"
+          type="text"
+          placeholder="grade"
+          className="dark-input with-label"
+          required
+          value={formInputs.grade}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, grade: e.target.value })
+          }
+        >
+          <option value="" disabled>
+            grade
+          </option>
+          <option value="E1">E1</option>
+          <option value="E2">E2</option>
+          <option value="E3">E3</option>
+          <option value="E4">E4</option>
+          <option value="E5">E5</option>
+          <option value="E6">E6</option>
+          <option value="E7">E7</option>
+          <option value="O1">O1</option>
+          <option value="O2">O2</option>
+          <option value="O3">O3</option>
+        </select>
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faAngleDown} size="lg" />
+        </div>
+      </div>
 
       <label htmlFor="pebd" className="form-label">
         PEBD
@@ -160,26 +179,28 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         }
       />
 
-      <label htmlFor="acft-select" className="form-label">
-        ACFT Pass/Fail:
-      </label>
-      <select
-        id="acft-select"
-        aria-label="grade"
-        type="text"
-        placeholder="pass/fail"
-        className="dark-input with-label"
-        value={formInputs.acft_pass}
-        onChange={(e) =>
-          setFormInputs({ ...formInputs, acft_pass: e.target.value })
-        }
-      >
-        <option value="" disabled>
-          pass/fail
-        </option>
-        <option value="true">Pass</option>
-        <option value="false">Fail</option>
-      </select>
+      <div className="select-wrapper">
+        <label htmlFor="acft-select" className="form-label">
+          ACFT Pass/Fail:
+        </label>
+        <select
+          id="acft-select"
+          aria-label="grade"
+          type="text"
+          placeholder="pass/fail"
+          className="dark-input with-label"
+          value={formInputs.acft_pass}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, acft_pass: e.target.value })
+          }
+        >
+          <option value="true">Pass</option>
+          <option value="false">Fail</option>
+        </select>
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faAngleDown} size="lg" />
+        </div>
+      </div>
 
       <label htmlFor="m4_qual" className="form-label">
         M4 Qual:
@@ -196,134 +217,199 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         }
       />
       <div className="form-checkboxes-container">
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="dlc_1_complete"
-            value={formInputs.dlc_1_complete}
-            checked={formInputs.dlc_1_complete}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                dlc_1_complete: !formInputs.dlc_1_complete,
-              })
-            }
-          />
-          <label htmlFor="dlc_1_complete">DLC 1 Complete</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-dlc-1"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.dlc_1_complete}
+              checked={formInputs.dlc_1_complete}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  dlc_1_complete: !formInputs.dlc_1_complete,
+                })
+              }
+            />
+            <label htmlFor="switch-dlc-1" className="switch-label">
+              DLC 1 Complete
+            </label>
+          </div>
+          <label htmlFor="switch-dlc-1" className="inline-label">
+            DLC 1 Complete
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="blc_complete"
-            value={formInputs.blc_complete}
-            checked={formInputs.blc_complete}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                blc_complete: !formInputs.blc_complete,
-              })
-            }
-          />
-          <label htmlFor="blc_complete">BLC Complete</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-blc"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.blc_complete}
+              checked={formInputs.blc_complete}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  blc_complete: !formInputs.blc_complete,
+                })
+              }
+            />
+            <label htmlFor="switch-blc" className="switch-label">
+              BLC Complete
+            </label>
+          </div>
+          <label htmlFor="switch-blc" className="inline-label">
+            BLC Complete
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="dlc_2_complete"
-            value={formInputs.dlc_2_complete}
-            checked={formInputs.dlc_2_complete}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                dlc_2_complete: !formInputs.dlc_2_complete,
-              })
-            }
-          />
-          <label htmlFor="dlc_2_complete">DLC 2 Complete</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-dlc-2"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.dlc_2_complete}
+              checked={formInputs.dlc_2_complete}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  dlc_2_complete: !formInputs.dlc_2_complete,
+                })
+              }
+            />
+            <label htmlFor="switch-dlc-2" className="switch-label">
+              DLC 2 Complete
+            </label>
+          </div>
+          <label htmlFor="switch-dlc-2" className="inline-label">
+            DLC 2 Complete
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="alc_complete"
-            value={formInputs.alc_complete}
-            checked={formInputs.alc_complete}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                alc_complete: !formInputs.alc_complete,
-              })
-            }
-          />
-          <label htmlFor="alc_complete">ALC Complete</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-alc"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.alc_complete}
+              checked={formInputs.alc_complete}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  alc_complete: !formInputs.alc_complete,
+                })
+              }
+            />
+            <label htmlFor="switch-alc" className="switch-label">
+              ALC Complete
+            </label>
+          </div>
+          <label htmlFor="switch-alc" className="inline-label">
+            ALC Complete
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="dlc_3_complete"
-            value={formInputs.dlc_3_complete}
-            checked={formInputs.dlc_3_complete}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                dlc_3_complete: !formInputs.dlc_3_complete,
-              })
-            }
-          />
-          <label htmlFor="dlc_3_complete">DLC 3 Complete</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-dlc-3"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.dlc_3_complete}
+              checked={formInputs.dlc_3_complete}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  dlc_3_complete: !formInputs.dlc_3_complete,
+                })
+              }
+            />
+            <label htmlFor="switch-dlc-3" className="switch-label">
+              DLC 3 Complete
+            </label>
+          </div>
+          <label htmlFor="switch-dlc-3" className="inline-label">
+            DLC 3 Complete
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="slc_complete"
-            value={formInputs.slc_complete}
-            checked={formInputs.slc_complete}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                slc_complete: !formInputs.slc_complete,
-              })
-            }
-          />
-          <label htmlFor="slc_complete">SLC Complete</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-slc"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.slc_complete}
+              checked={formInputs.slc_complete}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  slc_complete: !formInputs.slc_complete,
+                })
+              }
+            />
+            <label htmlFor="switch-slc" className="switch-label">
+              SLC Complete
+            </label>
+          </div>
+          <label htmlFor="switch-slc" className="inline-label">
+            SLC Complete
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="jfo_qualified"
-            value={formInputs.jfo_qualified}
-            checked={formInputs.jfo_qualified}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                jfo_qualified: !formInputs.jfo_qualified,
-              })
-            }
-          />
-          <label htmlFor="jfo_qualified">JFO Qualified</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-jfo"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.jfo_qualified}
+              checked={formInputs.jfo_qualified}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  jfo_qualified: !formInputs.jfo_qualified,
+                })
+              }
+            />
+            <label htmlFor="switch-jfo" className="switch-label">
+              JFO Qualified
+            </label>
+          </div>
+          <label htmlFor="switch-jfo" className="inline-label">
+            JFO Qualified
+          </label>
         </div>
 
-        <div className="checkbox-input-container">
-          <input
-            type="checkbox"
-            id="drivers_license"
-            value={formInputs.drivers_license}
-            checked={formInputs.drivers_license}
-            onChange={(e) =>
-              setFormInputs({
-                ...formInputs,
-                drivers_license: !formInputs.drivers_license,
-              })
-            }
-          />
-          <label htmlFor="drivers_license">Military Drivers License</label>
+        <div className="switch-label-container">
+          <div className="switch">
+            <input
+              id="switch-license"
+              type="checkbox"
+              className="switch-input"
+              value={formInputs.drivers_license}
+              checked={formInputs.drivers_license}
+              onChange={(e) =>
+                setFormInputs({
+                  ...formInputs,
+                  drivers_license: !formInputs.drivers_license,
+                })
+              }
+            />
+            <label htmlFor="switch-license" className="switch-label">
+              Military Drivers License
+            </label>
+          </div>
+          <label htmlFor="switch-license" className="inline-label">
+            Military Drivers License
+          </label>
         </div>
       </div>
+
       <div className="form-button-container">
         {accountInfo && (
           <Link to={`/user-info/${id}`}>
