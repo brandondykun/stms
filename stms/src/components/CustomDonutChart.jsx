@@ -13,7 +13,10 @@ const CustomDonutChart = ({ title, filled, total }) => {
 
   return (
     <div className="donut-chart-wrapper">
-      <div className="chart-title">{title}</div>
+      <div className="chart-title">
+        <div>{title}</div>
+        <div>STRENGTH</div>
+      </div>
       <DonutChart
         interactive={false}
         height={150}
