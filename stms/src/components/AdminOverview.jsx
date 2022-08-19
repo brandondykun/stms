@@ -25,42 +25,54 @@ const AdminOverview = () => {
   const charlieSectionCount = users.filter((user) => {
     return user.section === "CHARLIE";
   }).length;
+  const deltaSectionCount = users.filter((user) => {
+    return user.section === "DELTA";
+  }).length;
 
   return (
     <div className="primary-content">
       <div className="charts-wrapper">
-        <CustomDonutChart
-          title={"TOTAL STRENGTH"}
-          filled={totalCount}
-          total={30}
-        />
-        <CustomDonutChart
-          title={"STAFF STRENGTH"}
-          filled={staffSectionCount}
-          total={6}
-        />
-        <CustomDonutChart
-          title={"ALPHA STRENGTH"}
-          filled={alphaSectionCount}
-          total={8}
-        />
-        <CustomDonutChart
-          title={"BRAVO STRENGTH"}
-          filled={bravoSectionCount}
-          total={8}
-        />
-        <CustomDonutChart
-          title={"CHARLIE STRENGTH"}
-          filled={charlieSectionCount}
-          total={8}
-        />
-        <DlcIncompleteList />
-        <PmeIncomplete />
-        <RifleQualFail />
-        <AcftFail />
-        <NeedLicense />
-        <Promotable />
-        <JfoQualified />
+        <div className="donut-charts-wrapper">
+          <div className="donut-charts-sub-wrapper">
+            <CustomDonutChart title={"TOTAL"} filled={totalCount} total={30} />
+            <CustomDonutChart
+              title={"STAFF"}
+              filled={staffSectionCount}
+              total={6}
+            />
+            <CustomDonutChart
+              title={"ALPHA"}
+              filled={alphaSectionCount}
+              total={8}
+            />
+          </div>
+          <div className="donut-charts-sub-wrapper">
+            <CustomDonutChart
+              title={"BRAVO"}
+              filled={bravoSectionCount}
+              total={8}
+            />
+            <CustomDonutChart
+              title={"CHARLIE"}
+              filled={charlieSectionCount}
+              total={8}
+            />
+            <CustomDonutChart
+              title={"DELTA"}
+              filled={deltaSectionCount}
+              total={4}
+            />
+          </div>
+        </div>
+        <div className="overview-lists-wrapper">
+          <DlcIncompleteList />
+          <PmeIncomplete />
+          <RifleQualFail />
+          <AcftFail />
+          <NeedLicense />
+          <Promotable />
+          <JfoQualified />
+        </div>
       </div>
     </div>
   );
