@@ -3,7 +3,11 @@ import { useParams, Link } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPen,
+  faAnglesRight,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 import utils from "../utils/utils";
 
@@ -112,6 +116,38 @@ const UserInfo = () => {
               <div>DLC 3 Complete: {user.dlc_3_complete ? "Yes" : "No"}</div>
               <div>SLC Complete: {user.slc_complete ? "Yes" : "No"}</div>
               <div>Drivers License: {user.drivers_license ? "Yes" : "No"}</div>
+            </div>
+          </div>
+          <div className="sections-row">
+            <div className="section-container info-container">
+              <div className="flex flex-space-between flex-align-center underline-white margin-b-05">
+                <h2 className="font-size-md color-gold">Scheduled Schools</h2>
+                {(accountInfo?.is_staff || accountInfo?.id === id) && (
+                  <Link to={`/user-info/${id}/add-school`}>
+                    <div className="color-white italic hover-gold hover-underline">
+                      Add
+                      <span className="icon-margin-left">
+                        <FontAwesomeIcon icon={faPlus} size="xs" />
+                      </span>
+                    </div>
+                  </Link>
+                )}
+              </div>
+              {user?.schools.length > 0 ? (
+                user.schools.map((school, index) => {
+                  const startDate = dayjs(school.start_date.seconds * 1000);
+                  const endDate = dayjs(school.end_date.seconds * 1000);
+                  return (
+                    <div key={index} className="school-list-item">
+                      <div>{school.school_name}</div>
+                      <div>{startDate.format("MM/DD/YYYY")} -</div>
+                      <div>{endDate.format("MM/DD/YYYY")}</div>
+                    </div>
+                  );
+                })
+              ) : (
+                <div>No scheduled schools</div>
+              )}
             </div>
           </div>
         </div>
