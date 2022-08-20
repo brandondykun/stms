@@ -31,6 +31,7 @@ const formTemplate = {
   is_staff: false,
   unit_position: null,
   user_id: null,
+  schools: [],
 };
 
 const CreateAccountPage = () => {
