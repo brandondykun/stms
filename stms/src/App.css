@@ -746,6 +746,54 @@ tr.red-bcg {
   pointer-events:none;
 }
 
+.school-list-item {
+  display: flex;
+}
+
+.flex {
+  display: flex;
+}
+
+.underline-white {
+  border-bottom: 1px solid var(--white);
+}
+
+.font-size-md {
+  font-size: 1.5rem;
+}
+
+.color-gold {
+  color: var(--gold);
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-align-center {
+  align-items: center;
+}
+
+.color-white {
+  color: var(--white);
+}
+
+.hover-gold:hover {
+  color: var(--gold);
+}
+
+.hover-underline:hover {
+  text-decoration: underline;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.margin-b-05 {
+  margin-bottom: 0.5rem;
+}
+
 
 @media only screen and (min-width: 350px) {
   .link-container {
