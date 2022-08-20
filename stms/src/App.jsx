@@ -22,6 +22,7 @@ import EtsTime from "./components/EtsTime";
 import Schools from "./components/Schools";
 import DeleteAccount from "./components/DeleteAccount";
 import DeleteCommentPage from "./pages/DeleteCommentPage";
+import AddSchoolPage from "./pages/AddSchoolPage";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               <Route path=":id" element={<UserInfo />} />
               <Route element={<AdminOrSelfRoute />}>
                 <Route path=":id/edit" element={<EditUserPage />} />
+                <Route path=":id/add-school" element={<AddSchoolPage />} />
               </Route>
             </Route>
 
