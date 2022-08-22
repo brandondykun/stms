@@ -19,7 +19,7 @@ const RifleQualFail = () => {
             );
           })
         ) : (
-          <div>none</div>
+          <div className="color-dark-placeholder">None</div>
         )}
       </div>
     </div>
