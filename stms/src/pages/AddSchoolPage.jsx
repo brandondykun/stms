@@ -58,8 +58,6 @@ const AddSchoolPage = () => {
       end_date: utils.getTimeStamp(formInputs.end_date),
     };
 
-    console.log("NEW SCHOOL DATA: ", newSchoolData);
-
     const updatedUserData = {
       ...user,
       schools: [...user.schools, newSchoolData],
@@ -70,7 +68,6 @@ const AddSchoolPage = () => {
     apiCalls
       .editUserInfo(id, updatedUserData)
       .then((res) => {
-        console.log("IN THE API CALL");
         if (!res.error) {
           navigate(`/user-info/${id}`);
         }
