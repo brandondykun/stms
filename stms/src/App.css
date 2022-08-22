@@ -630,6 +630,7 @@ select.dark-input.dark-input.with-label{
   text-align:center;
   border-right: 1px solid rgb(62, 62, 62);
   border-left: 1px solid rgb(62, 62, 62);
+  border-bottom: 1px solid rgb(62, 62, 62);
   width: 100%;
 }
 
@@ -646,12 +647,20 @@ select.dark-input.dark-input.with-label{
 .ets-table-record > * {
   border-bottom: 1px solid rgb(62, 62, 62);
   border-top: 1px solid rgb(62, 62, 62);
-
 }
 
 td.ets-table-td-name {
   text-align: left;
   padding-left: .5rem;
+}
+
+.none-table-record {
+  padding: 1rem;
+  height: 50px;
+  text-align: center;
+  border-bottom: 1px solid rgb(62, 62, 62);
+  border-right: 1px solid rgb(62, 62, 62);
+  border-left: 1px solid rgb(62, 62, 62);
 }
 
 tr:nth-child(odd) {
@@ -1043,6 +1052,11 @@ tr.red-bcg {
 
   .ets-table {
     width: 90%;
+  }
+
+  .none-table-record {
+    width: 90%;
+    margin: auto;
   }
 }
 
