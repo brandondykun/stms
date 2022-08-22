@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
+import Logo from "../assets/fist-logo.png";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -38,11 +39,7 @@ const LoginPage = () => {
   return (
     <div className="primary-content login-page">
       <div className="image-wrapper">
-        <img
-          className="image-container"
-          src="../src/assets/fist-logo.png"
-          alt="FIST logo"
-        />
+        <img className="image-container" src={Logo} alt="FIST logo" />
       </div>
       <div className="link-container">
         <NavLink className="nav-link" to="/login">
