@@ -4,11 +4,13 @@ import apiCalls from "../api/apiUtils";
 // import { useAuthContext } from "../context/AuthContext";
 import utils from "../utils/utils";
 import SchoolForm from "../components/SchoolForm";
+import { v4 as uuidv4 } from "uuid";
 
 const formTemplate = {
   school_name: "BLC",
   start_date: "",
   end_date: "",
+  id: "",
 };
 
 const AddSchoolPage = () => {
@@ -56,14 +58,13 @@ const AddSchoolPage = () => {
       school_name: formInputs.school_name,
       start_date: utils.getTimeStamp(formInputs.start_date),
       end_date: utils.getTimeStamp(formInputs.end_date),
+      id: uuidv4(),
     };
 
     const updatedUserData = {
       ...user,
       schools: [...user.schools, newSchoolData],
     };
-
-    console.log("Updated User DATA: ", updatedUserData);
 
     apiCalls
       .editUserInfo(id, updatedUserData)
