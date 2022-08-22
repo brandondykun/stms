@@ -2,7 +2,6 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import apiCalls from "../api/apiUtils";
 import { useState } from "react";
-import { setUserProperties } from "firebase/analytics";
 
 const DeleteCommentPage = () => {
   const [comment, setComment] = useState();
@@ -39,11 +38,11 @@ const DeleteCommentPage = () => {
   return (
     <div className="primary-content">
       <h1 className="page-title name-title">Delete Comment</h1>
-      <h2 className="centered-text">
+      <h2 className="centered-text font-size-15 color-gold">
         Are you sure you want to delete this comment?
       </h2>
 
-      <div className="centered-text">
+      <div className="centered-text padding-tb-20 font-size-12">
         <span className="gold-title">Comment:</span> {comment?.text}
       </div>
       <div className="form-button-container">
