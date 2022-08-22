@@ -762,11 +762,20 @@ tr.red-bcg {
   font-size: 1.5rem;
 }
 
+.font-size-15 {
+  font-size: 1.5rem;
+}
+
+.font-size-12 {
+  font-size: 1.2rem;
+}
+
 .color-gold {
   color: var(--gold);
 }
 
 .flex-space-between {
+  display: flex;
   justify-content: space-between;
 }
 
@@ -777,6 +786,8 @@ tr.red-bcg {
 .color-white {
   color: var(--white);
 }
+
+
 
 .hover-gold:hover {
   color: var(--gold);
@@ -792,6 +803,34 @@ tr.red-bcg {
 
 .margin-b-05 {
   margin-bottom: 0.5rem;
+}
+
+.padding-t-10 {
+  padding-top: 1rem;
+}
+
+.padding-t-20 {
+  padding-top: 2rem;
+}
+
+.padding-tb-05 {
+  padding: .5rem 0rem;
+}
+
+.padding-tb-10 {
+  padding: 1rem 0rem;
+}
+
+.padding-tb-15 {
+  padding: 1.5rem 0rem;
+}
+
+.padding-tb-20 {
+  padding: 2rem 0rem;
+}
+
+.color-dark-placeholder {
+  color: var(--dark-placeholder);
 }
 
 
