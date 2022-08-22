@@ -58,6 +58,9 @@ const Schools = () => {
           })}
         </tbody>
       </table>
+      {schools?.length === 0 && (
+        <div className="none-table-record">No schools scheduled</div>
+      )}
     </div>
   );
 };
