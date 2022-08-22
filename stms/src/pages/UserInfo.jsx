@@ -134,19 +134,39 @@ const UserInfo = () => {
                 )}
               </div>
               {user?.schools.length > 0 ? (
-                user.schools.map((school, index) => {
-                  const startDate = dayjs(school.start_date.seconds * 1000);
-                  const endDate = dayjs(school.end_date.seconds * 1000);
-                  return (
-                    <div key={index} className="school-list-item">
-                      <div>{school.school_name}</div>
-                      <div>{startDate.format("MM/DD/YYYY")} -</div>
-                      <div>{endDate.format("MM/DD/YYYY")}</div>
-                    </div>
-                  );
-                })
+                user.schools
+                  .sort((a, b) => a.start_date.seconds - b.start_date.seconds)
+                  .map((school) => {
+                    const startDate = dayjs(school.start_date.seconds * 1000);
+                    const endDate = dayjs(school.end_date.seconds * 1000);
+                    return (
+                      <div
+                        className="school-list-item flex-space-between padding-tb-05 color-white"
+                        key={school.id}
+                      >
+                        <div>{school.school_name}</div>
+                        <div>
+                          {startDate.format("MM/DD")} -{" "}
+                          {endDate.format("MM/DD/YYYY")}
+                          {(accountInfo?.is_staff ||
+                            accountInfo?.id === id) && (
+                            <Link
+                              to={`/user-info/${id}/edit-school/${school.id}`}
+                              className="color-white hover-gold "
+                            >
+                              <span className="icon-margin-left">
+                                <FontAwesomeIcon icon={faPen} size="xs" />
+                              </span>
+                            </Link>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
               ) : (
-                <div>No scheduled schools</div>
+                <div className="color-dark-placeholder">
+                  No scheduled schools
+                </div>
               )}
             </div>
           </div>
