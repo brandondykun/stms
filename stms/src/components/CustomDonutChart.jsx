@@ -1,7 +1,11 @@
+import { useEffect, useState } from "react";
 import DonutChart from "react-donut-chart";
 
 const CustomDonutChart = ({ title, filled, total }) => {
-  const totalPercent = ((filled / total) * 100).toFixed(1);
+  const [numberFilled, setNumberFilled] = useState(0);
+  const [percentFilled, setPercentFilled] = useState(0.0);
+
+  const totalPercent = (filled / total) * 100;
 
   let color = "#de091b";
 
@@ -10,6 +14,20 @@ const CustomDonutChart = ({ title, filled, total }) => {
   } else if (totalPercent >= 70) {
     color = "#f0c907";
   }
+
+  useEffect(() => {
+    if (numberFilled < filled) {
+      setTimeout(() => {
+        setNumberFilled(numberFilled + filled / 100);
+      }, 5);
+
+      if (percentFilled < totalPercent) {
+        setTimeout(() => {
+          setPercentFilled(percentFilled + totalPercent / 10);
+        }, 50);
+      }
+    }
+  }, [numberFilled, percentFilled, filled]);
 
   return (
     <div className="donut-chart-wrapper">
@@ -27,15 +45,15 @@ const CustomDonutChart = ({ title, filled, total }) => {
         data={[
           {
             label: "Empty",
-            value: total - filled,
+            value: total - numberFilled,
           },
           {
             label: "Filled",
-            value: filled,
+            value: numberFilled,
           },
         ]}
       />
-      <div className="donut-text">{totalPercent}%</div>
+      <div className="donut-text">{percentFilled?.toFixed(0)}%</div>
     </div>
   );
 };
