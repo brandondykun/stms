@@ -24,6 +24,7 @@ input {
 
 input[type=date] {
   width: 100%;
+  text-align: left;
 }
 
 .App {
