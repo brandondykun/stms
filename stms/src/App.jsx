@@ -23,6 +23,8 @@ import Schools from "./components/Schools";
 import DeleteAccount from "./components/DeleteAccount";
 import DeleteCommentPage from "./pages/DeleteCommentPage";
 import AddSchoolPage from "./pages/AddSchoolPage";
+import EditSchoolPage from "./pages/EditSchoolPage";
+import DeleteSchoolPage from "./pages/DeleteSchoolPage";
 
 function App() {
   return (
@@ -41,6 +43,14 @@ function App() {
               <Route element={<AdminOrSelfRoute />}>
                 <Route path=":id/edit" element={<EditUserPage />} />
                 <Route path=":id/add-school" element={<AddSchoolPage />} />
+                <Route
+                  path=":id/edit-school/:sid"
+                  element={<EditSchoolPage />}
+                />
+                <Route
+                  path=":id/edit-school/:sid/delete"
+                  element={<DeleteSchoolPage />}
+                />
               </Route>
             </Route>
 
