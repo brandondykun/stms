@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import apiCalls from "../api/apiUtils";
 import SectionContainer from "../components/SectionContainer";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import Logo from "../assets/fist-logo.png";
 
 const HomePage = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -33,7 +34,7 @@ const HomePage = () => {
       <div className="small-image-wrapper">
         <img
           className="image-container small-image"
-          src="../src/assets/fist-logo.png"
+          src={Logo}
           alt="FIST logo"
         />
       </div>
