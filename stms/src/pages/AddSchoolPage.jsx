@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
-// import { useAuthContext } from "../context/AuthContext";
 import utils from "../utils/utils";
 import SchoolForm from "../components/SchoolForm";
 import { v4 as uuidv4 } from "uuid";
+import dayjs from "dayjs";
 
 const formTemplate = {
   school_name: "BLC",
-  start_date: "",
-  end_date: "",
+  start_date: dayjs(),
+  end_date: dayjs(),
   id: "",
 };
 
@@ -17,8 +17,6 @@ const AddSchoolPage = () => {
   const [user, setUser] = useState();
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [error, setError] = useState();
-
-  //   const { currentUser, setCurrentUser } = useAuthContext();
 
   const { id } = useParams();
 
@@ -51,6 +49,11 @@ const AddSchoolPage = () => {
     }
     if (!formInputs.end_date) {
       setError("Please enter an end date.");
+      return;
+    }
+
+    if (dayjs(formInputs.end_date).isBefore(dayjs(formInputs.start_date))) {
+      setError("Start date cannot be after end date.");
       return;
     }
 
