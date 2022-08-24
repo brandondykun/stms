@@ -849,6 +849,8 @@ tr.red-bcg {
   margin-right: 0.5rem;
 }
 
+
+
 .padding-t-10 {
   padding-top: 1rem;
 }
@@ -875,6 +877,10 @@ tr.red-bcg {
 
 .color-dark-placeholder {
   color: var(--dark-placeholder);
+}
+
+.text-align-center {
+  text-align: center;
 }
 
 
