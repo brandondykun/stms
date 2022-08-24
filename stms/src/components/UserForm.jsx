@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
   const { id } = useParams();
@@ -127,41 +127,62 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         </div>
       </div>
 
-      <label htmlFor="pebd" className="form-label">
-        PEBD
-      </label>
-      <input
-        id="pebd"
-        aria-label="pay entry base date"
-        type="date"
-        className="dark-input with-label"
-        value={dayjs(formInputs.pebd).format("YYYY-MM-DD")}
-        onChange={(e) => setFormInputs({ ...formInputs, pebd: e.target.value })}
-      />
+      <div className="select-wrapper">
+        <label htmlFor="pebd" className="form-label">
+          Pay Entry Base Date (PEBD)
+        </label>
+        <input
+          id="pebd"
+          aria-label="pay entry base date"
+          type="date"
+          className="dark-input with-label"
+          value={dayjs(formInputs.pebd).format("YYYY-MM-DD")}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, pebd: e.target.value })
+          }
+        />
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faCalendar} size="1x" />
+        </div>
+      </div>
 
-      <label htmlFor="dor" className="form-label">
-        DOR
-      </label>
-      <input
-        id="dor"
-        aria-label="date of rank"
-        type="date"
-        className="dark-input with-label"
-        value={dayjs(formInputs.dor).format("YYYY-MM-DD")}
-        onChange={(e) => setFormInputs({ ...formInputs, dor: e.target.value })}
-      />
+      <div className="select-wrapper">
+        <label htmlFor="dor" className="form-label">
+          Date of Rank
+        </label>
+        <input
+          id="dor"
+          aria-label="date of rank"
+          type="date"
+          className="dark-input with-label"
+          value={dayjs(formInputs.dor).format("YYYY-MM-DD")}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, dor: e.target.value })
+          }
+        />
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faCalendar} size="1x" />
+        </div>
+      </div>
 
-      <label htmlFor="ets" className="form-label">
-        ETS
-      </label>
-      <input
-        id="ets"
-        aria-label="expiration term of service"
-        type="date"
-        className="dark-input with-label"
-        value={dayjs(formInputs.ets).format("YYYY-MM-DD")}
-        onChange={(e) => setFormInputs({ ...formInputs, ets: e.target.value })}
-      />
+      <div className="select-wrapper">
+        <label htmlFor="ets" className="form-label">
+          Expiration Term of Service (ETS) Date
+        </label>
+        <input
+          id="ets"
+          aria-label="expiration term of service"
+          type="date"
+          className="dark-input with-label"
+          value={dayjs(formInputs.ets).format("YYYY-MM-DD")}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, ets: e.target.value })
+          }
+        />
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faCalendar} size="1x" />
+        </div>
+      </div>
 
       <label htmlFor="acft_score" className="form-label">
         ACFT Score:
@@ -173,9 +194,14 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         className="dark-input with-label"
         min="0"
         max="600"
+        pattern="[0-9]*"
         value={formInputs.acft_score}
         onChange={(e) =>
-          setFormInputs({ ...formInputs, acft_score: e.target.value })
+          setFormInputs((v) =>
+            e.target.validity.valid
+              ? { ...formInputs, acft_score: e.target.value }
+              : v
+          )
         }
       />
 
@@ -211,9 +237,14 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         className="dark-input with-label"
         min="0"
         max="600"
+        pattern="[0-9]*"
         value={formInputs.m4_qual}
         onChange={(e) =>
-          setFormInputs({ ...formInputs, m4_qual: e.target.value })
+          setFormInputs((v) =>
+            e.target.validity.valid
+              ? { ...formInputs, m4_qual: e.target.value }
+              : v
+          )
         }
       />
       <div className="form-checkboxes-container">
