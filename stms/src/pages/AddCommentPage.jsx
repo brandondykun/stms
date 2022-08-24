@@ -17,7 +17,7 @@ const AddCommentPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [error, setError] = useState();
 
-  const { currentUser, setCurrentUser } = useAuthContext();
+  const { currentUser, accountInfo } = useAuthContext();
 
   const { id } = useParams();
 
@@ -37,7 +37,7 @@ const AddCommentPage = () => {
     const data = {
       ...formInputs,
       timestamp: time,
-      commentor_id: currentUser.uid,
+      commentor_id: accountInfo.id,
       user_id: id,
     };
 
