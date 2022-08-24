@@ -47,14 +47,15 @@ const UserInfo = () => {
     utils.getFormattedStringFromDays(timeInService);
   const formattedTimeInGrade = utils.getFormattedStringFromDays(timeInGrade);
 
+  const pageTitle =
+    accountInfo.id === id ? "My Info" : `${user?.rank} ${user?.last_name}`;
+
   return (
     <div className="primary-content">
       {!loading && (
         <div className="user-info-container">
           <div className="title-link-container">
-            <h1 className="page-title name-title">
-              {user.rank} {user.last_name}
-            </h1>
+            <h1 className="page-title name-title">{pageTitle}</h1>
             {(accountInfo?.is_staff || accountInfo?.id === id) && (
               <Link to={`/comments/${id}`} className="comments-link">
                 View Comments
