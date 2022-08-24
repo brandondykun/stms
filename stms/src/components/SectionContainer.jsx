@@ -12,19 +12,24 @@ const SectionContainer = ({ users, section }) => {
   return (
     <div className="section-container">
       <h2 className="section-title">{section}</h2>
-      {filteredUsers?.map((user) => {
-        return (
-          <Link
-            key={user.id}
-            to={`/user-info/${user.id}`}
-            className="text-link"
-          >
-            <div className="user-container">
-              {user.rank} {user.last_name}
-            </div>
-          </Link>
-        );
-      })}
+      {filteredUsers?.length > 0 ? (
+        filteredUsers?.map((user) => {
+          return (
+            <Link
+              key={user.id}
+              to={`/user-info/${user.id}`}
+              className="text-link"
+            >
+              <div className="user-container">
+                <span className="margin-r-05">{user.role} -</span>
+                {user.rank} {user.last_name}
+              </div>
+            </Link>
+          );
+        })
+      ) : (
+        <div className="color-dark-placeholder">No one assigned</div>
+      )}
     </div>
   );
 };
