@@ -33,12 +33,15 @@ const CommentsPage = () => {
     getUserAndComments(id);
   }, []);
 
+  const pageTitle =
+    accountInfo.id === id
+      ? "My Comments"
+      : ` Comments for ${user?.rank} ${user?.last_name}`;
+
   return (
     <div className="primary-content">
       <div className="title-link-container">
-        <h1 className="page-title name-title">
-          Comments for {user.rank} {user.last_name}
-        </h1>
+        <h1 className="page-title name-title">{pageTitle}</h1>
         {accountInfo.is_staff && accountInfo.id !== id && (
           <Link to={`/comments/${id}/create`} className="comments-link">
             Add Comment
@@ -65,7 +68,28 @@ const CommentsPage = () => {
         <CommentsContainer comments={comments} category={"DEVELOPS"} />
         <CommentsContainer comments={comments} category={"ACHIEVES"} />
         <CommentsContainer comments={comments} category={"OVERALL"} />
+        <CommentsContainer comments={comments} category={"RECOMMENDED"} />
       </div>
+
+      {accountInfo && accountInfo.id === id && (
+        <div>
+          <div className="text-align-center">
+            Know something we don't? Add a recommended comment for your
+            leadership.
+          </div>
+
+          <div className="form-button-container">
+            <Link
+              to={`/comments/${id}/add-recommended-comment`}
+              className="comments-link"
+            >
+              <button className="form-button login" type="submit">
+                Add Recommended Comment
+              </button>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
