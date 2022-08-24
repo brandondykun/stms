@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
 
 const SchoolForm = ({ formInputs, setFormInputs, handleSubmit }) => {
@@ -35,33 +35,45 @@ const SchoolForm = ({ formInputs, setFormInputs, handleSubmit }) => {
         </div>
       </div>
 
-      <label htmlFor="start-date" className="form-label">
-        Start Date
-      </label>
-      <input
-        id="start-date"
-        aria-label="start date"
-        type="date"
-        className="dark-input with-label"
-        value={dayjs(formInputs.start_date).format("YYYY-MM-DD")}
-        onChange={(e) =>
-          setFormInputs({ ...formInputs, start_date: e.target.value })
-        }
-      />
+      <div className="select-wrapper">
+        <label htmlFor="start-date" className="form-label">
+          Start Date
+        </label>
+        <input
+          id="start-date"
+          aria-label="start date"
+          type="date"
+          className="dark-input with-label"
+          required
+          value={dayjs(formInputs.start_date).format("YYYY-MM-DD")}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, start_date: e.target.value })
+          }
+        />
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faCalendar} size="1x" />
+        </div>
+      </div>
 
-      <label htmlFor="end-date" className="form-label">
-        End Date
-      </label>
-      <input
-        id="end-date"
-        aria-label="end date"
-        type="date"
-        className="dark-input with-label"
-        value={dayjs(formInputs.end_date).format("YYYY-MM-DD")}
-        onChange={(e) =>
-          setFormInputs({ ...formInputs, end_date: e.target.value })
-        }
-      />
+      <div className="select-wrapper">
+        <label htmlFor="end-date" className="form-label">
+          End Date
+        </label>
+        <input
+          id="end-date"
+          aria-label="end date"
+          type="date"
+          required
+          className="dark-input with-label"
+          value={dayjs(formInputs.end_date).format("YYYY-MM-DD")}
+          onChange={(e) =>
+            setFormInputs({ ...formInputs, end_date: e.target.value })
+          }
+        />
+        <div className="select-custom-icon">
+          <FontAwesomeIcon icon={faCalendar} size="1x" />
+        </div>
+      </div>
 
       <div className="form-button-container">
         <Link to={`/user-info/${id}`}>
