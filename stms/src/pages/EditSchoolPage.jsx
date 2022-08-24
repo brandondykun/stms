@@ -5,6 +5,7 @@ import SchoolForm from "../components/SchoolForm";
 import utils from "../utils/utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import dayjs from "dayjs";
 
 const formTemplate = {
   school_name: "BLC",
@@ -37,6 +38,24 @@ const EditSchoolPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formInputs.school_name) {
+      setError("Please enter a name.");
+      return;
+    }
+    if (!formInputs.start_date) {
+      setError("Please enter a start date.");
+      return;
+    }
+    if (!formInputs.end_date) {
+      setError("Please enter an end date.");
+      return;
+    }
+
+    if (dayjs(formInputs.end_date).isBefore(dayjs(formInputs.start_date))) {
+      setError("Start date cannot be after end date.");
+      return;
+    }
 
     const startDate = utils.getTimeStamp(formInputs.start_date);
     const endDate = utils.getTimeStamp(formInputs.end_date);
