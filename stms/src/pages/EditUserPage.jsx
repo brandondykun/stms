@@ -4,7 +4,8 @@ import utils from "../utils/utils";
 import apiCalls from "../api/apiUtils";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnglesLeft, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
+import { useAuthContext } from "../context/AuthContext";
 
 const formTemplate = {
   first_name: "",
@@ -37,7 +38,10 @@ const formTemplate = {
 
 const EditUserPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
-  const [title, setTitle] = useState();
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const { accountInfo } = useAuthContext();
 
   const { id } = useParams();
 
@@ -48,6 +52,7 @@ const EditUserPage = () => {
       .getUser(id)
       .then((user) => {
         if (user.found) {
+          setUser(user.data);
           const pebdDate = new Date(user.data.pebd.seconds * 1000);
           const dorDate = new Date(user.data.dor.seconds * 1000);
           const etsDate = new Date(user.data.ets.seconds * 1000);
@@ -58,8 +63,8 @@ const EditUserPage = () => {
             dor: dorDate,
             ets: etsDate,
           });
-          setTitle(`${user.data.rank} ${user.data.last_name}`);
         }
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
@@ -94,26 +99,33 @@ const EditUserPage = () => {
     }
   };
 
-  const titleText = title ? "Edit info for " + title : "Edit Info";
+  const pageTitle =
+    accountInfo.id === id
+      ? "Edit My Info"
+      : `Edit ${user?.rank} ${user?.last_name}`;
 
   return (
     <div className="primary-content">
-      <div className="title-link-container">
-        <h1 className="page-title name-title">{titleText}</h1>
-      </div>
-      <Link to={`/user-info/${id}`} className="comments-link fit-link">
-        <div className="edit-button-container">
-          <span className="icon-margin-right">
-            <FontAwesomeIcon icon={faAnglesLeft} />
-          </span>
-          Back
-        </div>
-      </Link>
-      <UserForm
-        formInputs={formInputs}
-        setFormInputs={setFormInputs}
-        handleSubmit={handleSubmit}
-      />
+      {!loading && (
+        <>
+          <div className="title-link-container">
+            <h1 className="page-title name-title">{pageTitle}</h1>
+          </div>
+          <Link to={`/user-info/${id}`} className="comments-link fit-link">
+            <div className="edit-button-container">
+              <span className="icon-margin-right">
+                <FontAwesomeIcon icon={faAnglesLeft} />
+              </span>
+              Back
+            </div>
+          </Link>
+          <UserForm
+            formInputs={formInputs}
+            setFormInputs={setFormInputs}
+            handleSubmit={handleSubmit}
+          />
+        </>
+      )}
     </div>
   );
 };
