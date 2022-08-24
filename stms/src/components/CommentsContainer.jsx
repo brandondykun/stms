@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 const CommentsContainer = ({ comments, category }) => {
   const [filteredComments, setFilteredComments] = useState();
 
-  const { currentUser, setCurrentUser } = useAuthContext();
+  const { currentUser, accountInfo } = useAuthContext();
 
   useEffect(() => {
     setFilteredComments(
@@ -29,7 +29,7 @@ const CommentsContainer = ({ comments, category }) => {
             return (
               <li className="comment-container" key={comment.id}>
                 {comment.text}
-                {currentUser.uid === comment.commentor_id && (
+                {accountInfo.id === comment.commentor_id && (
                   <Link
                     className="edit-link"
                     to={`/comments/${comment.user_id}/edit/${comment.id}`}
