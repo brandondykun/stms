@@ -25,6 +25,7 @@ import DeleteCommentPage from "./pages/DeleteCommentPage";
 import AddSchoolPage from "./pages/AddSchoolPage";
 import EditSchoolPage from "./pages/EditSchoolPage";
 import DeleteSchoolPage from "./pages/DeleteSchoolPage";
+import RecommendedCommentPage from "./pages/RecommendedCommentPage";
 
 function App() {
   return (
@@ -57,6 +58,10 @@ function App() {
             <Route path="comments">
               <Route element={<AdminOrSelfRoute />}>
                 <Route path=":id" element={<CommentsPage />} />
+                <Route
+                  path=":id/add-recommended-comment"
+                  element={<RecommendedCommentPage />}
+                />
               </Route>
               <Route element={<AdminButNotSelfRoute />}>
                 <Route path=":id/edit/:cid" element={<EditComment />} />
