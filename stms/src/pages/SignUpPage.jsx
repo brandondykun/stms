@@ -41,7 +41,6 @@ const SignUpPage = () => {
 
     const user = await apiCalls.createUser(email, password);
     if (user) {
-      setCurrentUser(user);
       navigate(`/create-account/${user.uid}`);
     }
   };
