@@ -19,25 +19,29 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="primary-nav">
-      <NavLink to="/home" className="nav-link">
-        Home
-      </NavLink>
+    <>
+      {accountInfo?.user_id && (
+        <nav className="primary-nav">
+          <NavLink to="/home" className="nav-link">
+            Home
+          </NavLink>
 
-      <NavLink to={`/user-info/${accountInfo.id}`} className="nav-link">
-        My Info
-      </NavLink>
+          <NavLink to={`/user-info/${accountInfo?.id}`} className="nav-link">
+            My Info
+          </NavLink>
 
-      {accountInfo?.is_staff && (
-        <NavLink to="/admin/overview" className="nav-link">
-          Admin
-        </NavLink>
+          {accountInfo?.is_staff && (
+            <NavLink to="/admin/overview" className="nav-link">
+              Admin
+            </NavLink>
+          )}
+
+          <div className="nav-link" onClick={logOut}>
+            Sign Out
+          </div>
+        </nav>
       )}
-
-      <div className="nav-link" onClick={logOut}>
-        Sign Out
-      </div>
-    </nav>
+    </>
   );
 };
 
