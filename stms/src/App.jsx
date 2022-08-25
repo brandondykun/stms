@@ -26,6 +26,8 @@ import AddSchoolPage from "./pages/AddSchoolPage";
 import EditSchoolPage from "./pages/EditSchoolPage";
 import DeleteSchoolPage from "./pages/DeleteSchoolPage";
 import RecommendedCommentPage from "./pages/RecommendedCommentPage";
+import EditRecommendedCommentPage from "./pages/EditRecommendedCommentPage";
+import SelfRoute from "./routes/SelfRoute";
 
 function App() {
   return (
@@ -58,10 +60,20 @@ function App() {
             <Route path="comments">
               <Route element={<AdminOrSelfRoute />}>
                 <Route path=":id" element={<CommentsPage />} />
-                <Route
-                  path=":id/add-recommended-comment"
-                  element={<RecommendedCommentPage />}
-                />
+                <Route element={<SelfRoute />}>
+                  <Route
+                    path=":id/add-recommended-comment"
+                    element={<RecommendedCommentPage />}
+                  />
+                  <Route
+                    path=":id/edit-recommended/:cid"
+                    element={<EditRecommendedCommentPage />}
+                  />
+                  <Route
+                    path=":id/edit/:cid/delete-recommended-comment"
+                    element={<DeleteCommentPage />}
+                  />
+                </Route>
               </Route>
               <Route element={<AdminButNotSelfRoute />}>
                 <Route path=":id/edit/:cid" element={<EditComment />} />
