@@ -32,7 +32,11 @@ const CommentsContainer = ({ comments, category }) => {
                 {accountInfo.id === comment.commentor_id && (
                   <Link
                     className="edit-link"
-                    to={`/comments/${comment.user_id}/edit/${comment.id}`}
+                    to={
+                      comment.category === "RECOMMENDED"
+                        ? `/comments/${comment.user_id}/edit-recommended/${comment.id}`
+                        : `/comments/${comment.user_id}/edit/${comment.id}`
+                    }
                   >
                     -edit
                   </Link>
