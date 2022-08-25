@@ -24,6 +24,10 @@ const NavBar = () => {
         Home
       </NavLink>
 
+      <NavLink to={`/user-info/${accountInfo.id}`} className="nav-link">
+        My Info
+      </NavLink>
+
       {accountInfo?.is_staff && (
         <NavLink to="/admin/overview" className="nav-link">
           Admin
