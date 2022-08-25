@@ -2,10 +2,13 @@ import { useNavigate, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import apiCalls from "../api/apiUtils";
 import { useState } from "react";
+import { useAuthContext } from "../context/AuthContext";
 
 const DeleteCommentPage = () => {
   const [comment, setComment] = useState();
   const [error, setError] = useState();
+
+  const { accountInfo } = useAuthContext();
 
   const { id, cid } = useParams();
 
@@ -46,7 +49,13 @@ const DeleteCommentPage = () => {
         <span className="gold-title">Comment:</span> {comment?.text}
       </div>
       <div className="form-button-container">
-        <Link to={`/comments/${id}/edit/${cid}`}>
+        <Link
+          to={
+            accountInfo.id === id
+              ? `/comments/${id}/edit-recommended/${cid}`
+              : `/comments/${id}/edit/${cid}`
+          }
+        >
           <button className="form-button login" type="button">
             Abort
           </button>
