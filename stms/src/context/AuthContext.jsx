@@ -11,8 +11,8 @@ export const AuthContextProvider = ({ children }) => {
   const [pending, setPending] = useState(true);
 
   const handleAuthChange = async (u) => {
-    setCurrentUser({ email: u?.email, uid: u?.uid });
-    if (u) {
+    if (u?.uid) {
+      setCurrentUser({ email: u.email, uid: u.uid });
       const userInfo = await apiCalls.getAccountByUserId(u.uid);
       if (userInfo.found) {
         setAccountInfo(userInfo.data);
