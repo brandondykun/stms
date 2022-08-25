@@ -20,7 +20,7 @@ const formTemplate = {
   team: "UNASSIGNED",
   role: "UNASSIGNED",
   acft_score: 0,
-  acft_pass: true,
+  acft_pass: "true",
   m4_qual: 0,
   dlc_1_complete: false,
   blc_complete: false,
