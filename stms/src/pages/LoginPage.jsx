@@ -1,15 +1,12 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
-import { useAuthContext } from "../context/AuthContext";
 import Logo from "../assets/fist-logo.png";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
-
-  const { setCurrentUser } = useAuthContext();
 
   const navigate = useNavigate();
 
@@ -24,11 +21,16 @@ const LoginPage = () => {
 
     try {
       const user = await apiCalls.logIn(email, password);
-      if (user.status === 200) {
-        setCurrentUser(user.data);
-        navigate("/home");
-      } else {
+      if (user.status === 400) {
         setError("Login failed. Invalid credentials.");
+        return;
+      }
+      const userInfo = await apiCalls.getAccountByUserId(user.data.uid);
+
+      if (userInfo.found === false) {
+        navigate(`/create-account/${user.data.uid}`);
+      } else if (userInfo.found === true) {
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);
