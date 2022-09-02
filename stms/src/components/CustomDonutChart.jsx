@@ -31,7 +31,7 @@ const CustomDonutChart = ({ title, filled, total }) => {
 
   return (
     <div className="donut-chart-wrapper">
-      <div className="chart-title">
+      <div className="donut-chart-title">
         <div>{title}</div>
         <div>STRENGTH</div>
       </div>
