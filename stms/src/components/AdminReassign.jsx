@@ -1,6 +1,7 @@
 import AdminSection from "./AdminSection";
 import AdminHQSection from "./AdminHQSection";
 import UnassignedSection from "./UnassignedSection";
+import StaffPrivileges from "./StaffPrivileges";
 
 const AdminReassign = () => {
   return (
@@ -15,6 +16,7 @@ const AdminReassign = () => {
       </div>
       <div className="admin-sections-container">
         <UnassignedSection />
+        <StaffPrivileges />
       </div>
     </div>
   );
