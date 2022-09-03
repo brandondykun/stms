@@ -41,17 +41,26 @@ const CustomDonutChart = ({ title, filled, total }) => {
         width={150}
         legend={false}
         className="donut-chart"
-        colors={["#3b3b3b", color]}
-        data={[
-          {
-            label: "Empty",
-            value: total - numberFilled,
-          },
-          {
-            label: "Filled",
-            value: numberFilled,
-          },
-        ]}
+        colors={total - numberFilled > 0 ? ["#3b3b3b", color] : [color]}
+        data={
+          total - numberFilled > 0
+            ? [
+                {
+                  label: "Empty",
+                  value: total - numberFilled,
+                },
+                {
+                  label: "Filled",
+                  value: numberFilled,
+                },
+              ]
+            : [
+                {
+                  label: "Filled",
+                  value: numberFilled,
+                },
+              ]
+        }
       />
       <div className="donut-text">{percentFilled?.toFixed(0)}%</div>
     </div>
