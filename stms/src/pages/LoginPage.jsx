@@ -2,17 +2,20 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import Logo from "../assets/fist-logo.png";
+import BarLoader from "react-spinners/BarLoader";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogIn = async (e) => {
     e.preventDefault();
     setError("");
+    setSubmitLoading(true);
 
     if (!email || !password) {
       setError("Please complete all fields.");
@@ -36,6 +39,7 @@ const LoginPage = () => {
       console.error(error);
       // handle this error
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -69,9 +73,18 @@ const LoginPage = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="form-button-container">
-          <button className="form-button login" type="submit">
+          <button
+            className={`form-button register ${
+              submitLoading ? "disabled-button" : ""
+            }`}
+            type="submit"
+            disabled={submitLoading}
+          >
             Log In
           </button>
+        </div>
+        <div className="flex-center-center">
+          <BarLoader color={"#FEC30A"} loading={submitLoading} height={1} />
         </div>
       </form>
       {error && <div className="error-text">{error}</div>}
