@@ -17,6 +17,7 @@ const AddSchoolPage = () => {
   const [user, setUser] = useState();
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [error, setError] = useState();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { id } = useParams();
 
@@ -35,9 +36,10 @@ const AddSchoolPage = () => {
       });
   }, [id]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setSubmitLoading(true);
 
     if (!formInputs.school_name) {
       setError("Please enter a name.");
@@ -69,14 +71,18 @@ const AddSchoolPage = () => {
       schools: [...user.schools, newSchoolData],
     };
 
-    apiCalls
-      .editUserInfo(id, updatedUserData)
-      .then((res) => {
-        if (!res.error) {
-          navigate(`/user-info/${id}`);
-        }
-      })
-      .catch((error) => console.error(error));
+    try {
+      const res = await apiCalls.editUserInfo(id, updatedUserData);
+      if (!res.error) {
+        navigate(`/user-info/${id}`);
+      } else {
+        setError("There was an issue adding the data.");
+      }
+    } catch (error) {
+      console.error(error);
+      setError("There was an issue adding the data.");
+    }
+    setSubmitLoading(false);
   };
 
   return (
@@ -86,6 +92,7 @@ const AddSchoolPage = () => {
         formInputs={formInputs}
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
+        loading={submitLoading}
       />
       {error && <div className="error-text">{error}</div>}
     </div>
