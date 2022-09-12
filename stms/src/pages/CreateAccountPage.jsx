@@ -36,6 +36,7 @@ const formTemplate = {
 
 const CreateAccountPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { setAccountInfo } = useAuthContext();
 
@@ -45,6 +46,8 @@ const CreateAccountPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    setSubmitLoading(true);
 
     const pebdTimeStamp = utils.getTimeStamp(formInputs.pebd);
     const dorTimeStamp = utils.getTimeStamp(formInputs.dor);
@@ -74,6 +77,7 @@ const CreateAccountPage = () => {
     } catch (error) {
       console.error(error);
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -83,6 +87,7 @@ const CreateAccountPage = () => {
         formInputs={formInputs}
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
+        loading={submitLoading}
       />
     </div>
   );
