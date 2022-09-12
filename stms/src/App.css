@@ -1,6 +1,7 @@
 :root {
   --white: rgb(193, 193, 193);
   --gold: rgb(254, 195, 10);
+  --button-disabled: rgba(193, 193, 193, 0.5);
   --black: rgb(0,0,0);
   --dark-placeholder: rgb(59, 59, 59);
   --dark-background: rgb(18, 18, 18);
@@ -167,6 +168,15 @@ input::-webkit-date-and-time-value {
   border: 1px solid var(--black);
 }
 
+.form-button.login.disabled-button, .form-button.register.disabled-button {
+  color: var(--button-disabled);
+  border: 1px solid var(--button-disabled);
+}
+
+.form-button.login.disabled-button:hover, .form-button.register.disabled-button:hover  {
+  cursor: default;
+  transform: none;
+}
 .link-container {
   min-width: 250px;
   margin: 3rem 0rem;
