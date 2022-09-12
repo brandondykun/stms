@@ -40,6 +40,7 @@ const EditUserPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { accountInfo } = useAuthContext();
 
@@ -73,6 +74,7 @@ const EditUserPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
 
     const pebdTimeStamp = utils.getTimeStamp(formInputs.pebd);
     const dorTimeStamp = utils.getTimeStamp(formInputs.dor);
@@ -97,6 +99,7 @@ const EditUserPage = () => {
     } catch (error) {
       console.error(error);
     }
+    setSubmitLoading(false);
   };
 
   const pageTitle =
@@ -123,6 +126,7 @@ const EditUserPage = () => {
             formInputs={formInputs}
             setFormInputs={setFormInputs}
             handleSubmit={handleSubmit}
+            loading={submitLoading}
           />
         </>
       )}
