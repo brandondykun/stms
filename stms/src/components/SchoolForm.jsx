@@ -2,8 +2,9 @@ import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faCalendar } from "@fortawesome/free-solid-svg-icons";
 import dayjs from "dayjs";
+import BarLoader from "react-spinners/BarLoader";
 
-const SchoolForm = ({ formInputs, setFormInputs, handleSubmit }) => {
+const SchoolForm = ({ formInputs, setFormInputs, handleSubmit, loading }) => {
   const { id } = useParams();
 
   return (
@@ -77,13 +78,24 @@ const SchoolForm = ({ formInputs, setFormInputs, handleSubmit }) => {
 
       <div className="form-button-container">
         <Link to={`/user-info/${id}`}>
-          <button className="form-button login" type="button">
+          <button
+            className={`form-button login ${loading ? "disabled-button" : ""}`}
+            type="button"
+            disabled={loading}
+          >
             Cancel
           </button>
         </Link>
-        <button className="form-button login" type="submit">
-          Submit
+        <button
+          className={`form-button login ${loading ? "disabled-button" : ""}`}
+          type="submit"
+          disabled={loading}
+        >
+          {!loading ? "Submit" : "Loading..."}
         </button>
+      </div>
+      <div className="flex-center-center">
+        <BarLoader color={"#FEC30A"} loading={loading} height={1} />
       </div>
     </form>
   );
