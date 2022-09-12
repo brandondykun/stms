@@ -18,6 +18,7 @@ const EditSchoolPage = () => {
   const [user, setUser] = useState();
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [error, setError] = useState();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { id, sid } = useParams();
 
@@ -34,10 +35,11 @@ const EditSchoolPage = () => {
         setFormInputs({ ...school, start_date: startDate, end_date: endDate });
       }
     });
-  }, []);
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
 
     if (!formInputs.school_name) {
       setError("Please enter a name.");
@@ -85,6 +87,7 @@ const EditSchoolPage = () => {
       console.error(error);
       setError("There was an issue updating the data.");
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -105,6 +108,7 @@ const EditSchoolPage = () => {
         formInputs={formInputs}
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
+        loading={submitLoading}
       />
       {error && <div className="error-text">{error}</div>}
     </div>
