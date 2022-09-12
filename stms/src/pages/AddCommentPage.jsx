@@ -16,6 +16,7 @@ const formTemplate = {
 const AddCommentPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [error, setError] = useState();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { currentUser, accountInfo } = useAuthContext();
 
@@ -23,33 +24,33 @@ const AddCommentPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
     setError("");
 
     if (!formInputs.text) {
       setError("Please enter a comment.");
       return;
     }
+    try {
+      const now = new Date();
+      const time = utils.getTimeStamp(now);
+      const data = {
+        ...formInputs,
+        timestamp: time,
+        commentor_id: accountInfo.id,
+        user_id: id,
+      };
 
-    const now = new Date();
-    const time = utils.getTimeStamp(now);
-    const data = {
-      ...formInputs,
-      timestamp: time,
-      commentor_id: accountInfo.id,
-      user_id: id,
-    };
-
-    apiCalls
-      .addComment(data)
-      .then((res) => {
-        if (!res.error) {
-          navigate(`/comments/${id}`);
-        }
-      })
-      .catch((error) => console.error(error));
-    // need to handle this error
+      const res = await apiCalls.addComment(data);
+      if (!res.error) {
+        navigate(`/comments/${id}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    setSubmitLoading(false);
   };
 
   return (
@@ -59,6 +60,7 @@ const AddCommentPage = () => {
         formInputs={formInputs}
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
+        loading={submitLoading}
       />
       {error && <div className="error-text">{error}</div>}
     </div>
