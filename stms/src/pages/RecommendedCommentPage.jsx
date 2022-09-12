@@ -16,6 +16,7 @@ const formTemplate = {
 const RecommendedCommentPage = () => {
   const [formInputs, setFormInputs] = useState(formTemplate);
   const [error, setError] = useState();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { currentUser } = useAuthContext();
 
@@ -23,8 +24,9 @@ const RecommendedCommentPage = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitLoading(true);
     setError("");
 
     if (!formInputs.text) {
@@ -42,15 +44,15 @@ const RecommendedCommentPage = () => {
       user_id: id,
     };
 
-    apiCalls
-      .addComment(data)
-      .then((res) => {
-        if (!res.error) {
-          navigate(`/comments/${id}`);
-        }
-      })
-      .catch((error) => console.error(error));
-    // need to handle this error
+    try {
+      const res = await apiCalls.addComment(data);
+      if (!res.error) {
+        navigate(`/comments/${id}`);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    setSubmitLoading(false);
   };
 
   return (
@@ -61,6 +63,7 @@ const RecommendedCommentPage = () => {
         formInputs={formInputs}
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
+        loading={submitLoading}
       />
       {error && <div className="error-text">{error}</div>}
     </div>
