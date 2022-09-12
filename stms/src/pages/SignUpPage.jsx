@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
 import Logo from "../assets/fist-logo.png";
+import BarLoader from "react-spinners/BarLoader";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ const SignUpPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [joinCode, setJoinCode] = useState("");
   const [error, setError] = useState();
+  const [submitLoading, setSubmitLoading] = useState(false);
 
   const { setCurrentUser } = useAuthContext();
 
@@ -18,6 +20,7 @@ const SignUpPage = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError("");
+    setSubmitLoading(true);
 
     if (!email || !password || !confirmPassword) {
       setError("Please complete all fields.");
@@ -43,6 +46,7 @@ const SignUpPage = () => {
     if (user) {
       navigate(`/create-account/${user.uid}`);
     }
+    setSubmitLoading(false);
   };
 
   return (
@@ -92,9 +96,18 @@ const SignUpPage = () => {
           onChange={(e) => setJoinCode(e.target.value)}
         />
         <div className="form-button-container">
-          <button className="form-button register" type="submit">
+          <button
+            className={`form-button register ${
+              submitLoading ? "disabled-button" : ""
+            }`}
+            type="submit"
+            disabled={submitLoading}
+          >
             Register
           </button>
+        </div>
+        <div className="flex-center-center">
+          <BarLoader color={"#FEC30A"} loading={submitLoading} height={1} />
         </div>
       </form>
       {error && <div className="error-text">{error}</div>}
