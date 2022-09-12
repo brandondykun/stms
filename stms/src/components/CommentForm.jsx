@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import BarLoader from "react-spinners/BarLoader";
 
 const CommentForm = ({
   formInputs,
   setFormInputs,
   handleSubmit,
   recommendedComment = false,
+  loading,
 }) => {
   const { id } = useParams();
 
@@ -53,13 +55,24 @@ const CommentForm = ({
       />
       <div className="form-button-container">
         <Link to={`/comments/${id}`}>
-          <button className="form-button login" type="button">
+          <button
+            className={`form-button login ${loading ? "disabled-button" : ""}`}
+            type="button"
+            disabled={loading}
+          >
             Cancel
           </button>
         </Link>
-        <button className="form-button login" type="submit">
-          Submit
+        <button
+          className={`form-button login ${loading ? "disabled-button" : ""}`}
+          type="submit"
+          disabled={loading}
+        >
+          {!loading ? "Submit" : "Loading..."}
         </button>
+      </div>
+      <div className="flex-center-center">
+        <BarLoader color={"#FEC30A"} loading={loading} height={1} />
       </div>
     </form>
   );
