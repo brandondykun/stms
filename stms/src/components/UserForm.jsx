@@ -3,8 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faCalendar } from "@fortawesome/free-solid-svg-icons";
+import BarLoader from "react-spinners/BarLoader";
 
-const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
+const UserForm = ({ formInputs, setFormInputs, handleSubmit, loading }) => {
   const { id } = useParams();
   const { accountInfo } = useAuthContext();
 
@@ -444,14 +445,26 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit }) => {
       <div className="form-button-container">
         {accountInfo && (
           <Link to={`/user-info/${id}`}>
-            <button className="form-button login" type="button">
+            <button
+              className={`form-button login ${
+                loading ? "disabled-button" : ""
+              }`}
+              disabled={loading}
+            >
               Cancel
             </button>
           </Link>
         )}
-        <button className="form-button login" type="submit">
-          Submit
+        <button
+          className={`form-button login ${loading ? "disabled-button" : ""}`}
+          type="submit"
+          disabled={loading}
+        >
+          {!loading ? "Submit" : "Loading..."}
         </button>
+      </div>
+      <div className="flex-center-center">
+        <BarLoader color={"#FEC30A"} loading={loading} height={1} />
       </div>
     </form>
   );
