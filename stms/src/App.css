@@ -527,24 +527,6 @@ select.dark-input.dark-input.with-label{
   text-decoration: none;
 }
 
-.admin-nav-mobile {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: .5rem;
-}
-
-.admin-mobile-link {
-  padding: .2rem .9rem;
-  color: var(--white);
-}
-
-.admin-mobile-link.active {
-  color: var(--black);
-  background-color: var(--gold);
-  border-radius: 7px;
-}
-
 .admin-nav-link.active > .admin-nav-button {
   background-color: var(--gold);
   color: var(--black);
@@ -1175,10 +1157,6 @@ tr.red-bcg {
 
   .admin-nav {
     display: block;
-  }
-
-  .admin-nav-mobile {
-    display: none;
   }
 
   .admin-header-content-wrapper {
