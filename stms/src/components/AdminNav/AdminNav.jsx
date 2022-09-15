@@ -8,42 +8,37 @@ import {
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./AdminNav.module.css";
-import { useState } from "react";
 
 const AdminNav = () => {
-  const [activeLink, setActiveLink] = useState(1);
-
   return (
     <aside className={styles.adminNav}>
       <div className={styles.adminNavTitle}>Admin</div>
+
       <NavLink
         to="overview"
-        className={styles.adminNavLink}
-        onClick={() => setActiveLink(1)}
+        className={({ isActive }) =>
+          isActive
+            ? `${styles.adminNavButton} ${styles.activeLink}`
+            : styles.adminNavButton
+        }
       >
-        <div
-          className={`${styles.adminNavButton} ${
-            activeLink === 1 ? styles.activeLink : ""
-          }`}
-        >
-          <FontAwesomeIcon
-            icon={faChartBar}
-            size="1x"
-            className={styles.buttonIconWrapper}
-          />
-          <span className={styles.adminNavButtonText}>Overview</span>
-        </div>
+        <FontAwesomeIcon
+          icon={faChartBar}
+          size="1x"
+          className={styles.buttonIconWrapper}
+        />
+        <span className={styles.adminNavButtonText}>Overview</span>
       </NavLink>
+
       <NavLink
         to="reassign"
-        className={styles.adminNavLink}
-        onClick={() => setActiveLink(2)}
+        className={({ isActive }) =>
+          isActive
+            ? `${styles.adminNavButton} ${styles.activeLink}`
+            : styles.adminNavButton
+        }
       >
-        <div
-          className={`${styles.adminNavButton} ${
-            activeLink === 2 ? styles.activeLink : ""
-          }`}
-        >
+        <div>
           <FontAwesomeIcon
             icon={faListDots}
             size="1x"
@@ -52,16 +47,16 @@ const AdminNav = () => {
           <span className={styles.adminNavButtonText}>Reassign</span>
         </div>
       </NavLink>
+
       <NavLink
         to="schools"
-        className={styles.adminNavLink}
-        onClick={() => setActiveLink(3)}
+        className={({ isActive }) =>
+          isActive
+            ? `${styles.adminNavButton} ${styles.activeLink}`
+            : styles.adminNavButton
+        }
       >
-        <div
-          className={`${styles.adminNavButton} ${
-            activeLink === 3 ? styles.activeLink : ""
-          }`}
-        >
+        <div>
           <FontAwesomeIcon
             icon={faGraduationCap}
             size="1x"
@@ -70,16 +65,16 @@ const AdminNav = () => {
           <span className={styles.adminNavButtonText}>Schools</span>
         </div>
       </NavLink>
+
       <NavLink
         to="ets"
-        className={styles.adminNavLink}
-        onClick={() => setActiveLink(4)}
+        className={({ isActive }) =>
+          isActive
+            ? `${styles.adminNavButton} ${styles.activeLink}`
+            : styles.adminNavButton
+        }
       >
-        <div
-          className={`${styles.adminNavButton} ${
-            activeLink === 4 ? styles.activeLink : ""
-          }`}
-        >
+        <div>
           <FontAwesomeIcon
             icon={faClock}
             size="1x"
@@ -88,16 +83,16 @@ const AdminNav = () => {
           <span className={styles.adminNavButtonText}>ETS Time</span>
         </div>
       </NavLink>
+
       <NavLink
         to="delete-account"
-        className={styles.adminNavLink}
-        onClick={() => setActiveLink(5)}
+        className={({ isActive }) =>
+          isActive
+            ? `${styles.adminNavButton} ${styles.activeLink}`
+            : styles.adminNavButton
+        }
       >
-        <div
-          className={`${styles.adminNavButton} ${
-            activeLink === 5 ? styles.activeLink : ""
-          }`}
-        >
+        <div>
           <FontAwesomeIcon
             icon={faTrashCan}
             size="1x"
