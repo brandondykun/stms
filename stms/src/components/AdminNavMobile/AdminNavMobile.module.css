@@ -1,0 +1,23 @@
+.adminNavMobile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: .5rem;
+}
+
+.adminMobileLink {
+  padding: .2rem .9rem;
+  color: var(--white);
+}
+
+.activeLink {
+  color: var(--black);
+  background-color: var(--gold);
+  border-radius: 7px;
+}
+
+@media only screen and (min-width: 800px) {
+  .adminNavMobile {
+    display: none;
+  }
+}
