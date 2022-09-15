@@ -62,7 +62,7 @@ const CustomDonutChart = ({ title, filled, total }) => {
               ]
         }
       />
-      <div className="donut-text">{percentFilled?.toFixed(0)}%</div>
+      <div className="donut-text">{totalPercent?.toFixed(0)}%</div>
     </div>
   );
 };
