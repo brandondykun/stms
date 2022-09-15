@@ -1,0 +1,26 @@
+.adminSection {
+  margin: 2rem 0rem;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
+}
+
+.adminSectionTitle {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.noneAssignedText {
+  color: var(--dark-placeholder);
+  padding: .3rem;
+}
+
+@media only screen and (min-width: 500px) {
+  .adminSection {
+    margin: 2rem 1rem;
+    max-width: 500px;
+    padding: 2rem;
+  }
+}
