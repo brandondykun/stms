@@ -23,11 +23,6 @@
   text-decoration: none;
 }
 
-.activeLink {
-  background-color: var(--gold);
-  color: var(--black);
-}
-
 .buttonIconWrapper {
   width: 25px;
   text-align: center;
@@ -37,9 +32,15 @@
   padding-left: 1rem;
 }
 
+.activeLink {
+  background-color: var(--gold);
+  color: var(--black);
+}
+
 
 @media only screen and (min-width: 800px) {
   .adminNav {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
