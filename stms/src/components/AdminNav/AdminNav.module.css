@@ -1,0 +1,45 @@
+.adminNav {
+  width: 200px;
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
+  top: 0px;
+  position: fixed;
+  height: 100%;
+  z-index: 2;
+  border-right: 1px solid rgb(37, 37, 37);
+  display: none;
+}
+
+.adminNavTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--gold);
+  padding: 1rem;
+}
+
+.adminNavButton {
+  padding: 1rem;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.activeLink {
+  background-color: var(--gold);
+  color: var(--black);
+}
+
+.buttonIconWrapper {
+  width: 25px;
+  text-align: center;
+}
+
+.adminNavButtonText {
+  padding-left: 1rem;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .adminNav {
+    display: block;
+  }
+}
