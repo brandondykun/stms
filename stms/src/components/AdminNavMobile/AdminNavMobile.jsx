@@ -19,7 +19,6 @@ const AdminNavMobile = () => {
             ? `${styles.adminMobileLink} ${styles.activeLink}`
             : styles.adminMobileLink
         }
-        onClick={() => setActiveLink(1)}
       >
         <FontAwesomeIcon icon={faChartBar} size="lg" />
       </NavLink>
@@ -30,7 +29,6 @@ const AdminNavMobile = () => {
             ? `${styles.adminMobileLink} ${styles.activeLink}`
             : styles.adminMobileLink
         }
-        onClick={() => setActiveLink(2)}
       >
         <FontAwesomeIcon icon={faListDots} size="lg" />
       </NavLink>
@@ -41,7 +39,6 @@ const AdminNavMobile = () => {
             ? `${styles.adminMobileLink} ${styles.activeLink}`
             : styles.adminMobileLink
         }
-        onClick={() => setActiveLink(3)}
       >
         <FontAwesomeIcon icon={faGraduationCap} size="lg" />
       </NavLink>
@@ -52,7 +49,6 @@ const AdminNavMobile = () => {
             ? `${styles.adminMobileLink} ${styles.activeLink}`
             : styles.adminMobileLink
         }
-        onClick={() => setActiveLink(4)}
       >
         <FontAwesomeIcon icon={faClock} size="lg" />
       </NavLink>
@@ -63,7 +59,6 @@ const AdminNavMobile = () => {
             ? `${styles.adminMobileLink} ${styles.activeLink}`
             : styles.adminMobileLink
         }
-        onClick={() => setActiveLink(5)}
       >
         <FontAwesomeIcon icon={faTrashCan} size="lg" />
       </NavLink>
