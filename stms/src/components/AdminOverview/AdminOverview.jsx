@@ -1,12 +1,13 @@
-import { useUsersContext } from "../context/UsersContext";
-import CustomDonutChart from "./CustomDonutChart";
-import DlcIncompleteList from "./DlcIncompleteList";
-import PmeIncomplete from "./PmeIncomplete";
-import RifleQualFail from "./RifleQualFail";
-import AcftFail from "./AcftFail";
-import NeedLicense from "./NeedLicense";
-import Promotable from "./Promotable";
-import JfoQualified from "./JfoQualified";
+import { useUsersContext } from "../../context/UsersContext";
+import CustomDonutChart from "../CustomDonutChart";
+import DlcIncompleteList from "../DlcIncompleteList";
+import PmeIncomplete from "../PmeIncomplete";
+import RifleQualFail from "../RifleQualFail";
+import AcftFail from "../AcftFail";
+import NeedLicense from "../NeedLicense";
+import Promotable from "../Promotable";
+import JfoQualified from "../JfoQualified";
+import styles from "./AdminOverview.module.css";
 
 const AdminOverview = () => {
   const { users } = useUsersContext();
@@ -30,10 +31,10 @@ const AdminOverview = () => {
   }).length;
 
   return (
-    <div className="primary-content">
-      <div className="charts-wrapper">
-        <div className="donut-charts-wrapper">
-          <div className="donut-charts-sub-wrapper">
+    <div className={styles.primaryContent}>
+      <div className={styles.chartsWrapper}>
+        <div className={styles.donutChartsWrapper}>
+          <div className={styles.donutChartsSubWrapper}>
             <CustomDonutChart title={"TOTAL"} filled={totalCount} total={30} />
             <CustomDonutChart
               title={"STAFF"}
@@ -46,7 +47,7 @@ const AdminOverview = () => {
               total={8}
             />
           </div>
-          <div className="donut-charts-sub-wrapper">
+          <div className={styles.donutChartsSubWrapper}>
             <CustomDonutChart
               title={"BRAVO"}
               filled={bravoSectionCount}
@@ -64,7 +65,7 @@ const AdminOverview = () => {
             />
           </div>
         </div>
-        <div className="overview-lists-wrapper">
+        <div className={styles.overviewListsWrapper}>
           <DlcIncompleteList />
           <PmeIncomplete />
           <RifleQualFail />

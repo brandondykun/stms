@@ -1,0 +1,55 @@
+.primaryContent {
+  flex: 1;
+  padding: 1rem 1rem 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartsWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.donutChartsWrapper {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.donutChartsSubWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overviewListsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+@media only screen and (min-width: 800px) {
+  .chartsWrapper {
+    justify-content: left;
+  }
+}
+
+@media only screen and (min-width: 880px) {
+  .donutChartsSubWrapper {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .donutChartsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .donutChartsSubWrapper {
+    flex: 1;
+  }
+}
