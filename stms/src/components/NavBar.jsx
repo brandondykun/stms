@@ -22,16 +22,31 @@ const NavBar = () => {
     <>
       {accountInfo?.user_id && (
         <nav className="primary-nav">
-          <NavLink to="/home" className="nav-link">
+          <NavLink
+            to="/home"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             Home
           </NavLink>
 
-          <NavLink to={`/user-info/${accountInfo?.id}`} className="nav-link">
+          <NavLink
+            to={`/user-info/${accountInfo?.id}`}
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
             My Info
           </NavLink>
 
           {accountInfo?.is_staff && (
-            <NavLink to="/admin/overview" className="nav-link">
+            <NavLink
+              to="/admin/overview"
+              className={({ isActive }) =>
+                isActive ? "nav-link active" : "nav-link"
+              }
+            >
               Admin
             </NavLink>
           )}
