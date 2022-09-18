@@ -1,0 +1,13 @@
+.adminTeam {
+  margin: 1rem 0rem 2rem 0rem;
+}
+
+ .adminTeamTitle{
+  margin-bottom: .5rem;
+  color: var(--gold);
+ }
+
+.noneAssignedText {
+  color: var(--dark-placeholder);
+  padding: .3rem;
+}
