@@ -4,6 +4,8 @@ import apiCalls from "../api/apiUtils";
 import { useAuthContext } from "../context/AuthContext";
 import Logo from "../assets/fist-logo.png";
 import BarLoader from "react-spinners/BarLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +14,8 @@ const SignUpPage = () => {
   const [joinCode, setJoinCode] = useState("");
   const [error, setError] = useState();
   const [submitLoading, setSubmitLoading] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { setCurrentUser } = useAuthContext();
 
@@ -49,6 +53,14 @@ const SignUpPage = () => {
     setSubmitLoading(false);
   };
 
+  const toggleShowConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="primary-content login-page">
       <div className="image-wrapper">
@@ -71,22 +83,38 @@ const SignUpPage = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          aria-label="password"
-          type="password"
-          placeholder="password"
-          className="dark-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          aria-label="confirm password"
-          type="password"
-          placeholder="confirm password"
-          className="dark-input"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
+        <div className="input-eye-container">
+          <input
+            aria-label="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="password"
+            className="dark-input password-input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <FontAwesomeIcon
+            className="show-password-eye"
+            icon={showPassword ? faEyeSlash : faEye}
+            size="1x"
+            onClick={toggleShowPassword}
+          />
+        </div>
+        <div className="input-eye-container">
+          <input
+            aria-label="confirm password"
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="confirm password"
+            className="dark-input password-input"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          <FontAwesomeIcon
+            className="show-password-eye"
+            icon={showConfirmPassword ? faEyeSlash : faEye}
+            size="1x"
+            onClick={toggleShowConfirmPassword}
+          />
+        </div>
         <input
           aria-label="join code"
           type="text"
