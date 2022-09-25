@@ -3,12 +3,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import Logo from "../assets/fist-logo.png";
 import BarLoader from "react-spinners/BarLoader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState();
   const [submitLoading, setSubmitLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -42,6 +45,10 @@ const LoginPage = () => {
     setSubmitLoading(false);
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="primary-content login-page">
       <div className="image-wrapper">
@@ -64,14 +71,22 @@ const LoginPage = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          aria-label="password"
-          type="password"
-          placeholder="password"
-          className="dark-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="input-eye-container">
+          <input
+            aria-label="password"
+            type={showPassword ? "text" : "password"}
+            placeholder="password"
+            className="dark-input password-input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <FontAwesomeIcon
+            className="show-password-eye"
+            icon={showPassword ? faEyeSlash : faEye}
+            size="1x"
+            onClick={toggleShowPassword}
+          />
+        </div>
         <div className="form-button-container">
           <button
             className={`form-button register ${
