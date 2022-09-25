@@ -975,6 +975,24 @@ tr.red-bcg {
   color: rgb(57, 57, 57);
 }
 
+.input-eye-container {
+  position: relative;
+}
+
+.password-input {
+  width: 100%;
+}
+
+.show-password-eye {
+  position: absolute;
+    right: 5px;
+    top: 27px;
+}
+
+.show-password-eye:hover {
+  cursor: pointer;
+}
+
 
 @media only screen and (min-width: 350px) {
   .link-container {
