@@ -28,6 +28,8 @@ import DeleteSchoolPage from "./pages/DeleteSchoolPage";
 import RecommendedCommentPage from "./pages/RecommendedCommentPage";
 import EditRecommendedCommentPage from "./pages/EditRecommendedCommentPage";
 import SelfRoute from "./routes/SelfRoute";
+import TestLandingPage from "./pages/TestLandingPage";
+import ExamQuestionPage from "./pages/ExamQuestionPage/ExamQuestionPage";
 
 function App() {
   return (
@@ -83,6 +85,11 @@ function App() {
                 />
                 <Route path=":id/create" element={<AddCommentPage />} />
               </Route>
+            </Route>
+
+            <Route path="exam">
+              <Route path="landing" element={<TestLandingPage />} />
+              <Route path="question/:qid" element={<ExamQuestionPage />} />
             </Route>
           </Route>
 
