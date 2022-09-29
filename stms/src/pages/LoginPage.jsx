@@ -18,17 +18,18 @@ const LoginPage = () => {
   const handleLogIn = async (e) => {
     e.preventDefault();
     setError("");
-    setSubmitLoading(true);
-
     if (!email || !password) {
       setError("Please complete all fields.");
       return;
     }
 
+    setSubmitLoading(true);
+
     try {
       const user = await apiCalls.logIn(email, password);
       if (user.status === 400) {
         setError("Login failed. Invalid credentials.");
+        setSubmitLoading(false);
         return;
       }
       const userInfo = await apiCalls.getAccountByUserId(user.data.uid);
