@@ -40,6 +40,15 @@ const NavBar = () => {
             My Info
           </NavLink>
 
+          <NavLink
+            to={`/exam/landing`}
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Exam
+          </NavLink>
+
           {accountInfo?.is_staff && (
             <NavLink
               to="/admin/overview"
