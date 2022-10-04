@@ -28,8 +28,9 @@ import DeleteSchoolPage from "./pages/DeleteSchoolPage";
 import RecommendedCommentPage from "./pages/RecommendedCommentPage";
 import EditRecommendedCommentPage from "./pages/EditRecommendedCommentPage";
 import SelfRoute from "./routes/SelfRoute";
-import TestLandingPage from "./pages/TestLandingPage";
+import ExamLandingPage from "./pages/ExamLandingPage";
 import ExamQuestionPage from "./pages/ExamQuestionPage/ExamQuestionPage";
+import ExamResultsPage from "./pages/ExamResultsPage";
 
 function App() {
   return (
@@ -88,8 +89,12 @@ function App() {
             </Route>
 
             <Route path="exam">
-              <Route path="landing" element={<TestLandingPage />} />
-              <Route path="question/:qid" element={<ExamQuestionPage />} />
+              <Route path="landing" element={<ExamLandingPage />} />
+              <Route
+                path=":type/question/:qid"
+                element={<ExamQuestionPage />}
+              />
+              <Route path="results" element={<ExamResultsPage />} />
             </Route>
           </Route>
 
