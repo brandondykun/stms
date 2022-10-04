@@ -1,8 +1,9 @@
-.questionContainer {
+.questionTextContainer {
   padding: 1rem .5rem;
   font-size: 1.1rem;
   line-height: 1.5rem;
 }
+
 
 .optionContainer {
   padding: 1rem;
@@ -22,6 +23,22 @@
   padding: 1rem;
   background-color: rgb(37, 37, 37);
   border: 1px solid rgb(254, 195, 10);
+  margin: .8rem 0rem;
+  border-radius: 10px;
+}
+
+.optionContainerGreen {
+  padding: 1rem;
+  background-color: rgb(37, 37, 37);
+  border: 1px solid green;
+  margin: .8rem 0rem;
+  border-radius: 10px;
+}
+
+.optionContainerRed {
+  padding: 1rem;
+  background-color: rgb(37, 37, 37);
+  border: 1px solid red;
   margin: .8rem 0rem;
   border-radius: 10px;
 }
@@ -77,15 +94,32 @@
   font-size: 1.2rem;
 }
 
+.preText {
+  color: var(--gold);
+  font-size: 2rem;
+  text-align: center;
+  margin: auto;
+}
+
+.loadingContainer {
+  vertical-align: middle;
+  margin: auto;
+}
+
+.spinner {
+  text-align: center;
+  margin-top: 2rem;
+}
+
 
 
 @media only screen and (min-width: 800px) {
-  .examContainer {
+  .questionContainer {
     max-width: 800px;
-    margin: auto;
+    margin: auto; 
   }
 
-  .questionContainer {
+  .questionTextContainer {
     padding: 2rem 1rem;
   }
 }
