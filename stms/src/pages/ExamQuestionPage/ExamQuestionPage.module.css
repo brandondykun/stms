@@ -1,74 +1,17 @@
-.questionTextContainer {
-  padding: 1rem .5rem;
-  font-size: 1.1rem;
-  line-height: 1.5rem;
-}
-
-
-.optionContainer {
-  padding: 1rem;
-  border: 1px solid transparent;
-  background-color: rgb(28, 28, 28);
-  margin: .8rem 0;
-  border-radius: 10px;
-}
-
-.optionContainer:hover {
-  cursor: pointer;
-  background-color: rgb(37, 37, 37);
-  border: 1px solid rgb(37, 37, 37);
-}
-
-.optionContainerSelected {
-  padding: 1rem;
-  background-color: rgb(37, 37, 37);
-  border: 1px solid rgb(254, 195, 10);
-  margin: .8rem 0rem;
-  border-radius: 10px;
-}
-
-.optionContainerGreen {
-  padding: 1rem;
-  background-color: rgb(37, 37, 37);
-  border: 1px solid green;
-  margin: .8rem 0rem;
-  border-radius: 10px;
-}
-
-.optionContainerRed {
-  padding: 1rem;
-  background-color: rgb(37, 37, 37);
-  border: 1px solid red;
-  margin: .8rem 0rem;
-  border-radius: 10px;
-}
-
-.feedbackContainerCorrect {
-  min-height: 3.5rem;
-  padding: 1rem;
-  text-align: center;
-  font-size: 1.3rem;
-  margin-top: 2rem;
-  color: rgb(2, 166, 2);
-}
-
-.feedbackContainerIncorrect {
-  min-height: 3.5rem;
-  padding: 1rem;
-  text-align: center;
-  font-size: 1.3rem;
-  margin-top: 2rem;
-  color: red;
+.examContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
   padding-top: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
-.button {
+.screenButton {
   border: 1px solid var(--white);
   background-color: var(--black);
   color: var(--white);
@@ -76,9 +19,32 @@
   min-width: 105px;
   transition-duration: .3s;
   margin: 0 1rem;
+  font-size: .8rem !important;
+  line-height: normal !important;
 }
 
-.button:hover {
+.screenButton:hover {
+  cursor: pointer;
+  background-color: var(--gold);
+  color: var(--black);
+  transform: scale(1.1);
+  transition-duration: .3s;
+  border: 1px solid var(--black);
+}
+
+.modalButton {
+  border: 1px solid var(--white);
+  background-color: var(--black);
+  color: var(--white);
+  padding: .5rem;
+  min-width: 105px;
+  transition-duration: .3s;
+  margin: 0 1rem;
+  font-size: .8rem;
+  margin: 1rem !important;
+}
+
+.modalButton:hover {
   cursor: pointer;
   background-color: var(--gold);
   color: var(--black);
@@ -111,15 +77,67 @@
   margin-top: 2rem;
 }
 
-
-
-@media only screen and (min-width: 800px) {
-  .questionContainer {
-    max-width: 800px;
-    margin: auto; 
-  }
-
-  .questionTextContainer {
-    padding: 2rem 1rem;
-  }
+.examPrimaryContent {
+  flex: 1;
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
 }
+
+.bottomButtonContainer {
+  flex: 1;
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bottomExitButton {
+  border: none;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.bottomExitButton:hover {
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.exitText {
+  margin-left: .5rem;
+}
+
+.modalBg {
+  background-color: var(--black) !important;
+}
+
+.modalDialog {
+  border-radius: .5rem;
+  border: 1px solid var(--gold);
+  color: var(--white);
+  padding: 1rem;
+  background-color: var(--black);
+}
+
+.modalHeader {
+  background-color: var(--black) !important;
+  border-bottom: none !important;
+  border-radius: 0 !important;
+}
+
+.modalFooter {
+  /* background-color: rgb(33, 33, 33) !important; */
+  background-color: var(--black) !important;
+  border-top: none !important;
+  justify-content: center !important;
+  border-radius: 0 !important;
+}
+
+.modalBackdrop {
+  background-color: var(--black) !important;
+  opacity: .6 !important;
+}
+
+
