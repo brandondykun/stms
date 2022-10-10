@@ -6,6 +6,10 @@ import styles from "./ExamQuestionPage.module.css";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
 import PulseLoader from "react-spinners/BeatLoader";
+import Modal from "react-bootstrap/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
+import ExamQuestionContainer from "../../components/ExamQuestionContainer/ExamQuestionContainer";
 
 const ExamQuestionPage = () => {
   const [questions, setQuestions] = useState(null);
@@ -14,6 +18,7 @@ const ExamQuestionPage = () => {
   const [answerSubmitted, setAnswerSubmitted] = useState(false);
   const [questionComplete, setQuestionComplete] = useState(false);
   const [pending, setPending] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const { type, qid } = useParams();
 
@@ -26,16 +31,17 @@ const ExamQuestionPage = () => {
   useEffect(() => {
     if (localStorage.getItem("questions") === null) {
       setPending(true);
+      const environment = import.meta.env.VITE_ENVIRONMENT;
       setTimeout(() => {
         apiCalls.getQuestions().then((res) => {
           if (res.status === 200) {
-            // randomize the order of the questions
-            const randomOrderArray = res.data.sort(() => 0.5 - Math.random());
-            console.log("RANDOM ORDER ARRAY: ", randomOrderArray);
+            let questionArray = res.data.sort((a, b) => a.id - b.id);
+            // randomize the order of the questions if in prod
+            if (environment !== "dev") {
+              questionArray = res.data.sort(() => 0.5 - Math.random());
+            }
             const finalQuestions =
-              type === "quick-ten"
-                ? randomOrderArray.slice(0, 10)
-                : randomOrderArray;
+              type === "quick-ten" ? questionArray.slice(0, 10) : questionArray;
             localStorage.setItem("questions", JSON.stringify(finalQuestions));
             setQuestions(finalQuestions);
             setPending(false);
@@ -52,6 +58,7 @@ const ExamQuestionPage = () => {
     setAnswerCorrect(false);
     setSelectedAnswer(null);
     setQuestionComplete(false);
+    window.scrollTo(0, 0);
   }, [qid, questions]);
 
   const handleSelect = (option) => {
@@ -63,15 +70,19 @@ const ExamQuestionPage = () => {
 
   const handleSubmit = () => {
     setAnswerSubmitted(true);
+    const activeIndex = questions.indexOf(activeQuestion);
+
     if (!activeQuestion.guess) {
-      activeQuestion.guess = selectedAnswer;
-      localStorage.setItem("questions", JSON.stringify(questions));
+      const questionsCopy = [...questions];
+      questionsCopy[activeIndex].guess = selectedAnswer;
+      localStorage.setItem("questions", JSON.stringify(questionsCopy));
     }
     if (selectedAnswer === activeQuestion.answer_text) {
       setQuestionComplete(true);
-      activeQuestion.complete = true;
-      localStorage.setItem("questions", JSON.stringify(questions));
       setAnswerCorrect(true);
+      const questionsCopy = [...questions];
+      questionsCopy[activeIndex].complete = true;
+      localStorage.setItem("questions", JSON.stringify(questionsCopy));
     } else {
       setAnswerCorrect(false);
     }
@@ -84,110 +95,90 @@ const ExamQuestionPage = () => {
   };
 
   const handleTestFinish = () => {
+    window.scrollTo(0, 0);
     navigate("/exam/results");
   };
 
-  // Determine the class name for the option container to display the border correctly
-  const getClassName = (opt) => {
-    let conditionalClass =
-      selectedAnswer === opt
-        ? styles.optionContainerSelected
-        : styles.optionContainer;
-    if (answerSubmitted) {
-      if (opt === selectedAnswer) {
-        if (opt === activeQuestion.answer_text) {
-          conditionalClass = styles.optionContainerGreen;
-        } else {
-          conditionalClass = styles.optionContainerRed;
-        }
-      }
-    }
-    return conditionalClass;
+  const handleExamExit = () => {
+    localStorage.removeItem("questions");
+    navigate("/home");
   };
 
   return (
-    <div className="primary-content">
-      {/* {console.log("questions: ", questions)} */}
-      {activeQuestion ? (
-        <div className={styles.examContainer}>
-          <h1 className={styles.pageTitle}>
-            Question {Number(qid) + 1} of {questions && questions.length}
-          </h1>
+    <>
+      <Modal
+        show={showModal}
+        dialogClassName={styles.modalDialog}
+        size="lg"
+        onHide={() => setShowModal(false)}
+        backdropClassName={styles.modalBackdrop}
+      >
+        <Modal.Header
+          closeButton
+          className={styles.modalHeader}
+          closeVariant="white"
+        >
+          <Modal.Title>Giving up already??</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className={styles.modalBg}>
+          You are about to exit the exam, and your progress will not be saved.
+          Are you sure you want to do this?
+        </Modal.Body>
+        <Modal.Footer className={styles.modalFooter}>
+          <button
+            className={styles.modalButton}
+            onClick={() => setShowModal(false)}
+          >
+            Continue Exam
+          </button>
+          <button className={styles.modalButton} onClick={handleExamExit}>
+            Exit Exam
+          </button>
+        </Modal.Footer>
+      </Modal>
+      <div className={styles.examPrimaryContent}>
+        {activeQuestion ? (
+          <div className={styles.examContainer}>
+            <h1 className={styles.pageTitle}>
+              Question {Number(qid) + 1} of {questions && questions.length}
+            </h1>
 
-          <div className={styles.questionContainer}>
-            <div className={styles.questionTextContainer}>
-              {activeQuestion.question}
-            </div>
-            {activeQuestion.options.map((option) => {
-              return (
-                <div
-                  key={option}
-                  className={getClassName(option)}
-                  onClick={() => handleSelect(option)}
-                >
-                  {option}
-                </div>
-              );
-            })}
-            <div
-              className={
-                answerCorrect
-                  ? styles.feedbackContainerCorrect
-                  : styles.feedbackContainerIncorrect
-              }
-            >
-              {!answerSubmitted
-                ? null
-                : answerCorrect
-                ? "Correct"
-                : "Incorrect. Try again."}
-            </div>
-            <div className={styles.buttonContainer}>
+            <ExamQuestionContainer
+              key={qid}
+              activeQuestion={activeQuestion}
+              answerCorrect={answerCorrect}
+              answerSubmitted={answerSubmitted}
+              handleNextClick={handleNextClick}
+              handleSelect={handleSelect}
+              handleSubmit={handleSubmit}
+              handleTestFinish={handleTestFinish}
+              qid={qid}
+              questions={questions}
+              selectedAnswer={selectedAnswer}
+            />
+
+            <div className={styles.bottomButtonContainer}>
               <button
-                onClick={handleSubmit}
-                className={styles.button}
-                disabled={
-                  !selectedAnswer
-                    ? true
-                    : answerSubmitted
-                    ? true
-                    : answerCorrect
-                }
+                className={styles.bottomExitButton}
+                onClick={() => setShowModal(true)}
               >
-                Submit
+                <FontAwesomeIcon icon={faCircleXmark} size="sm" />{" "}
+                <span className={styles.exitText}>Exit Exam</span>
               </button>
-              {qid < questions.length - 1 && (
-                <button
-                  className={styles.button}
-                  disabled={!answerCorrect}
-                  onClick={handleNextClick}
-                >
-                  Next Question
-                </button>
-              )}
-              {qid == questions.length - 1 && (
-                <button
-                  className={styles.button}
-                  disabled={!answerCorrect}
-                  onClick={handleTestFinish}
-                >
-                  View Results
-                </button>
-              )}
             </div>
           </div>
-        </div>
-      ) : pending ? (
-        <div className={styles.loadingContainer}>
-          <div className={styles.preText}>
-            Okay {accountInfo.last_name}. Let's see what you got.
+        ) : pending ? (
+          <div className={styles.loadingContainer}>
+            <div className={styles.preText}>
+              Okay {accountInfo.last_name}. Let's see what you got.
+            </div>
+            <div className={styles.spinner}>
+              <PulseLoader color={"#FEC30A"} loading={pending} size={20} />
+            </div>
           </div>
-          <div className={styles.spinner}>
-            <PulseLoader color={"#FEC30A"} loading={pending} size={20} />
-          </div>
-        </div>
-      ) : null}
-    </div>
+        ) : null}
+      </div>
+    </>
   );
 };
 
