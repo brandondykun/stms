@@ -37,6 +37,10 @@
   color: var(--black);
 }
 
+.activeLink:hover {
+  color: var(--black);
+}
+
 
 @media only screen and (min-width: 800px) {
   .adminNav {
