@@ -104,3 +104,11 @@
   transition-duration: .3s;
   border: 1px solid var(--black);
 }
+
+/* @media only screen and (min-width: 800px) {
+  .textAndButtonContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+} */
