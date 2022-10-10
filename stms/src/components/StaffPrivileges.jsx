@@ -11,6 +11,7 @@ import {
 import { useAuthContext } from "../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { AnimatePresence, motion } from "framer-motion";
 
 const StaffPrivileges = () => {
   const [inputUserId, setInputUserId] = useState("");
@@ -42,6 +43,7 @@ const StaffPrivileges = () => {
             .concat(updatedCurrentUser);
           setUsers(updatedUsers);
           setExpand(false);
+          setInputUserId("");
         }
       })
       .catch((err) => console.error(err));
@@ -152,28 +154,39 @@ const StaffPrivileges = () => {
         </div>
       </div>
       <div className="padding-t-10">
-        {staffUsers &&
-          staffUsers.map((user) => {
-            return (
-              <div
-                key={user.id}
-                className="staff-user-name flex-space-between padding-b-10"
-              >
-                <div className={`${expand ? "greyed-out-text" : ""}`}>
-                  {user.rank} {user.last_name}
-                </div>
-                {user.id !== accountInfo.id && (
-                  <button
-                    onClick={() => handleRemoveSubmit(user.id)}
-                    className="assign-form-button"
-                    disabled={expand}
+        {staffUsers && (
+          <AnimatePresence mode="sync">
+            {staffUsers.map((user) => {
+              return (
+                <motion.div
+                  layout
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.8, opacity: 0 }}
+                  transition={{ type: "spring" }}
+                  key={user.id}
+                >
+                  <div
+                    key={user.id}
+                    className="staff-user-name flex-space-between padding-b-10"
                   >
-                    Remove
-                  </button>
-                )}
-              </div>
-            );
-          })}
+                    <div className={`${expand ? "greyed-out-text" : ""}`}>
+                      {user.rank} {user.last_name}
+                    </div>
+                    {user.id !== accountInfo.id && (
+                      <button
+                        onClick={() => handleRemoveSubmit(user.id)}
+                        className="assign-form-button"
+                        disabled={expand}
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        )}
       </div>
     </div>
   );
