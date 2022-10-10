@@ -71,7 +71,7 @@ const UserInfo = () => {
               className="comments-link fit-link inline"
             >
               <div className="edit-button-container">
-                Edit Info
+                <span id="edit-info-link">Edit Info</span>
                 <span className="icon-margin-left">
                   <FontAwesomeIcon icon={faPen} size="xs" />
                 </span>
@@ -80,49 +80,82 @@ const UserInfo = () => {
           )}
           <div className="sections-row">
             <div className="section-container info-container">
-              <h2 className="section-title info-title">Name/Rank</h2>
-              <div>First Name: {user.first_name}</div>
-              <div>Middle Name: {user.middle_name}</div>
-              <div>Last Name: {user.last_name}</div>
-              <div>Rank: {user.rank}</div>
-              <div>Grade: {user.grade}</div>
-              <div>JFO Qualified: {user.jfo_qualified ? "Yes" : "No"}</div>
+              <h2 id="name-rank-title" className="section-title info-title">
+                Name/Rank
+              </h2>
+              <div data-cy="first-name">First Name: {user.first_name}</div>
+              <div data-cy="middle-name">Middle Name: {user.middle_name}</div>
+              <div data-cy="last-name">Last Name: {user.last_name}</div>
+              <div data-cy="rank">Rank: {user.rank}</div>
+              <div data-cy="grade">Grade: {user.grade}</div>
+              <div data-cy="jfo">
+                JFO Qualified: {user.jfo_qualified ? "Yes" : "No"}
+              </div>
             </div>
             <div className="section-container info-container">
-              <h2 className="section-title info-title">Assignment/Scores</h2>
-              <div>Section: {user.section}</div>
-              <div>Team: {user.team}</div>
-              <div>Role: {user.role}</div>
-              <div>ACFT Score: {user.acft_score}</div>
-              <div>ACFT Pass: {user.acft_pass ? "Yes" : "No"}</div>
-              <div>M4 Qual Score: {user.m4_qual}</div>
+              <h2
+                id="assignment-scores-title"
+                className="section-title info-title"
+              >
+                Assignment/Scores
+              </h2>
+              <div data-cy="section">Section: {user.section}</div>
+              <div data-cy="team">Team: {user.team}</div>
+              <div data-cy="role">Role: {user.role}</div>
+              <div data-cy="acft-score">ACFT Score: {user.acft_score}</div>
+              <div data-cy="acft-pass">
+                ACFT Pass: {user.acft_pass ? "Yes" : "No"}
+              </div>
+              <div data-cy="m4-score">M4 Qual Score: {user.m4_qual}</div>
             </div>
           </div>
           <div className="sections-row">
             <div className="section-container info-container">
-              <h2 className="section-title info-title">Dates</h2>
-              <div>PEBD: {payEntryBaseDate.format("MM/DD/YYYY")}</div>
-              <div>TIS: {formattedTimeInService}</div>
-              <div>DOR: {dateOfRank.format("MM/DD/YYYY")}</div>
-              <div>TIG: {formattedTimeInGrade}</div>
-              <div>ETS: {etsDate.format("MM/DD/YYYY")}</div>
-              <div>ETS In: {formattedEtsDiff}</div>
+              <h2 id="dates-title" className="section-title info-title">
+                Dates
+              </h2>
+              <div data-cy="pebd">
+                PEBD: {payEntryBaseDate.format("MM/DD/YYYY")}
+              </div>
+              <div data-cy="tis">TIS: {formattedTimeInService}</div>
+              <div data-cy="dor">DOR: {dateOfRank.format("MM/DD/YYYY")}</div>
+              <div data-cy="tig">TIG: {formattedTimeInGrade}</div>
+              <div data-cy="ets">ETS: {etsDate.format("MM/DD/YYYY")}</div>
+              <div data-cy="ets-in">ETS In: {formattedEtsDiff}</div>
             </div>
             <div className="section-container info-container">
-              <h2 className="section-title info-title">Military Education</h2>
-              <div>DLC 1 Complete: {user.dlc_1_complete ? "Yes" : "No"}</div>
-              <div>BLC Complete: {user.blc_complete ? "Yes" : "No"}</div>
-              <div>DLC 2 Complete: {user.dlc_2_complete ? "Yes" : "No"}</div>
-              <div>ALC Complete: {user.alc_complete ? "Yes" : "No"}</div>
-              <div>DLC 3 Complete: {user.dlc_3_complete ? "Yes" : "No"}</div>
-              <div>SLC Complete: {user.slc_complete ? "Yes" : "No"}</div>
-              <div>Drivers License: {user.drivers_license ? "Yes" : "No"}</div>
+              <h2 id="education-title" className="section-title info-title">
+                Military Education
+              </h2>
+              <div data-cy="dlc-1">
+                DLC 1 Complete: {user.dlc_1_complete ? "Yes" : "No"}
+              </div>
+              <div data-cy="blc">
+                BLC Complete: {user.blc_complete ? "Yes" : "No"}
+              </div>
+              <div data-cy="dlc-2">
+                DLC 2 Complete: {user.dlc_2_complete ? "Yes" : "No"}
+              </div>
+              <div data-cy="alc">
+                ALC Complete: {user.alc_complete ? "Yes" : "No"}
+              </div>
+              <div data-cy="dlc-3">
+                DLC 3 Complete: {user.dlc_3_complete ? "Yes" : "No"}
+              </div>
+              <div data-cy="slc">
+                SLC Complete: {user.slc_complete ? "Yes" : "No"}
+              </div>
+              <div data-cy="license">
+                Drivers License: {user.drivers_license ? "Yes" : "No"}
+              </div>
             </div>
           </div>
           <div className="sections-row">
             <div className="section-container info-container">
               <div className="flex flex-space-between flex-align-center underline-white margin-b-05">
-                <h2 className="font-size-md color-gold">Scheduled Schools</h2>
+                <h2 id="schools-title" className="font-size-md color-gold">
+                  Scheduled Schools
+                </h2>
                 {(accountInfo?.is_staff || accountInfo?.id === id) && (
                   <Link to={`/user-info/${id}/add-school`}>
                     <div className="color-white italic hover-gold hover-underline">
