@@ -38,15 +38,25 @@ const ExamResultsPage = () => {
         {(percent * 100).toFixed(0)}%
       </div>
 
-      {incorrectQuestions?.length > 0 ? (
-        <div className={styles.questionsTitle}>
-          Here are the questions you need to work on:
-        </div>
-      ) : (
-        <div className={styles.resultsSummaryText}>
-          Good work. You made that look easy.
-        </div>
-      )}
+      <div className={styles.textAndButtonContainer}>
+        {incorrectQuestions?.length > 0 && (
+          <div className={styles.buttonContainer}>
+            <button onClick={handleExit} className={styles.button}>
+              Exit Exam
+            </button>
+          </div>
+        )}
+
+        {incorrectQuestions?.length > 0 ? (
+          <div className={styles.questionsTitle}>
+            Here are the questions you need to work on:
+          </div>
+        ) : (
+          <div className={styles.resultsSummaryText}>
+            Good work. You made that look easy.
+          </div>
+        )}
+      </div>
       {incorrectQuestions?.map((question) => {
         return (
           <div className={styles.container} key={question.id}>
