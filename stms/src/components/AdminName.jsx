@@ -19,6 +19,7 @@ const AdminName = ({ user }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setExpand(false);
     const newUserInfo = {
       ...userInfo,
       unit_position: utils.assignUnitPosition(userInfo),
@@ -30,9 +31,10 @@ const AdminName = ({ user }) => {
           const updated = users.filter((u) => {
             return u.id !== user.id;
           });
-          setUsers([...updated, { ...newUserInfo }]);
-          setExpand(false);
-          setActive("");
+          setTimeout(() => {
+            setUsers([...updated, { ...newUserInfo }]);
+            setActive("");
+          }, 700);
         }
       })
       .catch((error) => console.error(error));
