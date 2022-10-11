@@ -110,7 +110,8 @@
 }
 
 .modalBg {
-  background-color: var(--black) !important;
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
 }
 
 .modalDialog {
@@ -118,18 +119,20 @@
   border: 1px solid var(--gold);
   color: var(--white);
   padding: 1rem;
-  background-color: var(--black);
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
 }
 
 .modalHeader {
-  background-color: var(--black) !important;
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
   border-bottom: none !important;
   border-radius: 0 !important;
 }
 
 .modalFooter {
-  /* background-color: rgb(33, 33, 33) !important; */
-  background-color: var(--black) !important;
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
   border-top: none !important;
   justify-content: center !important;
   border-radius: 0 !important;
