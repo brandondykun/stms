@@ -32,7 +32,7 @@ const ExamLandingPage = () => {
   return (
     <div className="primary-content">
       <h1 className="page-title">FIST Written Exam Practice Test</h1>
-      <div className={styles.descriptionText}>
+      <div data-cy="exam-paragraph" className={styles.descriptionText}>
         You are about to start a practice FIST Certification written exam. You
         have unlimited guesses for each question, but if you get the question
         wrong on the first guess, it will be counted as an incorrect answer in
@@ -40,7 +40,7 @@ const ExamLandingPage = () => {
         missed in the results section. This test is for you to practice, and the
         results will not be shared with your leadership.
       </div>
-      <div className={styles.startText}>
+      <div data-cy="exam-start-text" className={styles.startText}>
         {!testHasBeenStarted
           ? "Click the Start button below to start the Full exam."
           : "You currently have an exam in progress. Click the Resume button below to continue."}
@@ -50,25 +50,28 @@ const ExamLandingPage = () => {
           onClick={() => {
             navigate(-1);
           }}
+          data-cy="back-button"
           className="form-button login"
         >
           Back
         </button>
 
         <Link to={`/exam/${testType}/question/${firstIncompleteIndex}`}>
-          <button className="form-button login">
+          <button data-cy="start-resume-button" className="form-button login">
             {!testHasBeenStarted ? "Start" : "Resume"}
           </button>
         </Link>
       </div>
       {!testHasBeenStarted && (
         <div>
-          <div className={styles.startText}>
+          <div data-cy="quick-10-text" className={styles.startText}>
             Don't want to do a full test? Hit a quick 10 random questions.
           </div>
           <div className="form-button-container">
             <Link to={`/exam/quick-ten/question/${firstIncompleteIndex}`}>
-              <button className="form-button login">Quick 10</button>
+              <button data-cy="quick-10-button" className="form-button login">
+                Quick 10
+              </button>
             </Link>
           </div>
         </div>
