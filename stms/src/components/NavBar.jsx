@@ -24,6 +24,7 @@ const NavBar = () => {
         <nav className="primary-nav">
           <NavLink
             to="/home"
+            data-cy="nav-bar-home"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -33,6 +34,7 @@ const NavBar = () => {
 
           <NavLink
             to={`/user-info/${accountInfo?.id}`}
+            data-cy="nav-bar-my-info"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -42,6 +44,7 @@ const NavBar = () => {
 
           <NavLink
             to={`/exam/landing`}
+            data-cy="nav-bar-exam"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -52,6 +55,7 @@ const NavBar = () => {
           {accountInfo?.is_staff && (
             <NavLink
               to="/admin/overview"
+              data-cy="nav-bar-admin"
               className={({ isActive }) =>
                 isActive ? "nav-link active" : "nav-link"
               }
@@ -60,7 +64,7 @@ const NavBar = () => {
             </NavLink>
           )}
 
-          <div className="nav-link" onClick={logOut}>
+          <div className="nav-link" data-cy="nav-bar-sign-out" onClick={logOut}>
             Sign Out
           </div>
         </nav>
