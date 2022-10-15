@@ -42,13 +42,18 @@ const ExamQuestionContainer = ({
   }, [opacityState]);
 
   return (
-    <div className={styles.questionContainer} style={{ opacity: opacityState }}>
-      <div className={styles.questionTextContainer}>
+    <div
+      data-cy="question-container"
+      className={styles.questionContainer}
+      style={{ opacity: opacityState }}
+    >
+      <div data-cy="question-text" className={styles.questionTextContainer}>
         {activeQuestion.question}
       </div>
-      {activeQuestion.options.map((option) => {
+      {activeQuestion.options.map((option, index) => {
         return (
           <div
+            data-cy={`option-${index}`}
             key={option}
             className={getClassName(option)}
             onClick={() => handleSelect(option)}
@@ -58,6 +63,7 @@ const ExamQuestionContainer = ({
         );
       })}
       <div
+        data-cy="feedback-text"
         className={
           answerCorrect
             ? styles.feedbackContainerCorrect
@@ -72,6 +78,7 @@ const ExamQuestionContainer = ({
       </div>
       <div className={styles.buttonContainer}>
         <button
+          data-cy="submit-button"
           onClick={handleSubmit}
           className={styles.screenButton}
           disabled={
@@ -82,6 +89,7 @@ const ExamQuestionContainer = ({
         </button>
         {qid < questions.length - 1 && (
           <button
+            data-cy="next-button"
             className={styles.screenButton}
             disabled={!answerCorrect}
             onClick={handleNextClick}
@@ -91,6 +99,7 @@ const ExamQuestionContainer = ({
         )}
         {qid == questions.length - 1 && (
           <button
+            data-cy="results-button"
             className={styles.screenButton}
             disabled={!answerCorrect}
             onClick={handleTestFinish}
