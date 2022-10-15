@@ -1,0 +1,24 @@
+.pageNameTitle {
+  color: var(--gold);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.errorText {
+  text-align: center;
+  color: rgb(190, 13, 13);
+}
+
+@media only screen and (min-width: 500px) {
+  .pageNameTitle {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+.pageNameTitle {
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+}
+}
