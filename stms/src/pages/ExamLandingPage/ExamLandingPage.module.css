@@ -1,0 +1,12 @@
+.descriptionText {
+  max-width: 800px;
+  margin: 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.5rem;
+}
+
+.startText {
+  font-size: 1.2rem;
+  text-align: center;
+  padding-top: 2rem;
+}

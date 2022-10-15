@@ -23,6 +23,7 @@ const apiCalls = {};
 const usersCollection = collection(db, "users");
 const commentsCollection = collection(db, "comments");
 const joinCodeCollection = collection(db, "joinCode");
+const questionsCollection = collection(db, "questions");
 
 apiCalls.getAllUsers = async () => {
   try {
@@ -199,6 +200,19 @@ apiCalls.editComment = async (id, data) => {
     const commentRef = doc(db, "comments", id);
     const res = await updateDoc(commentRef, data);
     return { status: 200, data: res };
+  } catch (error) {
+    return { status: 400, error };
+  }
+};
+
+apiCalls.getQuestions = async () => {
+  try {
+    const questions = await getDocs(questionsCollection);
+    const questionsList = questions.docs.map((q) => ({
+      ...q.data(),
+      id: q.id,
+    }));
+    return { status: 200, data: questionsList };
   } catch (error) {
     return { status: 400, error };
   }

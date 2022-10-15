@@ -1,22 +1,49 @@
 :root {
-  --white: rgb(193, 193, 193);
-  --gold: rgb(254, 195, 10);
-  --button-disabled: rgba(193, 193, 193, 0.5);
   --black: rgb(0,0,0);
-  --dark-placeholder: rgb(59, 59, 59);
+  --button-disabled: rgba(193, 193, 193, 0.5);
   --dark-background: rgb(18, 18, 18);
-  --dark-linear-gradient: linear-gradient(90deg, rgb(30, 30, 30), rgb(21, 21, 21))
+  --dark-linear-gradient: linear-gradient(90deg, rgb(30, 30, 30), rgb(21, 21, 21));
+  --dark-placeholder: rgb(59, 59, 59);
+  --gold: rgb(254, 195, 10);
+  --white: rgb(193, 193, 193);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
   box-sizing: border-box;
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+button {
+  line-height: normal;
+  font-size: .8rem;
+}
+
+ul {
+  padding-left: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--white);
 }
 
 input {
@@ -432,6 +459,10 @@ button:disabled:hover {
   background: var(--dark-linear-gradient);
 }
 
+.admin-section.expand-container {
+  transition: height 2s linear;
+}
+
 .admin-section-title {
   margin-bottom: 1rem;
   text-align: center;
@@ -784,22 +815,20 @@ tr.red-bcg {
 .select-custom-icon-reassign {
   width: fit-content;
   position: relative;
-  top: -35px;
+  top: -38px;
   left: 85%;
   margin-right: .3rem;
   margin-bottom: -20px;
-  background-color: rgb(25, 25, 25);
   pointer-events: none;
 }
 
 .select-custom-icon-privileges {
   width: fit-content;
   position: relative;
-  top: -22px;
+  top: -28px;
   right: -85px;
   margin-right: .3rem;
   margin-bottom: -20px;
-  background-color: rgb(25, 25, 25);
   pointer-events: none;
 }
 
@@ -1117,9 +1146,9 @@ tr.red-bcg {
   flex-direction: row;
   }
 
-  .expand-contract {
+  /* .expand-contract {
     margin-top: -100px;
-  }
+  } */
 }
 
 

@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
@@ -28,6 +29,9 @@ import DeleteSchoolPage from "./pages/DeleteSchoolPage";
 import RecommendedCommentPage from "./pages/RecommendedCommentPage";
 import EditRecommendedCommentPage from "./pages/EditRecommendedCommentPage";
 import SelfRoute from "./routes/SelfRoute";
+import ExamLandingPage from "./pages/ExamLandingPage";
+import ExamQuestionPage from "./pages/ExamQuestionPage/ExamQuestionPage";
+import ExamResultsPage from "./pages/ExamResultsPage";
 
 function App() {
   return (
@@ -83,6 +87,15 @@ function App() {
                 />
                 <Route path=":id/create" element={<AddCommentPage />} />
               </Route>
+            </Route>
+
+            <Route path="exam">
+              <Route path="landing" element={<ExamLandingPage />} />
+              <Route
+                path=":type/question/:qid"
+                element={<ExamQuestionPage />}
+              />
+              <Route path="results" element={<ExamResultsPage />} />
             </Route>
           </Route>
 

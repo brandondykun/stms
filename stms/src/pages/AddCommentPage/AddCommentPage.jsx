@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import apiCalls from "../api/apiUtils";
-import { useAuthContext } from "../context/AuthContext";
-import utils from "../utils/utils";
-import CommentForm from "../components/CommentForm";
+import apiCalls from "../../api/apiUtils";
+import { useAuthContext } from "../../context/AuthContext";
+import utils from "../../utils/utils";
+import CommentForm from "../../components/CommentForm";
+import styles from "./AddCommentPage.module.css";
 
 const formTemplate = {
   category: "CHARACTER",
@@ -55,14 +56,14 @@ const AddCommentPage = () => {
 
   return (
     <div className="primary-content">
-      <h1 className="page-title name-title">Add Comment</h1>
+      <h1 className={styles.pageNameTitle}>Add Comment</h1>
       <CommentForm
         formInputs={formInputs}
         setFormInputs={setFormInputs}
         handleSubmit={handleSubmit}
         loading={submitLoading}
       />
-      {error && <div className="error-text">{error}</div>}
+      {error && <div className={styles.errorText}>{error}</div>}
     </div>
   );
 };

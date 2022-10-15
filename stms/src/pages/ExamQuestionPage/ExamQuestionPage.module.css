@@ -1,0 +1,146 @@
+.examContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.screenButton {
+  border: 1px solid var(--white);
+  background-color: var(--black);
+  color: var(--white);
+  padding: .5rem;
+  min-width: 105px;
+  transition-duration: .3s;
+  margin: 0 1rem;
+  font-size: .8rem !important;
+  line-height: normal !important;
+}
+
+.screenButton:hover {
+  cursor: pointer;
+  background-color: var(--gold);
+  color: var(--black);
+  transform: scale(1.1);
+  transition-duration: .3s;
+  border: 1px solid var(--black);
+}
+
+.modalButton {
+  border: 1px solid var(--white);
+  background-color: var(--black);
+  color: var(--white);
+  padding: .5rem;
+  min-width: 105px;
+  transition-duration: .3s;
+  margin: 0 1rem;
+  font-size: .8rem;
+  margin: 1rem !important;
+}
+
+.modalButton:hover {
+  cursor: pointer;
+  background-color: var(--gold);
+  color: var(--black);
+  transform: scale(1.1);
+  transition-duration: .3s;
+  border: 1px solid var(--black);
+}
+
+.pageTitle {
+  color: var(--gold);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.preText {
+  color: var(--gold);
+  font-size: 2rem;
+  text-align: center;
+  margin: auto;
+}
+
+.loadingContainer {
+  vertical-align: middle;
+  margin: auto;
+}
+
+.spinner {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.examPrimaryContent {
+  flex: 1;
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottomButtonContainer {
+  flex: 1;
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bottomExitButton {
+  border: none;
+  background-color: transparent;
+  color: var(--white);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.bottomExitButton:hover {
+  color: var(--gold);
+  cursor: pointer;
+}
+
+.exitText {
+  margin-left: .5rem;
+}
+
+.modalBg {
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
+}
+
+.modalDialog {
+  border-radius: .5rem;
+  border: 1px solid var(--gold);
+  color: var(--white);
+  padding: 1rem;
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
+}
+
+.modalHeader {
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
+  border-bottom: none !important;
+  border-radius: 0 !important;
+}
+
+.modalFooter {
+  background-color: var(--dark-background);
+  background: var(--dark-linear-gradient);
+  border-top: none !important;
+  justify-content: center !important;
+  border-radius: 0 !important;
+}
+
+.modalBackdrop {
+  background-color: var(--black) !important;
+  opacity: .6 !important;
+}
+
+

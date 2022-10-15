@@ -5,6 +5,7 @@ import Logo from "../assets/fist-logo.png";
 import BarLoader from "react-spinners/BarLoader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { useAuthContext } from "../context/AuthContext"; // added this
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+  const { setAccountInfo } = useAuthContext(); // added this
 
   const handleLogIn = async (e) => {
     e.preventDefault();
@@ -37,6 +39,7 @@ const LoginPage = () => {
       if (userInfo.found === false) {
         navigate(`/create-account/${user.data.uid}`);
       } else if (userInfo.found === true) {
+        setAccountInfo(userInfo.data);
         navigate("/home");
       }
     } catch (error) {
