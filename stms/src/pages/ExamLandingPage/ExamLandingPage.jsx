@@ -23,6 +23,7 @@ const ExamLandingPage = () => {
 
     if (firstIndex === -1) {
       localStorage.removeItem("questions");
+      testType = "full-exam";
     } else {
       firstIncompleteIndex = firstIndex;
       testHasBeenStarted = true;
