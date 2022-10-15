@@ -108,6 +108,7 @@ const ExamQuestionPage = () => {
     <>
       <Modal
         show={showModal}
+        data-cy="main-modal"
         dialogClassName={styles.modalDialog}
         size="lg"
         onHide={() => setShowModal(false)}
@@ -126,12 +127,17 @@ const ExamQuestionPage = () => {
         </Modal.Body>
         <Modal.Footer className={styles.modalFooter}>
           <button
+            data-cy="modal-continue-button"
             className={styles.modalButton}
             onClick={() => setShowModal(false)}
           >
             Continue Exam
           </button>
-          <button className={styles.modalButton} onClick={handleExamExit}>
+          <button
+            data-cy="modal-exit-button"
+            className={styles.modalButton}
+            onClick={handleExamExit}
+          >
             Exit Exam
           </button>
         </Modal.Footer>
@@ -139,7 +145,7 @@ const ExamQuestionPage = () => {
       <div className={styles.examPrimaryContent}>
         {activeQuestion ? (
           <div className={styles.examContainer}>
-            <h1 className={styles.pageTitle}>
+            <h1 data-cy="question-number-message" className={styles.pageTitle}>
               Question {Number(qid) + 1} of {questions && questions.length}
             </h1>
 
@@ -159,6 +165,7 @@ const ExamQuestionPage = () => {
 
             <div className={styles.bottomButtonContainer}>
               <button
+                data-cy="exit-exam-button"
                 className={styles.bottomExitButton}
                 onClick={() => setShowModal(true)}
               >
@@ -168,7 +175,7 @@ const ExamQuestionPage = () => {
             </div>
           </div>
         ) : pending ? (
-          <div className={styles.loadingContainer}>
+          <div data-cy="loading-display" className={styles.loadingContainer}>
             <div className={styles.preText}>
               Okay {accountInfo.last_name}. Let's see what you got.
             </div>
