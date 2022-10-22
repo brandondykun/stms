@@ -30,6 +30,7 @@ const LoginPage = () => {
     try {
       const user = await apiCalls.logIn(email, password);
       if (user.status === 400) {
+        setSubmitLoading(false);
         setError("Login failed. Invalid credentials.");
         return;
       }
