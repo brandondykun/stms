@@ -4,43 +4,35 @@ import { describe, expect, it } from "vitest";
 
 describe("#isStaff", () => {
   it("returns true for E6", () => {
-    expect(utils.isStaff("E6")).toBe(true);
+    expect(utils.isStaff("BN FSO")).toBe(true);
   });
 
   it("returns true for E7", () => {
-    expect(utils.isStaff("E7")).toBe(true);
+    expect(utils.isStaff("BN FSNCO")).toBe(true);
   });
 
   it("returns true for O1", () => {
-    expect(utils.isStaff("O1")).toBe(true);
+    expect(utils.isStaff("CO FSO")).toBe(true);
   });
 
   it("returns true for O2", () => {
-    expect(utils.isStaff("O2")).toBe(true);
-  });
-
-  it("returns true for O3", () => {
-    expect(utils.isStaff("O3")).toBe(true);
+    expect(utils.isStaff("CO FSNCO")).toBe(true);
   });
 
   it("returns false for E1", () => {
-    expect(utils.isStaff("E1")).toBe(false);
+    expect(utils.isStaff("AFATDS")).toBe(false);
   });
 
   it("returns false for E2", () => {
-    expect(utils.isStaff("E2")).toBe(false);
+    expect(utils.isStaff("FO")).toBe(false);
   });
 
   it("returns false for E3", () => {
-    expect(utils.isStaff("E3")).toBe(false);
+    expect(utils.isStaff("RTO")).toBe(false);
   });
 
   it("returns false for E4", () => {
-    expect(utils.isStaff("E4")).toBe(false);
-  });
-
-  it("returns false for E5", () => {
-    expect(utils.isStaff("E5")).toBe(false);
+    expect(utils.isStaff("BN FO")).toBe(false);
   });
 });
 

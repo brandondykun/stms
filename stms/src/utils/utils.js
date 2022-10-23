@@ -3,13 +3,17 @@ import dayjs from "dayjs";
 
 const utils = {};
 
-utils.isStaff = (grade) => {
+utils.isStaff = (role) => {
   return (
-    grade === "E6" ||
-    grade == "E7" ||
-    grade == "O1" ||
-    grade == "O2" ||
-    grade == "O3"
+    // grade === "E6" ||
+    // grade == "E7" ||
+    // grade == "O1" ||
+    // grade == "O2" ||
+    // grade == "O3"
+    role == "BN FSO" ||
+    role == "BN FSNCO" ||
+    role == "CO FSO" ||
+    role == "CO FSNCO"
   );
 };
 

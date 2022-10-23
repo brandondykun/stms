@@ -52,7 +52,7 @@ const CreateAccountPage = () => {
     const pebdTimeStamp = utils.getTimeStamp(formInputs.pebd);
     const dorTimeStamp = utils.getTimeStamp(formInputs.dor);
     const etsTimeStamp = utils.getTimeStamp(formInputs.ets);
-    const isStaff = utils.isStaff(formInputs.grade);
+    const isStaff = utils.isStaff(formInputs.role);
     const acftPass = formInputs.acft_pass === "true" ? true : false;
 
     const data = {
