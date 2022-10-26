@@ -23,6 +23,7 @@ const LoginPage = () => {
     setSubmitLoading(true);
 
     if (!email || !password) {
+      setSubmitLoading(false);
       setError("Please complete all fields.");
       return;
     }

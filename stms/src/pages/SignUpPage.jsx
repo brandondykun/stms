@@ -27,10 +27,12 @@ const SignUpPage = () => {
     setSubmitLoading(true);
 
     if (!email || !password || !confirmPassword) {
+      setSubmitLoading(false);
       setError("Please complete all fields.");
       return;
     }
     if (password !== confirmPassword) {
+      setSubmitLoading(false);
       setError("Passwords do not match.");
       return;
     }
@@ -38,10 +40,12 @@ const SignUpPage = () => {
     const actualJoinCode = await apiCalls.getCurrentJoinCode();
     if (actualJoinCode.data) {
       if (joinCode !== actualJoinCode.data.code) {
+        setSubmitLoading(false);
         setError("Invalid join code.");
         return;
       }
     } else {
+      setSubmitLoading(false);
       setError(actualJoinCode.error);
       return;
     }
