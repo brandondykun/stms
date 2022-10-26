@@ -32,6 +32,7 @@ const AddCommentPage = () => {
 
     if (!formInputs.text) {
       setError("Please enter a comment.");
+      setSubmitLoading(false);
       return;
     }
     try {

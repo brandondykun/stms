@@ -119,7 +119,7 @@ const ExamQuestionPage = () => {
           className={styles.modalHeader}
           closeVariant="white"
         >
-          <Modal.Title>Giving up already??</Modal.Title>
+          <Modal.Title className={styles.modalTitle}>Check Fire!!</Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.modalBg}>
           You are about to exit the exam, and your progress will not be saved.

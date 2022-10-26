@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--black);
 }
 
 * {
@@ -176,7 +177,7 @@ input::-webkit-date-and-time-value {
   border-bottom: 1px solid var(--gold);
 }
 
-.form-button.login, .form-button.register {
+/* .form-button.login, .form-button.register {
   border: 1px solid var(--white);
   background-color: var(--black);
   color: var(--white);
@@ -193,17 +194,66 @@ input::-webkit-date-and-time-value {
   transform: scale(1.1);
   transition-duration: .3s;
   border: 1px solid var(--black);
+} */
+
+.form-button.login, .form-button.register {
+  /* border: 1px solid var(--white); */
+  /* background-color: var(--black); */
+  /* color: var(--white); */
+  padding: .5rem;
+  min-width: 105px;
+  transition-duration: .3s;
+  margin: 0 1rem;
+  background-color: var(--gold);
+  color: var(--black);
+  transition-duration: .3s;
+  border: 1px solid var(--black);
+}
+
+/* .form-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition-duration: .3s;
+} */
+
+@media (hover: hover) {
+  .form-button:hover {
+    cursor: pointer;
+    /* background-color: var(--gold); */
+    /* color: var(--black); */
+    transform: scale(1.1);
+    transition-duration: .3s;
+    /* border: 1px solid var(--black); */
+  }
+
+  .form-button.login.disabled-button:hover, .form-button.register.disabled-button:hover  {
+    cursor: default;
+    transform: none;
+    color: var(--black);
+    border: 1px solid var(--black);
+    background-color: var(--gold);
+  }
+}
+
+.form-button:active {
+  transform: scale(.9);
 }
 
 .form-button.login.disabled-button, .form-button.register.disabled-button {
-  color: var(--button-disabled);
-  border: 1px solid var(--button-disabled);
+  color: var(--black);
+  border: 1px solid var(--black);
+  filter: brightness(.2);
+  background-color: var(--gold);
 }
 
-.form-button.login.disabled-button:hover, .form-button.register.disabled-button:hover  {
+/* .form-button.login.disabled-button:hover, .form-button.register.disabled-button:hover  {
   cursor: default;
   transform: none;
-}
+  color: var(--black);
+  border: 1px solid var(--black);
+  background-color: var(--gold);
+} */
+
 .link-container {
   min-width: 250px;
   margin: 3rem 0rem;

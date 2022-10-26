@@ -84,6 +84,7 @@ const UserForm = ({ formInputs, setFormInputs, handleSubmit, loading }) => {
           <option value="SGT">SGT</option>
           <option value="SSG">SSG</option>
           <option value="SFC">SFC</option>
+          <option value="CDT">CDT</option>
           <option value="2LT">2LT</option>
           <option value="1LT">1LT</option>
           <option value="CPT">CPT</option>

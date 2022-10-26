@@ -3,13 +3,17 @@ import dayjs from "dayjs";
 
 const utils = {};
 
-utils.isStaff = (grade) => {
+utils.isStaff = (role) => {
   return (
-    grade === "E6" ||
-    grade == "E7" ||
-    grade == "O1" ||
-    grade == "O2" ||
-    grade == "O3"
+    // grade === "E6" ||
+    // grade == "E7" ||
+    // grade == "O1" ||
+    // grade == "O2" ||
+    // grade == "O3"
+    role == "BN FSO" ||
+    role == "BN FSNCO" ||
+    role == "CO FSO" ||
+    role == "CO FSNCO"
   );
 };
 
@@ -67,6 +71,7 @@ utils.assignUnitPosition = (user) => {
 };
 
 utils.dlcIncomplete = (user) => {
+  if (user.rank === "CDT") return false;
   if (user.grade === "E4" && !user.dlc_1_complete) return true;
   if (user.grade === "E5" && !user.dlc_2_complete) return true;
   if (user.grade === "E6" && !user.dlc_3_complete) return true;
@@ -74,6 +79,7 @@ utils.dlcIncomplete = (user) => {
 };
 
 utils.pmeIncomplete = (user) => {
+  if (user.rank === "CDT") return false;
   if (user.grade === "E4" && user.dlc_1_complete && !user.blc_complete)
     return true;
   if (user.grade === "E5" && user.dlc_2_complete && !user.alc_complete)
@@ -97,6 +103,7 @@ utils.getFormattedStringFromDays = (numberOfDays) => {
 };
 
 utils.isPromotable = (user) => {
+  if (user.rank === "CDT") return false;
   const payEntryBaseDate = dayjs(user.pebd.seconds * 1000);
   const dateOfRank = dayjs(user.dor.seconds * 1000);
   const now = dayjs();

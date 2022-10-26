@@ -21,6 +21,7 @@ const LoginPage = () => {
     e.preventDefault();
     setError("");
     if (!email || !password) {
+      setSubmitLoading(false);
       setError("Please complete all fields.");
       return;
     }
@@ -30,6 +31,7 @@ const LoginPage = () => {
     try {
       const user = await apiCalls.logIn(email, password);
       if (user.status === 400) {
+        setSubmitLoading(false);
         setError("Login failed. Invalid credentials.");
         setSubmitLoading(false);
         return;

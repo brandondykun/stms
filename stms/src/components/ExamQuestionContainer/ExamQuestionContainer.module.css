@@ -70,15 +70,25 @@
 }
 
 .screenButton {
-  border: 1px solid var(--white);
-  background-color: var(--black);
-  color: var(--white);
   padding: .5rem;
   min-width: 105px;
   transition-duration: .3s;
   margin: 0 1rem;
-  font-size: .8rem !important;
-  line-height: normal !important;
+  background-color: var(--gold);
+  color: var(--black);
+  transition-duration: .3s;
+  border: 1px solid var(--black);
+}
+
+.screenButton:active {
+  transform: scale(.9);
+}
+
+.screenButton:disabled {
+  color: var(--black);
+  border: 1px solid var(--black);
+  filter: brightness(.2);
+  background-color: var(--gold);
 }
 
 .screenButton:hover {
@@ -88,6 +98,22 @@
   transform: scale(1.1);
   transition-duration: .3s;
   border: 1px solid var(--black);
+}
+
+@media (hover: hover) {
+  .screenButton:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition-duration: .3s;
+  }
+
+  .screenButton:disabled:hover {
+    cursor: default;
+    transform: none;
+    color: var(--black);
+    border: 1px solid var(--black);
+    background-color: var(--gold);
+  }
 }
 
 @media only screen and (min-width: 800px) {
