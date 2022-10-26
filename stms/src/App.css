@@ -488,12 +488,12 @@ select:hover {
   align-items: center;
 }
 
-button:disabled {
+.assign-form-button:disabled {
   border: 1px solid var(--dark-placeholder);
   color: var(--dark-placeholder);
-}
+} 
 
-button:disabled:hover {
+.assign-form-button:disabled:hover {
     border: 1px solid var(--dark-placeholder);
     background-color: var(--black);
     color: var(--dark-placeholder);
