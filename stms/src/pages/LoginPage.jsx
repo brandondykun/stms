@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import apiCalls from "../api/apiUtils";
 import Logo from "../assets/fist-logo.png";
 import BarLoader from "react-spinners/BarLoader";
@@ -92,6 +92,9 @@ const LoginPage = () => {
             onClick={toggleShowPassword}
           />
         </div>
+        <Link to="/reset-password" className="forgot-password-link">
+          Forgot Your Password?
+        </Link>
         <div className="form-button-container">
           <button
             className={`form-button register ${
