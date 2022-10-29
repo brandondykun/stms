@@ -94,6 +94,10 @@ input::-webkit-date-and-time-value {
   font-size: .8rem;
 }
 
+.primary-nav-left {
+  display: flex;
+}
+
 .nav-link {
   margin: 0 .5rem;
   color: var(--white);
@@ -1072,6 +1076,47 @@ tr.red-bcg {
   cursor: pointer;
 }
 
+.modal-content {
+  border: none;
+}
+
+.forgot-password-link {
+  color: var(--white);
+  font-size: .9rem;
+  margin-top: 1.5rem;
+}
+
+.forgot-password-link:hover {
+  color: var(--gold)
+}
+
+.email-confirmation-text {
+  font-size: 1.1rem;
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 450px;
+  text-align: center;
+}
+
+.enter-email-text {
+ padding: 2rem 0 1rem 0;
+ font-size: 1.1rem;
+ text-align: center;
+}
+
+.link-text {
+  margin-top: 2rem;
+  color: var(--white)
+}
+
+.link-text:hover {
+  color: var(--gold);
+}
+
+.reset-email-form {
+  margin-top: 3rem;
+}
+
 
 @media only screen and (min-width: 350px) {
   .link-container {
@@ -1113,6 +1158,21 @@ tr.red-bcg {
   .select-custom-icon-privileges {
     right: -100px;
   }
+
+  .sign-out-nav-link {
+    padding: 0 .5rem;
+    border-radius: 10px;
+    transition: all .4s ease;
+    background-color: var(--black);
+    color: var(--gold);
+  }
+
+  .sign-out-nav-link:hover {
+
+    color: var(--black);
+    background-color: var(--gold);
+  }
+
 }
 
 @media only screen and (min-width: 450px) {
@@ -1121,7 +1181,12 @@ tr.red-bcg {
     margin: 1rem;
     flex: 1;
   }
+
+  .sign-out-nav-link {
+    padding: 0 .7rem;
+  }
 }
+
 @media only screen and (min-width: 500px) {
   .title-link-container {
     display: flex;
@@ -1165,10 +1230,6 @@ tr.red-bcg {
     padding-left: .5rem;
   }
 
-  .primary-nav {
-    justify-content: flex-end;
-  }
-
   .admin-list-items-container {
     flex-direction: row;
     
@@ -1188,7 +1249,15 @@ tr.red-bcg {
 
   .assign-form-button.permissions {
     margin: 0rem .3rem;
-}
+  }
+
+  .nav-link {
+    margin-right: 2rem;
+  }
+
+  .sign-out-nav-link {
+    margin-right: 0.5rem;
+  }
 }
 
 @media only screen and (min-width: 550px) {

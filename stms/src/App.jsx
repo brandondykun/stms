@@ -32,6 +32,7 @@ import SelfRoute from "./routes/SelfRoute";
 import ExamLandingPage from "./pages/ExamLandingPage";
 import ExamQuestionPage from "./pages/ExamQuestionPage/ExamQuestionPage";
 import ExamResultsPage from "./pages/ExamResultsPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route element={<UnAuthLayout />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<SignUpPage />} />
+          <Route path="reset-password" element={<ResetPasswordPage />} />
         </Route>
         <Route element={<RequireAuthRoute />}>
           <Route element={<WebsiteLayout />}>
