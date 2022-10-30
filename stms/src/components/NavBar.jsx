@@ -57,7 +57,7 @@ const NavBar = () => {
 
             {accountInfo?.is_staff && (
               <NavLink
-                to="/admin/overview"
+                to="/admin"
                 data-cy="nav-bar-admin"
                 className={({ isActive }) =>
                   isActive ? "nav-link active" : "nav-link"
