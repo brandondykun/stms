@@ -1117,6 +1117,12 @@ tr.red-bcg {
   margin-top: 3rem;
 }
 
+@media (hover: hover) {
+  .text-link:hover {
+    color: var(--white);
+  }
+}
+
 
 @media only screen and (min-width: 350px) {
   .link-container {
