@@ -286,9 +286,9 @@ input::-webkit-date-and-time-value {
   text-decoration: none;
 }
 
-.text-link:hover {
+/* .text-link:hover {
   color: var(--gold);
-}
+} */
 
 .info-container > div {
   padding: .5rem 0;
@@ -1119,7 +1119,7 @@ tr.red-bcg {
 
 @media (hover: hover) {
   .text-link:hover {
-    color: var(--white);
+    color: var(--gold);
   }
 }
 
