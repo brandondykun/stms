@@ -103,6 +103,7 @@ function App() {
 
           <Route path="admin" element={<AdminRoute />}>
             <Route element={<AdminLayout />}>
+              <Route index element={<Navigate to="overview" />} />
               <Route path="overview" element={<AdminOverview />} />
               <Route path="reassign" element={<AdminReassign />} />
               <Route path="ets" element={<EtsTime />} />

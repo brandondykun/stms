@@ -1164,7 +1164,7 @@ tr.red-bcg {
     border-radius: 10px;
     transition: all .4s ease;
     background-color: var(--black);
-    color: var(--gold);
+    color: var(--white);
   }
 
   .sign-out-nav-link:hover {
