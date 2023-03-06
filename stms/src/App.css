@@ -728,6 +728,12 @@ select.dark-input.dark-input.with-label{
   padding: 2rem 1rem 3rem 1rem;
 }
 
+.past-ets-table-title {
+  font-size: 1.5rem;
+  padding-bottom: .5rem;
+  margin: auto;
+}
+
 .ets-table {
   margin: auto;
   border-collapse:collapse;
@@ -740,7 +746,7 @@ select.dark-input.dark-input.with-label{
 
 .ets-table-record > th {
   color: var(--gold);
-  padding: 1rem 1rem;
+  padding: .6rem 1rem;
   background-color: rgb(37, 37, 37);
 }
 
@@ -1364,7 +1370,7 @@ tr.red-bcg {
   }
 
   .ets-table-record > th {
-    padding: 1rem 2rem;
+    padding: .6rem 2rem;
     font-size: 1.3rem;
   }
 
@@ -1390,7 +1396,7 @@ tr.red-bcg {
     padding-left: 1rem;
   }
 
-  .ets-table {
+  .ets-table, .past-ets-table-title {
     width: 90%;
   }
 

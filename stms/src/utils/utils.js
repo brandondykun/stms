@@ -90,14 +90,35 @@ utils.pmeIncomplete = (user) => {
 };
 
 utils.getFormattedStringFromDays = (numberOfDays) => {
-  const years = Math.floor(numberOfDays / 365);
-  const months = Math.floor((numberOfDays % 365) / 30);
-  const days = Math.floor((numberOfDays % 365) % 30);
+  let years = Math.floor(numberOfDays / 365);
+  let months = Math.floor((numberOfDays % 365) / 30);
+  let days = Math.floor((numberOfDays % 365) % 30);
   let message = "";
 
-  if (years) message += `${years}yr`;
-  if (months) message += ` ${months}mo`;
-  if (days) message += ` ${days}d`;
+  // if past ETS add a year so it doesn't start at 1 year
+  if (numberOfDays < 0) years = years + 1;
+
+  // if past ETS date, make the years positive not negative
+  if (years) {
+    if (years < 0) {
+      years = years * -1;
+    }
+    message += `${years}yr`;
+  }
+  // if past ETS date, make the months positive not negative
+  if (months) {
+    if (months < 0) {
+      months = months * -1;
+    }
+    message += ` ${months}mo`;
+  }
+  // if past ETS date, make the days positive not negative
+  if (days) {
+    if (days < 0) {
+      days = days * -1;
+    }
+    message += ` ${days}d`;
+  }
 
   return message;
 };
