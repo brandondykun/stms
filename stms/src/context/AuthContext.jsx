@@ -17,6 +17,8 @@ export const AuthContextProvider = ({ children }) => {
       if (userInfo.found) {
         setAccountInfo(userInfo.data);
       }
+    } else {
+      setCurrentUser(null);
     }
     setPending(false);
   };
